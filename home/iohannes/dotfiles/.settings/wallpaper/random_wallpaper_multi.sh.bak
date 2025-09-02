@@ -1,0 +1,52 @@
+#!/usr/bin/env bash  
+  
+WALLPAPER_DIR="$HOME/Pictures/Wallpapers/Landscape"  
+
+# Function to get dominant color of an image  
+get_dominant_color() {  
+    local image="$1"  
+    # Extract dominant color using ImageMagick  
+    magick "$image" -resize 1x1! -format "%[pixel:u]" info:  
+}  
+  
+# Function to calculate color similarity (simplified)  
+colors_are_similar() {  
+    local color1="$1"  
+    local color2="$2"  
+    # This is a simplified check - you'd want more sophisticated color distance calculation  
+    # For now, just check if they're in similar hue ranges  
+    echo "true"  # Placeholder - implement actual color distance logic  
+}  
+  
+# Get all wallpapers  
+ALL_WALLPAPERS=($(find "$WALLPAPER_DIR" -type f \( -name "*.jpg" -o -name "*.png" -o -name "*.jpeg" \)))  
+  
+# Select first wallpaper randomly  
+FIRST_WALLPAPER=${ALL_WALLPAPERS[$RANDOM % ${#ALL_WALLPAPERS[@]}]}  
+FIRST_COLOR=$(get_dominant_color "$FIRST_WALLPAPER")  
+  
+# Find wallpapers with similar colors  
+SIMILAR_WALLPAPERS=()  
+for wallpaper in "${ALL_WALLPAPERS[@]}"; do  
+    if [[ "$wallpaper" != "$FIRST_WALLPAPER" ]]; then  
+        WALLPAPER_COLOR=$(get_dominant_color "$wallpaper")  
+        if colors_are_similar "$FIRST_COLOR" "$WALLPAPER_COLOR"; then  
+            SIMILAR_WALLPAPERS+=("$wallpaper")  
+        fi  
+    fi  
+done  
+  
+# Set wallpapers  
+MONITORS=$(hyprctl monitors -j | jq -r '.[].name')  
+MONITOR_ARRAY=($MONITORS)  
+  
+# First monitor gets the first wallpaper  
+swww img --outputs "${MONITOR_ARRAY[0]}" "$FIRST_WALLPAPER" --transition-fps 60 --transition-step 255 --transition-type any  
+  
+# Additional monitors get similar colored wallpapers  
+for ((i=1; i<${#MONITOR_ARRAY[@]}; i++)); do  
+    if [[ ${#SIMILAR_WALLPAPERS[@]} -gt 0 ]]; then  
+        SELECTED=${SIMILAR_WALLPAPERS[$RANDOM % ${#SIMILAR_WALLPAPERS[@]}]}  
+        swww img --outputs "${MONITOR_ARRAY[$i]}" "$SELECTED" --transition-fps 60 --transition-step 255 --transition-type any 
+    fi  
+done
