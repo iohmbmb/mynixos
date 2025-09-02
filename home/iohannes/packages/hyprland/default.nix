@@ -29,6 +29,8 @@ osConfig,
         "swww-daemon"
         "bash ~/.config/start-process/start.sh"
         "discord"
+        "keepassxc"
+        "mullvad-vpn"
       ];
 
       env = ([
