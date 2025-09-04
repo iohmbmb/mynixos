@@ -135,7 +135,7 @@ in
       settings = {
         devices = {
           "phone" = {
-            id = "FQGKTN2-BQPU4FX-Q5ASJDU-2YEPMIJ-2BO773U-BFEENJX-PFBXLC2-AB5Z2AE"; 
+            id = "52LZQ6D-G6PD6PJ-AICNMAJ-JOM7IGS-RXJ6DKU-SDJMYYA-GUQQI7B-FUDOEA6"; 
           };
         };
         folders = {
@@ -145,13 +145,11 @@ in
             ignorePerms = true;
           };
           "KeypassDB" = {
-            id = "qjogh-kxbxw";
             path = "/home/iohannes/Documents/Keypass\ Database";
             devices = [ "phone" ];
             ignorePerms = true;
           };
           "WhatsApp" = {
-            id = "lfpup-ot9nm";
             path = "/home/iohannes/Pictures/WhatsApp";
             devices = [ "phone" ];
             ignorePerms = true;
