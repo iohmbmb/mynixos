@@ -134,24 +134,39 @@ in
       configDir = "/home/iohannes/.config/syncthing";
       settings = {
         devices = {
-          "phone" = {
+          "caduceus" = {
             id = "52LZQ6D-G6PD6PJ-AICNMAJ-JOM7IGS-RXJ6DKU-SDJMYYA-GUQQI7B-FUDOEA6"; 
           };
+          "telemachus" = {
+            id = "LUB5HFA-GR6MBXA-MWUVHCW-JQHBMMS-KVDJIOW-RD3Y4T3-TFETDUF-M3VLTQH"; 
+          };
+            #"backup" = {
+            #id = "FQGKTN2-BQPU4FX-Q5ASJDU-2YEPMIJ-2BO773U-BFEENJX-PFBXLC2-AB5Z2AE"; 
+          #};
         };
         folders = {
           "Nexus" = {
+            id = "jd7s7-kohkx";
             path = "/home/iohannes/Documents/Obsidian/Nexus";
-            devices = [ "phone" ];
+            devices = [ "caduceus" ];
             ignorePerms = true;
           };
           "KeypassDB" = {
+            id = "yo99t-3hg9y";
             path = "/home/iohannes/Documents/Keypass\ Database";
-            devices = [ "phone" ];
+            devices = [ "caduceus" ];
+            ignorePerms = true;
+          };
+          "Wallpapers" = {
+            id = "0b065-bt7xz";
+            path = "/home/iohannes/Pictures/Wallpapers";
+            devices = [ "caduceus" ];
             ignorePerms = true;
           };
           "WhatsApp" = {
+            id = "r6vag-4nxpl";
             path = "/home/iohannes/Pictures/WhatsApp";
-            devices = [ "phone" ];
+            devices = [ "telemachus" ];
             ignorePerms = true;
           };
         };
