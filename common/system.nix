@@ -38,11 +38,11 @@ in
   # See RAM, ZRAM & Swap
   swapDevices = [{
     device = "/var/lib/swapfile";
-    size = 8 * 1024;  # 8 GB Swap
+    size = 16 * 1024;  # 16 GB Swap
   }];
   zramSwap = {
     enable = true;
-    memoryMax = 16 * 1024 * 1024 * 1024;  # 16 GB ZRAM
+    memoryMax = 32 * 1024 * 1024 * 1024;  # 16 GB ZRAM
   };
 
   networking = {
@@ -247,8 +247,7 @@ in
         heroic 
         lutris
         obsidian
-        # Uncomment when you have enough RAM to build the fucker
-        #nix-gaming.packages.${system}.star-citizen
+        nix-gaming.packages.${system}.star-citizen
       ];
     };
 
