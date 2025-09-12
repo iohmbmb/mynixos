@@ -219,7 +219,6 @@ in
       extraGroups = [ "wheel" "adbusers" ]; # Enable ‘sudo’ for the user.
       packages = with pkgs; [
         keepassxc
-        stremio
         jetbrains.rider
         vivaldi
         chromium
@@ -227,11 +226,9 @@ in
         unityhub 
         blender
         godot
-        prismlauncher 
-        heroic 
         lutris
         obsidian
-        #nix-gaming.packages.${system}.star-citizen
+        ncdu
       ];
     };
 
@@ -283,7 +280,6 @@ in
       zola
       scons
       tmux
-      libreoffice
       kitty
       ranger
       mpv
@@ -296,15 +292,10 @@ in
       jq
       kdePackages.qtdeclarative
       imagemagick
-      opentabletdriver
       pureref
       flutter
       aseprite
       nix-prefetch-git
-      # support both 32-bit and 64-bit applications
-      wineWowPackages.stable
-      # winetricks (all versions)
-      winetricks
       mullvad-vpn
       quickshell.packages."${system}".default
     ];
