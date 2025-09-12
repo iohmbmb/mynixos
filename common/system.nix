@@ -23,26 +23,10 @@ in
   };
 
   boot = {
-    kernel = {
-      sysctl = {
-        "vm.max_map_count" = 16777216;
-        "fs.file-max" = 524288;
-      };
-    };
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
-  };
-
-  # See RAM, ZRAM & Swap
-  swapDevices = [{
-    device = "/var/lib/swapfile";
-    size = 8 * 1024;  # 16 GB Swap
-  }];
-  zramSwap = {
-    enable = true;
-    memoryMax = 16 * 1024 * 1024 * 1024;  # 16 GB ZRAM
   };
 
   networking = {
