@@ -1,4 +1,4 @@
-{ config, pkgs, quickshell,  nix-gaming, ... }:
+{ config, pkgs, quickshell, ... }:
 
 let 
   mullvad-autostart = pkgs.makeAutostartItem {

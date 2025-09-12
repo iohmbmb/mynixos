@@ -23,11 +23,9 @@
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    nix-gaming.url = "github:fufexan/nix-gaming";
   };
 
-  outputs = { self, nixpkgs, nvf, quickshell, nix-gaming, ... }@inputs: { 
+  outputs = { self, nixpkgs, nvf, quickshell, ... }@inputs: { 
 
     nixosConfigurations = {
       aegis = nixpkgs.lib.nixosSystem {
