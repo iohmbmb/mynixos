@@ -38,11 +38,11 @@ in
   # See RAM, ZRAM & Swap
   swapDevices = [{
     device = "/var/lib/swapfile";
-    size = 16 * 1024;  # 16 GB Swap
+    size = 8 * 1024;  # 16 GB Swap
   }];
   zramSwap = {
     enable = true;
-    memoryMax = 32 * 1024 * 1024 * 1024;  # 16 GB ZRAM
+    memoryMax = 16 * 1024 * 1024 * 1024;  # 16 GB ZRAM
   };
 
   networking = {
@@ -247,7 +247,7 @@ in
         heroic 
         lutris
         obsidian
-        nix-gaming.packages.${system}.star-citizen
+        #nix-gaming.packages.${system}.star-citizen
       ];
     };
 
@@ -322,7 +322,6 @@ in
       # winetricks (all versions)
       winetricks
       mullvad-vpn
-      mullvad-autostart
       quickshell.packages."${system}".default
     ];
   };      
