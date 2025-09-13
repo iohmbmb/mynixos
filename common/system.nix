@@ -289,6 +289,7 @@
       nix-prefetch-git
       mullvad-vpn
       ncdu
+      usbutils
       quickshell.packages."${system}".default
     ];
   };      
