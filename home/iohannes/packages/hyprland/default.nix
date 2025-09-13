@@ -28,8 +28,8 @@ osConfig,
       exec-once = [
         "swww-daemon"
         "bash ~/.config/start-process/start.sh"
+        "bash ~/.config/wallpaper/random_wallpaper_multi.sh"
         "discord"
-        "keepassxc"
         "mullvad-vpn"
       ];
 

@@ -221,6 +221,7 @@ in
         keepassxc
         jetbrains.rider
         vivaldi
+        librewolf
         chromium
         discord 
         unityhub 
@@ -228,7 +229,6 @@ in
         godot
         lutris
         obsidian
-        ncdu
       ];
     };
 
@@ -297,6 +297,7 @@ in
       aseprite
       nix-prefetch-git
       mullvad-vpn
+      ncdu
       quickshell.packages."${system}".default
     ];
   };      
