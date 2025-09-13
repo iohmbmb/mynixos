@@ -97,7 +97,7 @@ osConfig,
 
       windowrule = [
         "float,class:^(kitty)$,title:^(kitty)$"
-        "workspace 2,class:Vivaldi-stable"
+        "workspace 2,class:librewolf"
         "workspace 2,class:discord"
         "float,class:discord"
         "size 1200 800,class:discord"
@@ -174,7 +174,7 @@ osConfig,
         "$mod, Q, killactive"
         "$mod, F, fullscreen"
         "$mod, E, exit"
-        "$mod, W, exec, vivaldi"
+        "$mod, W, exec, librewolf"
         "$mod_SHIFT, W, exec, ~/.config/wallpaper/random_wallpaper_multi.sh"
         "$mod, SPACE, exec, $menu"
         "$mod, D, exec, [workspace 2; float] discord"

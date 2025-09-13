@@ -1,11 +1,5 @@
 { config, pkgs, quickshell, ... }:
 
-let 
-  mullvad-autostart = pkgs.makeAutostartItem {
-    name = "mullvad-vpn";
-    package = pkgs.mullvad-vpn;
-  };
-in
 {
 
   nix = {
@@ -175,8 +169,6 @@ in
     gnome-disks.enable = true;
     zsh.enable = true;
     adb.enable = true;
-    thunderbird.enable = true;
-
     gamemode.enable = config.networking.hostName == "aegis";
     steam = {
       enable = config.networking.hostName == "aegis";
@@ -220,7 +212,6 @@ in
       packages = with pkgs; [
         keepassxc
         jetbrains.rider
-        vivaldi
         librewolf
         chromium
         discord 
