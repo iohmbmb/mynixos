@@ -213,7 +213,6 @@
         keepassxc
         jetbrains.rider
         librewolf
-        chromium
         discord 
         unityhub 
         blender
