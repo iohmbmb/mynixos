@@ -221,7 +221,6 @@
         discord 
         unityhub 
         blender
-        godot
         lutris
         obsidian
       ];
