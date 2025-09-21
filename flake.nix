@@ -34,6 +34,7 @@
 
         modules = [
           ./hosts/aegis          
+          (import ./overlays)
         ];
       };	
       orion = nixpkgs.lib.nixosSystem {
