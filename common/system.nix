@@ -189,8 +189,13 @@
         jdk
         pkg-config
         virtualglLib
-        sfml
-        raylib
+        wayland
+		    vulkan-loader
+		    libxkbcommon
+		    fontconfig
+		    lua
+		    alsa-utils
+		    alsa-lib
       ];
     };
   };
