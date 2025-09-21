@@ -293,6 +293,7 @@
       mullvad-vpn
       ncdu
       usbutils
+      godot
       quickshell.packages."${system}".default
     ];
   };      

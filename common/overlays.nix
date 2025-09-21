@@ -13,7 +13,7 @@ nur,
           owner = "polyad-misc";  
           repo = "godot";  
           rev = "4248411baf7a81b49e827f3f17d9dcc4b53b6c6a";  
-          hash = "1xw3raajmlz7q6yxv29qichvhnjrnjsgsarfdchk06a3wdbdw5vm";  
+          sha256 = "1xw3raajmlz7q6yxv29qichvhnjrnjsgsarfdchk06a3wdbdw5vm";  
         };  
       });  
     })  
