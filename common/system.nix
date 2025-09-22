@@ -238,7 +238,6 @@
     };
     systemPackages = with pkgs; [
       android-studio
-      devenv
       wget
       curl
       xorg.xorgserver
@@ -268,7 +267,6 @@
       sxiv
       zathura
       curl  
-      xwallpaper 
       cobra-cli
       seahorse
       zola
@@ -293,6 +291,7 @@
       mullvad-vpn
       ncdu
       usbutils
+      godot
       quickshell.packages."${system}".default
     ];
   };      
