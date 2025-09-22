@@ -1,6 +1,6 @@
 { pkgs, ... }:
 
-{
+  {
   imports = [
     ./dotfiles
     ./packages
@@ -32,16 +32,17 @@
       size = 24;
     };
 
-    xdg = {
+  };
+
+  xdg = {
+    enable = true;
+    userDirs = {
       enable = true;
-      userDirs = {
-        enable = true;
-        createDirectories = true;
-        desktop = null;
-        music = null;
-        publicShare = null;
-        templates = null;
-      };
+      createDirectories = true;
+      desktop = null;
+      music = null;
+      publicShare = null;
+      templates = null;
     };
   };
 }
