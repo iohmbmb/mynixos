@@ -32,22 +32,17 @@
       size = 24;
     };
 
-    file.wallpapers = {
-      source = ./wallpapers;
-      target = "Pictures/Wallpapers";
-      recursive = true;
-    };
-  };
-
-  xdg = {
-    enable = true;
-    userDirs = {
+    xdg = {
       enable = true;
-      createDirectories = true;
-      desktop = null;
-      music = null;
-      publicShare = null;
-      templates = null;
+      userDirs = {
+        enable = true;
+        createDirectories = true;
+        desktop = null;
+        music = null;
+        publicShare = null;
+        templates = null;
+      };
     };
   };
 }
+
