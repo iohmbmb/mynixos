@@ -8,7 +8,7 @@ nur,
   nixpkgs.overlays = [
     nur.overlays.default
     (final: prev: {  
-      godot = prev.godot_4_3.overrideAttrs (oldAttrs: {  
+      godot = prev.godot_4_5.overrideAttrs (oldAttrs: {  
         src = final.fetchFromGitLab {  
           owner = "polyad-misc";  
           repo = "godot";  
