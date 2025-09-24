@@ -169,6 +169,7 @@
     gnome-disks.enable = true;
     zsh.enable = true;
     adb.enable = true;
+    direnv.enable = true;
     gamemode.enable = config.networking.hostName == "aegis";
     steam = {
       enable = config.networking.hostName == "aegis";
@@ -220,9 +221,22 @@
         librewolf
         discord 
         unityhub 
+        godot-custom
+        aseprite
         blender
         lutris
         obsidian
+        bruno
+        dotnet-sdk
+        flutter
+        go
+        gcc
+        git
+        zola
+        scons
+        tmux
+        pureref
+        quickshell.packages."${system}".default
       ];
     };
 
@@ -245,18 +259,13 @@
       polybar
       picom
       xwallpaper
-      gcc
       killall
       xorg.xmodmap
       xorg.xev
-      go
       rofi
       rofi-wayland
       gnumake
-      bruno
-      dotnet-sdk
       bluetuith
-      git
       btop
       unzip
       zip
@@ -267,11 +276,7 @@
       sxiv
       zathura
       curl  
-      cobra-cli
       seahorse
-      zola
-      scons
-      tmux
       kitty
       ranger
       mpv
@@ -284,15 +289,9 @@
       jq
       kdePackages.qtdeclarative
       imagemagick
-      pureref
-      flutter
-      aseprite
-      nix-prefetch-git
       mullvad-vpn
       ncdu
       usbutils
-      godotPackages_4_3.godot
-      quickshell.packages."${system}".default
     ];
   };      
 
