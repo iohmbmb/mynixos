@@ -292,6 +292,7 @@
       mullvad-vpn
       ncdu
       usbutils
+      appimageTools
     ];
   };      
 
