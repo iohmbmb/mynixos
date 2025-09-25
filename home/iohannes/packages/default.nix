@@ -5,6 +5,5 @@
     ./nvf
     ./tmux
     ./hyprland
-    ./marvin
   ];
 }

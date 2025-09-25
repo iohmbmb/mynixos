@@ -1,4 +1,4 @@
-{ config, pkgs, quickshell, ... }:
+{ config, pkgs, quickshell, external, ... }:
 
 {
 
@@ -236,6 +236,7 @@
         scons
         tmux
         pureref
+        external.marvin
         quickshell.packages."${system}".default
       ];
     };
