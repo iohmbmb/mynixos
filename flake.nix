@@ -25,7 +25,7 @@
     };
 
     external = {
-      url = "./external/packages";
+      url = "./external/packages/";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

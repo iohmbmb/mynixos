@@ -1,3 +1,5 @@
-[
-  ./marvin
-]
+{
+  imports = [
+    ./marvin
+  ];
+}
