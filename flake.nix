@@ -23,15 +23,9 @@
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    external = {
-      url = "./external/packages/";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = { self, nixpkgs, nvf, quickshell, external, ... }@inputs: { 
-
     nixosConfigurations = {
       aegis = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";

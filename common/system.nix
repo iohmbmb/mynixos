@@ -1,5 +1,8 @@
-{ config, pkgs, quickshell, external, ... }:
+{ config, pkgs, quickshell, ... }:
 
+let 
+  external = import ../external/packages/default.nix {inherit pkgs;};
+in
 {
 
   nix = {
