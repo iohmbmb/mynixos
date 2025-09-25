@@ -31,7 +31,6 @@ osConfig,
         "bash ~/.config/wallpaper/random_wallpaper_multi.sh"
         "mullvad-vpn"
         "marvin"
-        "[workspace 2 silent] discord"
       ];
 
       env = ([
