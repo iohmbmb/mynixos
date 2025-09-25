@@ -97,12 +97,16 @@ osConfig,
 
       windowrule = [
         "float,class:^(kitty)$,title:^(kitty)$"
+        "workspace 1,class:Marvin"
         "workspace 2,class:librewolf"
         "workspace 2,class:discord"
-        "workspace 1,class:Marvin"
         "float,class:discord"
         "size 1200 800,class:discord"
         "center,class:discord"
+        "workspace 3,class:spotube"
+        "float,class:spotube"
+        "size 1200 800,class:spotube"
+        "center,class:spotube"
         "workspace 2,class:org.keepassxc.KeePassXC"
         "float,class:org.keepassxc.KeePassXC"
         "size 1200 800,class:org.keepassxc.KeePassXC"
