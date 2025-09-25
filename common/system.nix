@@ -1,7 +1,7 @@
 { config, pkgs, quickshell, ... }:
 
 let 
-  external = import ../external/packages/default.nix {inherit pkgs;};
+  externals = import ../external/packages/default.nix {inherit pkgs;};
 in
 {
 
@@ -239,7 +239,7 @@ in
         scons
         tmux
         pureref
-        external.marvin
+        externals.marvin
         quickshell.packages."${system}".default
       ];
     };

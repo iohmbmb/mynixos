@@ -25,7 +25,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, nvf, quickshell, external, ... }@inputs: { 
+  outputs = { self, nixpkgs, nvf, quickshell, ... }@inputs: { 
     nixosConfigurations = {
       aegis = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
