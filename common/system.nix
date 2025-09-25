@@ -223,6 +223,7 @@ in
         jetbrains.rider
         librewolf
         discord 
+        spotube
         unityhub 
         godot-custom
         aseprite
