@@ -31,6 +31,7 @@ osConfig,
         "bash ~/.config/wallpaper/random_wallpaper_multi.sh"
         "discord"
         "mullvad-vpn"
+        "marvin"
       ];
 
       env = ([
@@ -182,6 +183,7 @@ osConfig,
         "$mod, U, exec, unityhub"
         "$mod, G, exec, godot"
         "$mod, O, exec, [float] obsidian"
+        "$mod, M, exec, [workspace 1] marvin"
         "$mod, S, exec, kitty pulsemixer"
         "$mod, T, exec, thunderbird"
         "$mod_SHIFT, B, exec, $term bluetuith"
