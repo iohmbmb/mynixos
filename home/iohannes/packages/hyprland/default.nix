@@ -100,6 +100,7 @@ osConfig,
         "float,class:^(kitty)$,title:^(kitty)$"
         "workspace 2,class:librewolf"
         "workspace 2,class:discord"
+        "workspace 1,class:Marvin"
         "float,class:discord"
         "size 1200 800,class:discord"
         "center,class:discord"
