@@ -29,7 +29,7 @@ osConfig,
         "swww-daemon"
         "bash ~/.config/start-process/start.sh"
         "bash ~/.config/wallpaper/random_wallpaper_multi.sh"
-        "discord"
+        "[silent] discord"
         "mullvad-vpn"
         "marvin"
       ];
