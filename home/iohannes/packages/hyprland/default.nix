@@ -29,9 +29,9 @@ osConfig,
         "swww-daemon"
         "bash ~/.config/start-process/start.sh"
         "bash ~/.config/wallpaper/random_wallpaper_multi.sh"
-        "[silent] discord"
         "mullvad-vpn"
         "marvin"
+        "[workspace 2 silent] discord"
       ];
 
       env = ([
