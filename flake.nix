@@ -2,7 +2,11 @@
   description = "Iohannes's NixOs";
 
   inputs = {
+    # Stable nixpkgs (for default system configuration)
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    
+    # Unstable nixpkgs
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     nvf = {
       url = "github:notashelf/nvf";
@@ -25,7 +29,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, nvf, quickshell, ... }@inputs: { 
+  outputs = { self, nixpkgs, nixpkgs-unstable, nvf, quickshell, ... }@inputs: { 
     nixosConfigurations = {
       aegis = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";

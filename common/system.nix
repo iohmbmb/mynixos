@@ -1,7 +1,8 @@
-{ config, pkgs, quickshell, ... }:
+{ config, pkgs, nixpkgs-unstable, quickshell, ... }:
 
 let 
   externals = import ../external/packages/default.nix {inherit pkgs;};
+  unstable = nixpkgs-unstable.legacyPackages.x86_64-linux;
 in
 {
 
@@ -109,10 +110,10 @@ in
     };
 
     syncthing = {
-      enable = true;
+      enable = false;
       openDefaultPorts = true; # Open ports in the firewall for Syncthing
-      user = "iohannes";
-      configDir = "/home/iohannes/.config/syncthing";
+      user = "owner";
+      configDir = "/home/owner/.config/syncthing";
       settings = {
         devices = {
           "caduceus" = {
@@ -121,35 +122,8 @@ in
           "telemachus" = {
             id = "LUB5HFA-GR6MBXA-MWUVHCW-JQHBMMS-KVDJIOW-RD3Y4T3-TFETDUF-M3VLTQH"; 
           };
-            #"backup" = {
-            #id = "FQGKTN2-BQPU4FX-Q5ASJDU-2YEPMIJ-2BO773U-BFEENJX-PFBXLC2-AB5Z2AE"; 
-          #};
         };
         folders = {
-          "Nexus" = {
-            id = "jd7s7-kohkx";
-            path = "/home/iohannes/Documents/Obsidian/Nexus";
-            devices = [ "caduceus" ];
-            ignorePerms = true;
-          };
-          "KeypassDB" = {
-            id = "yo99t-3hg9y";
-            path = "/home/iohannes/Documents/Keypass\ Database";
-            devices = [ "caduceus" ];
-            ignorePerms = true;
-          };
-          "Wallpapers" = {
-            id = "0b065-bt7xz";
-            path = "/home/iohannes/Pictures/Wallpapers";
-            devices = [ "caduceus" ];
-            ignorePerms = true;
-          };
-          "WhatsApp" = {
-            id = "r6vag-4nxpl";
-            path = "/home/iohannes/Pictures/WhatsApp";
-            devices = [ "telemachus" ];
-            ignorePerms = true;
-          };
         };
       };
     };
@@ -223,10 +197,10 @@ in
         jetbrains.rider
         librewolf
         discord 
-        spotube
         unityhub 
         godot-custom
         aseprite
+        unstable.youtube-music
         blender
         lutris
         obsidian
