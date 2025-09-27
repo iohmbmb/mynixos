@@ -31,6 +31,9 @@ osConfig,
         "bash ~/.config/wallpaper/random_wallpaper_multi.sh"
         "mullvad-vpn"
         "marvin"
+        "[silent] discord"
+        "[silent] org.keepassxc.KeePassXC"
+        "[silent] com.github.th_ch.youtube_music"
       ];
 
       env = ([
