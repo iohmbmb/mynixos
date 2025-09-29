@@ -195,6 +195,7 @@ in
       packages = with pkgs; [
         keepassxc
         jetbrains.rider
+        android-studio
         librewolf
         discord 
         unityhub 
@@ -214,7 +215,9 @@ in
         scons
         tmux
         pureref
+        mullvad-vpn
         externals.marvin
+        kdePackages.qtdeclarative
         quickshell.packages."${system}".default
       ];
     };
@@ -230,7 +233,6 @@ in
       HYPRSHOT_DIR = "/home/iohannes/Pictures/Screenshots";
     };
     systemPackages = with pkgs; [
-      android-studio
       wget
       curl
       xorg.xorgserver
@@ -266,9 +268,8 @@ in
       swww
       hyprshot
       jq
-      kdePackages.qtdeclarative
       imagemagick
-      mullvad-vpn
+      ffmpeg
       ncdu
       usbutils
     ];
