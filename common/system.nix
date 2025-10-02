@@ -215,6 +215,7 @@ in
         scons
         tmux
         pureref
+        krita
         mullvad-vpn
         externals.marvin
         kdePackages.qtdeclarative
