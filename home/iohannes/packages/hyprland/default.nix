@@ -9,6 +9,30 @@ let
     ''
       windowrulev2 =  size 800 400,class:discord
     '';
+  youtubeWindowRule = if osConfig.networking.hostName == "aegis" then 
+    ''
+      windowrulev2 = size 1200 800,class:com.github.th_ch.youtube_music
+    ''
+  else
+    ''
+      windowrulev2 = size 800 400,class:com.github.th_ch.youtube_music
+    '';
+  keepassWindowRule = if osConfig.networking.hostName == "aegis" then 
+    ''
+      windowrulev2 = size 1200 800,class:org.keepassxc.KeePassXC
+    ''
+  else
+    ''
+      windowrulev2 = size 800 400,class:org.keepassxc.KeePassXC
+    '';
+  purerefWindowRule = if osConfig.networking.hostName == "aegis" then 
+    ''
+      windowrulev2 = size 1200 800,class:PureRef
+    ''
+  else
+    ''
+      windowrulev2 = size 800 400,class:PureRef
+    '';
 in
   {
   wayland.windowManager.hyprland = {
@@ -17,6 +41,9 @@ in
 
     extraConfig = ''
       ${discordWindowRule}
+      ${youtubeWindowRule}
+      ${keepassWindowRule}
+      ${purerefWindowRule}
     '';
 
     xwayland = {
@@ -117,15 +144,12 @@ in
         "center,class:discord"
         "workspace 3,class:com.github.th_ch.youtube_music"
         "float,class:com.github.th_ch.youtube_music"
-        "size 1200 800,class:com.github.th_ch.youtube_music"
         "center,class:com.github.th_ch.youtube_music"
         "workspace 2,class:org.keepassxc.KeePassXC"
         "float,class:org.keepassxc.KeePassXC"
-        "size 1200 800,class:org.keepassxc.KeePassXC"
         "center,class:org.keepassxc.KeePassXC"
         "tile,class:Aseprite"
         "float,class:PureRef"
-        "size 1200 800,class:PureRef"
         "center,class:PureRef"
         "float,class:Emulator"
         "suppressevent maximize, class:.*"
