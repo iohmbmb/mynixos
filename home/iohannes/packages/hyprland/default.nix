@@ -1,13 +1,23 @@
-{
-pkgs,
-osConfig,
-...
-}:
+{ pkgs, osConfig, ...}:
 
-{
+let
+  discordWindowRule = if osConfig.networking.hostName == "aegis" then 
+    ''
+      windowrulev2 =  class:^(discord)$ size 1200 800
+    ''
+  else
+    ''
+      windowrulev2 =  class:^(discord)$ size 800 400
+    '';
+in
+  {
   wayland.windowManager.hyprland = {
     enable = true;
     package = pkgs.hyprland;
+
+    extraConfig = ''
+      ${discordWindowRule}
+    '';
 
     xwayland = {
       enable = true;
@@ -20,8 +30,8 @@ osConfig,
     settings = {
       monitor = (
         if (osConfig.networking.hostName == "aegis") then [
-            "DP-3, preferred, 0x0, auto"
-            "HDMI-A-1, 2560x1440@60, 2560x0, auto"
+          "DP-3, preferred, 0x0, auto"
+          "HDMI-A-1, 2560x1440@60, 2560x0, auto"
         ] else [",preferred,auto,auto"]
       );
 
@@ -104,7 +114,6 @@ osConfig,
         "workspace 2,class:librewolf"
         "workspace 2,class:discord"
         "float,class:discord"
-        "size 1200 800,class:discord"
         "center,class:discord"
         "workspace 3,class:com.github.th_ch.youtube_music"
         "float,class:com.github.th_ch.youtube_music"
