@@ -15,7 +15,7 @@ let
     ''
   else
     ''
-      windowrulev2 = size 800 400,class:com.github.th_ch.youtube_music
+      windowrulev2 = size 800 600,class:com.github.th_ch.youtube_music
     '';
   keepassWindowRule = if osConfig.networking.hostName == "aegis" then 
     ''
@@ -23,7 +23,7 @@ let
     ''
   else
     ''
-      windowrulev2 = size 800 400,class:org.keepassxc.KeePassXC
+      windowrulev2 = size 860 600,class:org.keepassxc.KeePassXC
     '';
   purerefWindowRule = if osConfig.networking.hostName == "aegis" then 
     ''
@@ -31,7 +31,7 @@ let
     ''
   else
     ''
-      windowrulev2 = size 800 400,class:PureRef
+      windowrulev2 = size 500 500,class:PureRef
     '';
 in
   {
