@@ -3,11 +3,11 @@
 let
   discordWindowRule = if osConfig.networking.hostName == "aegis" then 
     ''
-      windowrulev2 =  class:^(discord)$ size 1200 800
+      windowrulev2 =  size 1200 800,class:discord
     ''
   else
     ''
-      windowrulev2 =  class:^(discord)$ size 800 400
+      windowrulev2 =  size 800 400,class:discord
     '';
 in
   {
