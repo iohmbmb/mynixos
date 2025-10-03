@@ -7,7 +7,7 @@ let
     ''
   else
     ''
-      windowrulev2 =  size 800 400,class:discord
+      windowrulev2 =  size 860 600,class:discord
     '';
   youtubeWindowRule = if osConfig.networking.hostName == "aegis" then 
     ''
