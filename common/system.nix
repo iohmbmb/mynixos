@@ -206,7 +206,6 @@ in
         aseprite
         unstable.youtube-music
         blender
-        lutris
         obsidian
         bruno
         dotnet-sdk
