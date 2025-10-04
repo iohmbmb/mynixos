@@ -275,6 +275,7 @@ in
       ffmpeg
       ncdu
       usbutils
+      libinput
     ];
   };      
 
