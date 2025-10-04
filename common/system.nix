@@ -276,6 +276,7 @@ in
       ncdu
       usbutils
       libinput
+      wvkbd
     ];
   };      
 

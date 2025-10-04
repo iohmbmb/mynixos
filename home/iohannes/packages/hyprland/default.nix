@@ -288,6 +288,27 @@ in
         ", XF86AudioPlay, exec, playerctl play-pause"
         ", XF86AudioPrev, exec, playerctl previous"
       ];
+      
+      plugins = {
+        touch_gestures = {
+          hyprgrass-bind = [
+            ", edge:d:u, exec, .config/wvkbd-script/wvkbd-toggle"
+          ];
+
+          sensitivity = 2.0;
+          workspace_swipe_fingers = 3;
+          workspace_swipe_edge = "d";
+          long_press_delay = 400;
+        };
+      };
+
+      tablet = { mode = true;};
+      virtualkeyboard = {margin_bottom = 300;};
     };
   };
+  
+  wayland.windowManager.hyprland.plugins = 
+    [
+      pkgs.hyprlandPlugins.hyprgrass
+    ];
 }

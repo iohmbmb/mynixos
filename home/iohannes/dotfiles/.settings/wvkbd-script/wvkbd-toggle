@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+PIDs="$(pgrep -x wvkbd-mobintl)"
+if [ -z "$PIDs" ]; then
+  wvkbd-mobintl -L 300 &
+else
+  killall -34 wvkbd-mobintl
+fi

@@ -25,4 +25,10 @@
     target = "/home/iohannes/.config/wallpaper";
     recursive = true;
   };
+
+  home.file.wvkbd-script = {
+    source = ./.settings/wvkbd-script;
+    target = "/home/iohannes/.config/wvkbd-script";
+    recursive = true;
+  };
 }
