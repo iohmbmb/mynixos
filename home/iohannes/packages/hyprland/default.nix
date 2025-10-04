@@ -59,7 +59,9 @@ in
         if (osConfig.networking.hostName == "aegis") then [
           "DP-3, preferred, 0x0, auto"
           "HDMI-A-1, 2560x1440@60, 2560x0, auto"
-        ] else [",preferred,auto,auto"]
+        ] else if (osConfig.networking.hostName == "sybils") then [
+            "eDP-1,preferred,auto,2,transform,0"
+          ] else [",preferred,auto,auto"]
       );
 
       exec-once = [
@@ -289,7 +291,7 @@ in
         ", XF86AudioPlay, exec, playerctl play-pause"
         ", XF86AudioPrev, exec, playerctl previous"
       ];
-      
+
       plugins = {
         touch_gestures = {
           hyprgrass-bind = [
@@ -304,7 +306,7 @@ in
       };
     };
   };
-  
+
   wayland.windowManager.hyprland.plugins = 
     [
       pkgs.hyprlandPlugins.hyprgrass
