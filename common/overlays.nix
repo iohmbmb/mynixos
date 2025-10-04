@@ -16,5 +16,12 @@ nur,
         };  
       }); 
     })  
+    (final: prev: {
+      iio-sensor-proxy = prev.iio-sensor-proxy.overrideAttrs (oldAttrs: {
+        postPatch = oldAttrs.postPatch + ''
+      sed -i -e 's/.*iio-buffer-accel/#&/' data/80-iio-sensor-proxy.rules
+        '';
+      });
+    })
   ];
 }
