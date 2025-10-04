@@ -57,7 +57,6 @@ in
     };
   };
   services = {
-
     fwupd.enable = config.networking.hostName == "sybils";
     ntp.enable = true;
     libinput.enable = true;
@@ -159,6 +158,8 @@ in
       enable = true;
       xwayland.enable = true;
     };
+    
+    iio-hyprland.enable = true;
 
     nix-ld = {
       enable = true;

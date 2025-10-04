@@ -66,6 +66,7 @@ in
         "swww-daemon"
         "bash ~/.config/start-process/start.sh"
         "bash ~/.config/wallpaper/random_wallpaper_multi.sh"
+        "iio-hyprland"
         "mullvad-vpn"
         "marvin"
         "[silent] discord"
@@ -307,6 +308,5 @@ in
   wayland.windowManager.hyprland.plugins = 
     [
       pkgs.hyprlandPlugins.hyprgrass
-      pkgs.hyprlandPlugins.iio-hyprland
     ];
 }
