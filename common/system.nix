@@ -57,6 +57,8 @@ in
     };
   };
   services = {
+
+    fwupd.enable = config.networking.hostName == "sybils";
     ntp.enable = true;
     libinput.enable = true;
 
