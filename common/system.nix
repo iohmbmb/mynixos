@@ -269,7 +269,7 @@ in
       waybar
       dunst
       libnotify
-      swww
+      swaybg
       hyprshot
       jq
       imagemagick
