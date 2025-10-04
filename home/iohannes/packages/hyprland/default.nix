@@ -307,5 +307,6 @@ in
   wayland.windowManager.hyprland.plugins = 
     [
       pkgs.hyprlandPlugins.hyprgrass
+      pkgs.hyprlandPlugins.iio-hyprland
     ];
 }
