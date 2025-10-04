@@ -301,9 +301,6 @@ in
           long_press_delay = 400;
         };
       };
-
-      tablet = { mode = true;};
-      virtualkeyboard = {margin_bottom = 300;};
     };
   };
   
