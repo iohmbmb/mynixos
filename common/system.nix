@@ -216,6 +216,7 @@ in
         zola
         scons
         tmux
+        stremio
         pureref
         krita
         mullvad-vpn
