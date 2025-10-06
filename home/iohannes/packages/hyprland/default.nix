@@ -71,7 +71,6 @@ in
         "iio-hyprland"
         "mullvad-vpn"
         "marvin"
-        "[silent] discord"
         "[silent] org.keepassxc.KeePassXC"
         "[silent] com.github.th_ch.youtube_music"
       ];
