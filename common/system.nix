@@ -32,6 +32,9 @@ in
     # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
     networkmanager.enable = true;  # Easiest to use and most distros use this by default.
     nameservers = ["1.1.1.1" "1.0.0.1" "2606:4700:4700::1111" "2606:4700:4700::1001"];
+    firewall = {
+      enable = true;
+    };
   };
 
   time = {
@@ -112,7 +115,7 @@ in
 
     syncthing = {
       enable = false;
-      openDefaultPorts = true; # Open ports in the firewall for Syncthing
+      openDefaultPorts = false; # Open ports in the firewall for Syncthing
       user = "owner";
       configDir = "/home/owner/.config/syncthing";
       settings = {
@@ -132,7 +135,10 @@ in
     blueman.enable = true;
     gnome.gnome-keyring.enable = true;
     picom.enable = true;
-    openssh.enable = true;
+    openssh = {
+      enable = true;
+      ports = [22];
+    };
     mullvad-vpn.enable = true;
   };
 
@@ -221,6 +227,7 @@ in
         krita
         mullvad-vpn
         externals.marvin
+        woeusb
         kdePackages.qtdeclarative
         quickshell.packages."${system}".default
       ];
