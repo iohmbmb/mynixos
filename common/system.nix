@@ -228,6 +228,7 @@ in
         mullvad-vpn
         externals.marvin
         woeusb
+        qbittorrent
         kdePackages.qtdeclarative
         quickshell.packages."${system}".default
       ];

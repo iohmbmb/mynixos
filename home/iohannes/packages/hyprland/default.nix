@@ -33,6 +33,15 @@ let
     ''
       windowrulev2 = size 500 500,class:PureRef
     '';
+
+  qbittorrent = if osConfig.networking.hostName == "aegis" then 
+    ''
+      windowrulev2 = size 1200 800,class:org.qbittorrent.qBittorrent
+    ''
+  else
+    ''
+      windowrulev2 = size 500 500,class:org.qbittorrent.qBittorrent
+    '';
 in
   {
   wayland.windowManager.hyprland = {
@@ -44,6 +53,7 @@ in
       ${youtubeWindowRule}
       ${keepassWindowRule}
       ${purerefWindowRule}
+      ${qbittorrent}
     '';
 
     xwayland = {
@@ -153,6 +163,8 @@ in
         "tile,class:Aseprite"
         "float,class:PureRef"
         "center,class:PureRef"
+        "float,class:org.qbittorrent.qBittorrent"
+        "center,class:org.qbittorrent.qBittorrent"
         "float,class:Emulator"
         "suppressevent maximize, class:.*"
         "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
