@@ -225,6 +225,7 @@ in
         stremio
         pureref
         krita
+        tor
         mullvad-vpn
         externals.marvin
         woeusb
@@ -286,6 +287,7 @@ in
       usbutils
       libinput
       wvkbd
+      exiftool
     ];
   };      
 
