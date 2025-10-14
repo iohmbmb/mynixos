@@ -225,7 +225,6 @@ in
         stremio
         pureref
         krita
-        tor-browser
         mullvad-vpn
         externals.marvin
         woeusb
