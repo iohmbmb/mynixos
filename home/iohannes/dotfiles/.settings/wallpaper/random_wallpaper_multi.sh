@@ -18,6 +18,6 @@ fi
 for MON in "${MONITOR_ARRAY[@]}"; do
     RAND_WP="${WALLPAPERS[RANDOM % ${#WALLPAPERS[@]}]}"
     notify-send "Setting wallpaper for $MON: $RAND_WP"
-    swaybg -i "$RAND_WP" -o "$MON" 
+    swaybg -i "$RAND_WP" -m fill -o "$MON" 
 done
 
