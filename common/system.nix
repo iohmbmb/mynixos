@@ -154,10 +154,10 @@ in
     zsh.enable = true;
     adb.enable = true;
     direnv.enable = true;
-    gamemode.enable = config.networking.hostName == "aegis";
+    gamemode.enable = true;
     steam = {
-      enable = config.networking.hostName == "aegis";
-      gamescopeSession.enable = config.networking.hostName == "aegis";
+      enable = true;
+      gamescopeSession.enable = true;
     }; 
 
     hyprland = {
