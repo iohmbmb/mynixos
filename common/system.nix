@@ -206,6 +206,7 @@ in
         jetbrains.rider
         android-studio
         librewolf
+        chromium
         discord 
         unityhub 
         godot-custom
