@@ -287,6 +287,7 @@ in
       usbutils
       libinput
       wvkbd
+      svkbd
       exiftool
     ];
   };      

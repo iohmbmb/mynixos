@@ -26,9 +26,9 @@
     recursive = true;
   };
 
-  home.file.wvkbd-script = {
-    source = ./.settings/wvkbd-script;
-    target = "/home/iohannes/.config/wvkbd-script";
+  home.file.svkbd-script = {
+    source = ./.settings/svkbd-script;
+    target = "/home/iohannes/.config/svkbd-script";
     recursive = true;
   };
 }
