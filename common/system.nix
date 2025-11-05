@@ -67,7 +67,6 @@ in
     displayManager = {
       sddm = {
         enable = true;
-        wayland.enable = true;
         settings = {
           General = {
             InputMethod = "${pkgs.wvkbd}/bin/wvkbd-mobintl";
