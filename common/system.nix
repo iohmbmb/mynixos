@@ -66,10 +66,12 @@ in
 
     displayManager = {
       sddm = {
+        package = pkgs.kdePackages.sddm; # use qt6 version of sddm
         enable = true;
         settings = {
           General = {
-            InputMethod = "${pkgs.wvkbd}/bin/wvkbd-mobintl";
+            GreeterEnvironment = "QT_IM_MODULE=qtvirtualkeyboard";
+            InputMethod = "qtvirtualkeyboard";
           };
         };
       };
