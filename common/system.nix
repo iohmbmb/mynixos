@@ -65,7 +65,15 @@ in
     libinput.enable = true;
 
     displayManager = {
-      sddm.enable = true;
+      sddm = {
+        enable = true;
+        wayland.enable = true;
+        settings = {
+          General = {
+            InputMethod = "${pkgs.wvkbd}/bin/wvkbd-mobintl";
+          };
+        };
+      };
     };
 
     xserver = {
@@ -230,6 +238,7 @@ in
         externals.marvin
         woeusb
         qbittorrent
+        libreoffice
         kdePackages.qtdeclarative
         quickshell.packages."${system}".default
       ];
