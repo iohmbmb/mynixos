@@ -1,10 +1,13 @@
-{ config, pkgs, nixpkgs-unstable, quickshell, ... }:
+{ config, pkgs, nixpkgs-unstable, quickshell, silentSDDM, ... }:
 
 let 
   externals = import ../external/packages/default.nix {inherit pkgs;};
   unstable = nixpkgs-unstable.legacyPackages.x86_64-linux;
+  sddm-theme = silentSDDM.packages.${pkgs.system}.default.override {
+    theme = "default"; # select the config of your choice
+  };
 in
-{
+  {
 
   nix = {
     gc = {
@@ -65,7 +68,19 @@ in
     libinput.enable = true;
 
     displayManager = {
-      sddm.enable = true;
+      sddm = {
+        package = pkgs.kdePackages.sddm; # use qt6 version of sddm
+        enable = true;
+        theme = sddm-theme.pname;
+        extraPackages = sddm-theme.propagatedBuildInputs;
+        settings = {
+          General = {
+            GreeterEnvironment = "QML2_IMPORT_PATH=${sddm-theme}/share/sddm/themes/${sddm-theme.pname}/components/,QT_IM_MODULE=qtvirtualkeyboard";
+
+            InputMethod = "qtvirtualkeyboard";
+          };
+        };
+      };
     };
 
     xserver = {
@@ -164,7 +179,7 @@ in
       enable = true;
       xwayland.enable = true;
     };
-    
+
     iio-hyprland.enable = true;
 
     nix-ld = {
@@ -177,12 +192,12 @@ in
         pkg-config
         virtualglLib
         wayland
-		    vulkan-loader
-		    libxkbcommon
-		    fontconfig
-		    lua
-		    alsa-utils
-		    alsa-lib
+        vulkan-loader
+        libxkbcommon
+        fontconfig
+        lua
+        alsa-utils
+        alsa-lib
       ];
     };
   };
@@ -230,6 +245,7 @@ in
         externals.marvin
         woeusb
         qbittorrent
+        libreoffice
         kdePackages.qtdeclarative
         quickshell.packages."${system}".default
       ];
@@ -289,6 +305,7 @@ in
       wvkbd
       svkbd
       exiftool
+      sddm-theme
     ];
   };      
 
