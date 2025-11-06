@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 PIDs="$(pgrep -x wvkbd-mobintl)"
 if [ -z "$PIDs" ]; then
-  svkbd-mobile-intl&
+  wvkbd-mobintl &
 else
-  killall -34 svkbd-mobile-intl
+  killall -34 wvkbd-mobintl
 fi
