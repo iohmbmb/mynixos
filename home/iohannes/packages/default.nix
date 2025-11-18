@@ -5,5 +5,6 @@
     ./nvf
     ./tmux
     ./hyprland
+    ./kitty
   ];
 }
