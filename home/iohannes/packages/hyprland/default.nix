@@ -309,8 +309,9 @@ in
           hyprgrass-bind = [
             ", edge:d:u, exec, .config/svkbd-script/svkbd-toggle"
             ", edge:u:d, killactive"
-            ", swipe:1:r, exec, librewolf"
-            ", swipe:1:l, exec, stremio"
+            ", swipe:2:r, exec, librewolf"
+            ", swipe:2:l, exec, stremio"
+            ", swipe:2:d, exec, kitty"
           ];
 
           sensitivity = 4.0;
