@@ -275,6 +275,7 @@ in
       rofi
       rofi-wayland
       gnumake
+      cmake
       bluetuith
       btop
       unzip
@@ -305,6 +306,7 @@ in
       wvkbd
       svkbd
       exiftool
+      cameractrls-gtk3
       sddm-theme
     ];
   };      
