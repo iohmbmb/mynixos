@@ -1,3 +1,5 @@
+{osConfig, ...}:
+
 {
   programs.kitty = {
     enable = true;
@@ -59,10 +61,14 @@
 
       color7 = "#B5BFE2";  # white
       color15 = "#A5ADCE"; # white (bright)
-      
+
       # Font settings
       font_family = "JetBrains Mono";  # Change this to your preferred font
-      font_size = 18.0;           # Set the desired font size
+
+      font_size = 
+        if osConfig.networking.hostName == "aegis" 
+          then 18.0          # Set the desired font size
+        else 14.0;
     };
   };
 }
