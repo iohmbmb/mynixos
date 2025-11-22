@@ -157,6 +157,7 @@ in
         "center,class:discord"
         "workspace 3,class:com.github.th_ch.youtube_music"
         "float,class:com.github.th_ch.youtube_music"
+        "float, title:Fashion Warz"
         "center,class:com.github.th_ch.youtube_music"
         "workspace 2,class:org.keepassxc.KeePassXC"
         "float,class:org.keepassxc.KeePassXC"
