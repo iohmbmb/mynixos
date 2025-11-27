@@ -230,7 +230,7 @@ in
         "$mod, RETURN, exec, $term"
         "$mod, Q, killactive"
         "$mod, F, fullscreen"
-        "$mod, E, exit"
+        #"$mod, E, exit"
         "$mod, W, exec, librewolf"
         "$mod_SHIFT, W, exec, ~/.config/wallpaper/random_wallpaper_multi.sh"
         "$mod, SPACE, exec, $menu"
