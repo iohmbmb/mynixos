@@ -37,6 +37,7 @@ in
     nameservers = ["1.1.1.1" "1.0.0.1" "2606:4700:4700::1111" "2606:4700:4700::1001"];
     firewall = {
       enable = true;
+      allowedTCPPorts = [ 8384 ];
     };
   };
 
@@ -130,19 +131,18 @@ in
 
     syncthing = {
       enable = false;
-      openDefaultPorts = false; # Open ports in the firewall for Syncthing
-      user = "owner";
-      configDir = "/home/owner/.config/syncthing";
+      openDefaultPorts = true; # Open ports in the firewall for Syncthing
+      user = "iohannes";
+      configDir = "/home/iohannes/.config/syncthing";
       settings = {
         devices = {
-          "caduceus" = {
-            id = "52LZQ6D-G6PD6PJ-AICNMAJ-JOM7IGS-RXJ6DKU-SDJMYYA-GUQQI7B-FUDOEA6"; 
-          };
-          "telemachus" = {
-            id = "LUB5HFA-GR6MBXA-MWUVHCW-JQHBMMS-KVDJIOW-RD3Y4T3-TFETDUF-M3VLTQH"; 
-          };
+          device-p = {id = "DEVICE-ID-GOES-HERE";};
         };
         folders = {
+          "Polyad" = {
+            path = "/home/iohannes/Documents/Obsidian/Polyad";
+            devices = ["device-p"];
+          };
         };
       };
     };
