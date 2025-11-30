@@ -140,12 +140,13 @@ in
       settings = {
         devices = {
           device-p = {id = "2IQODMB-2CS4NUI-GJ7OROX-N2BYYM6-UUJEE52-NCISK7I-MA3BK63-2BWOAAE";};
+          device-s = {id = "5HVHHOT-WHEREUT-2HSTDRE-GBNGPO4-YK5LPF2-XAUOUGZ-Z4UT7YO-ZANFXQE";};
         };
         folders = {
           "Polyad" = {
             path = "/home/iohannes/Documents/Obsidian/Polyad";
             folderId = "ksryo-z5qhg";
-            devices = ["device-p"];
+            devices = ["device-p" "device-s"];
           };
         };
       };
