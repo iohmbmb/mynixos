@@ -53,7 +53,22 @@
         statusline.lualine.enable = true;
         telescope.enable = true;
         autocomplete.nvim-cmp.enable = true;
-        lsp.enable = true;
+        lsp = {
+          enable = true;
+          servers.html = {
+            capabilities = { 
+              textDocument = { 
+                completion = { 
+                  completionItem = { 
+                    snippetSupport = true; 
+                  }; 
+                }; 
+              }; 
+            };
+            cmd = ["vscode-html-language-server" "--stdio"];
+            filetypes = ["html"];
+          };
+        };
 
         languages = {
           enableTreesitter = true;
@@ -62,9 +77,16 @@
           python.enable = true;
           dart.enable = true;
           go.enable = true;
-          html.enable = true;
-          markdown.enable = true;
+          html = {
+            enable = true;
+            treesitter = {
+              enable = true;
+              autotagHtml = true;
+            };
+          };
+          css.enable = true;
           ts.enable = true;
+          markdown.enable = true;
         };
 
         extraPlugins = {

@@ -37,7 +37,8 @@ in
     nameservers = ["1.1.1.1" "1.0.0.1" "2606:4700:4700::1111" "2606:4700:4700::1001"];
     firewall = {
       enable = true;
-      allowedTCPPorts = [ 8384 ];
+      allowedTCPPorts = [ 8384 22000 ];
+      allowedUDPPorts = [ 21027 ];
     };
   };
 
@@ -130,17 +131,20 @@ in
     };
 
     syncthing = {
-      enable = false;
+      enable = true;
       openDefaultPorts = true; # Open ports in the firewall for Syncthing
       user = "iohannes";
+      dataDir = "/home/iohannes/.local/share/syncthing";
       configDir = "/home/iohannes/.config/syncthing";
+      guiAddress = "127.0.0.1:8384";
       settings = {
         devices = {
-          device-p = {id = "DEVICE-ID-GOES-HERE";};
+          device-p = {id = "2IQODMB-2CS4NUI-GJ7OROX-N2BYYM6-UUJEE52-NCISK7I-MA3BK63-2BWOAAE";};
         };
         folders = {
           "Polyad" = {
             path = "/home/iohannes/Documents/Obsidian/Polyad";
+            folderId = "ksryo-z5qhg";
             devices = ["device-p"];
           };
         };
@@ -233,6 +237,10 @@ in
         dotnet-sdk
         flutter
         go
+        nil
+        typescript-language-server
+        clang-tools
+        basedpyright
         gcc
         git
         zola
@@ -248,6 +256,7 @@ in
         libreoffice
         kdePackages.qtdeclarative
         quickshell.packages."${system}".default
+        vscode-langservers-extracted
       ];
     };
 
