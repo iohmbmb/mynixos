@@ -258,6 +258,7 @@ in
         kdePackages.qtdeclarative
         quickshell.packages."${system}".default
         vscode-langservers-extracted
+        linuxKernel.packages.linux_zen.xpadneo
       ];
     };
 
