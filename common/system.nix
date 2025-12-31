@@ -259,6 +259,7 @@ in
         quickshell.packages."${system}".default
         vscode-langservers-extracted
         linuxKernel.packages.linux_zen.xpadneo
+        bambu-studio
       ];
     };
 
@@ -307,6 +308,7 @@ in
       dunst
       libnotify
       swaybg
+      inotify-tools
       hyprshot
       jq
       imagemagick
@@ -319,6 +321,7 @@ in
       exiftool
       cameractrls-gtk3
       sddm-theme
+      pkg-config
     ];
   };      
 
