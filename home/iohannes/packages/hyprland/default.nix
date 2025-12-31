@@ -75,12 +75,11 @@ in
     settings = {
       monitor = (
         if (osConfig.networking.hostName == "aegis") then [
-          ",preferred, 0x0, auto"
-          "HDMI-A-1, 2560x1440@60, 2560x0, auto"
+          "HDMI-A-2, 2560x1440@60, 2560x0, 1"
         ] else if (osConfig.networking.hostName == "sybils") then [
             "eDP-1,preferred,auto,1"
             ",preferred, auto, 1, mirror, eDP-1"
-          ] else [",preferred,auto,auto"]
+          ] else [",preferred,auto,1"]
       );
 
       exec-once = [
