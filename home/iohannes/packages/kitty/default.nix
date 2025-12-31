@@ -65,10 +65,11 @@
       # Font settings
       font_family = "JetBrains Mono";  # Change this to your preferred font
 
-      font_size = 
-        if osConfig.networking.hostName == "aegis" 
-          then 18.0          # Set the desired font size
-        else 14.0;
+      #font_size = 
+      #  if osConfig.networking.hostName == "aegis" 
+      #    then 18.0          # Set the desired font size
+      #  else 16.0;
+      font_size = 18.0;          # Set the desired font size
     };
   };
 }

@@ -7,7 +7,7 @@ let
     ''
   else
     ''
-      windowrulev2 =  size 860 600,class:discord
+      windowrulev2 =  size 1200 800,class:discord
     '';
   youtubeWindowRule = if osConfig.networking.hostName == "aegis" then 
     ''
@@ -15,7 +15,7 @@ let
     ''
   else
     ''
-      windowrulev2 = size 800 600,class:com.github.th_ch.youtube_music
+      windowrulev2 = size 1200 800,class:com.github.th_ch.youtube_music
     '';
   keepassWindowRule = if osConfig.networking.hostName == "aegis" then 
     ''
@@ -23,7 +23,7 @@ let
     ''
   else
     ''
-      windowrulev2 = size 860 600,class:org.keepassxc.KeePassXC
+      windowrulev2 = size 1200 800,class:org.keepassxc.KeePassXC
     '';
   purerefWindowRule = if osConfig.networking.hostName == "aegis" then 
     ''
@@ -31,17 +31,24 @@ let
     ''
   else
     ''
-      windowrulev2 = size 500 500,class:PureRef
+      windowrulev2 = size 1200 800,class:PureRef
     '';
 
-  qbittorrent = if osConfig.networking.hostName == "aegis" then 
+  qbittorrentWindowRule = if osConfig.networking.hostName == "aegis" then 
     ''
       windowrulev2 = size 1200 800,class:org.qbittorrent.qBittorrent
     ''
   else
     ''
-      windowrulev2 = size 500 500,class:org.qbittorrent.qBittorrent
+      windowrulev2 = size 1200 800,class:org.qbittorrent.qBittorrent
     '';
+  kittyWindowRule = if osConfig.networking.hostName == "sybils" then 
+    ''
+      windowrulev2 = size 1200 1000,class:kitty
+    ''
+  else
+    ""
+    ;
 in
   {
   wayland.windowManager.hyprland = {
@@ -53,7 +60,8 @@ in
       ${youtubeWindowRule}
       ${keepassWindowRule}
       ${purerefWindowRule}
-      ${qbittorrent}
+      ${qbittorrentWindowRule}
+      ${kittyWindowRule}
     '';
 
     xwayland = {
@@ -67,11 +75,11 @@ in
     settings = {
       monitor = (
         if (osConfig.networking.hostName == "aegis") then [
-          "DP-3, preferred, 0x0, auto"
+          ",preferred, 0x0, auto"
           "HDMI-A-1, 2560x1440@60, 2560x0, auto"
         ] else if (osConfig.networking.hostName == "sybils") then [
             "eDP-1,preferred,auto,1"
-            ", 2560x1440@60, auto, 1, mirror, eDP-1"
+            ",preferred, auto, 1, mirror, eDP-1"
           ] else [",preferred,auto,auto"]
       );
 
