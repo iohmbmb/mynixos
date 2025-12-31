@@ -1,31 +1,59 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-# Function to handle screen connection/disconnection
-handle_screen_event() {
-    local event="$1"
-    
-    # Print event
-    echo "Event: $event"
+STATE_FILE="$XDG_RUNTIME_DIR/hypr-monitor.state"
 
-    # Query the current output status using xrandr
-    if [[ "$event" == "connected" ]]; then
-        echo "Screen connected:"
-        xrandr --listmonitors
-    elif [[ "$event" == "disconnected" ]]; then
-        echo "Screen disconnected"
+# Get internal monitor name
+get_internal() {
+    hyprctl monitors -j | jq -r '.[] | select(.internal == true) | .name'
+}
+
+# Get first external monitor name
+get_external() {
+    hyprctl monitors -j | jq -r '.[] | select(.internal == false) | .name' | head -n1
+}
+
+# Apply automatic layout
+auto_layout() {
+    internal=$(get_internal)
+    external=$(get_external)
+
+    if [[ -z "$external" ]]; then
+        echo "No external monitor — enabling internal only"
+        hyprctl keyword monitor "$internal,preferred,auto,1"
+        rm -f "$STATE_FILE"
+    else
+        echo "External monitor detected: $external"
+        hyprctl keyword monitor "$internal,preferred,auto,1"
+        hyprctl keyword monitor "$external,preferred,auto,1"
     fi
 }
 
-# Monitor events on /sys/class/drm/ for changes (detects hotplug events)
-inotifywait -m -e modify /sys/class/drm/ | while read -r event; do
-    # Check if the event corresponds to a screen being connected or disconnected
-    if [[ "$event" =~ "eDP" || "$event" =~ "HDMI" || "$event" =~ "DP" ]]; then
-        # Detecting specific changes for HDMI, DP, eDP output events (you can add more outputs if needed)
-        if [[ "$(cat /sys/class/drm/*/status)" == "connected" ]]; then
-            handle_screen_event "connected"
-        else
-            handle_screen_event "disconnected"
-        fi
+# Toggle mirror / extend
+toggle_mirror() {
+    internal=$(get_internal)
+    external=$(get_external)
+
+    [[ -z "$external" ]] && exit 0
+
+    if [[ ! -f "$STATE_FILE" || "$(cat "$STATE_FILE")" == "extend" ]]; then
+        echo "Switching to MIRROR"
+        hyprctl keyword monitor "$external,preferred,0x0,1,mirror,$internal"
+        echo "mirror" > "$STATE_FILE"
+    else
+        echo "Switching to EXTEND"
+        hyprctl keyword monitor "$internal,preferred,0x0,1"
+        hyprctl keyword monitor "$external,preferred,auto,1"
+        echo "extend" > "$STATE_FILE"
     fi
-done
+}
+
+# Entry point
+case "$1" in
+    toggle)
+        toggle_mirror
+        ;;
+    *)
+        auto_layout
+        ;;
+esac
 

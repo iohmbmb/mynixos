@@ -308,7 +308,6 @@ in
       dunst
       libnotify
       swaybg
-      inotify-tools
       hyprshot
       jq
       imagemagick
