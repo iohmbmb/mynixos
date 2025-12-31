@@ -71,14 +71,13 @@ in
           "HDMI-A-1, 2560x1440@60, 2560x0, auto"
         ] else if (osConfig.networking.hostName == "sybils") then [
             "eDP-1,preferred,auto,auto,transform,0"
-            "HDMI-A-1, 2560x1440@60, auto, auto, mirror, eDP-1"
+            ", 2560x1440@60, auto, 1, mirror, eDP-1"
           ] else [",preferred,auto,auto"]
       );
 
       exec-once = [
         "swww-daemon"
         "bash ~/.config/start-process/start.sh"
-        #"bash ~/.config/start-process/monitor_screen.sh"
         "bash ~/.config/wallpaper/random_wallpaper_multi.sh"
         "iio-hyprland"
         "mullvad-vpn"
@@ -241,8 +240,7 @@ in
         "$mod, U, exec, unityhub"
         "$mod, G, exec, godot"
         "$mod, O, exec, [float] obsidian"
-        #"$mod, M, exec, [workspace 1] marvin"
-        #"$mod, M, exec, ~/.config/start-process/monitor_screen.sh toggle"
+        "$mod, M, exec, [workspace 1] marvin"
         "$mod, S, exec, kitty pulsemixer"
         "$mod, T, exec, thunderbird"
         "$mod_SHIFT, B, exec, $term bluetuith"
