@@ -232,7 +232,7 @@ in
         godot-custom
         aseprite
         unstable.youtube-music
-        blender
+        unstable.blender
         obsidian
         bruno
         dotnet-sdk
