@@ -245,6 +245,7 @@ in
         gcc
         git
         zola
+        sass
         scons
         tmux
         stremio
