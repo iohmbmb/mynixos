@@ -7,7 +7,7 @@ let
     ''
   else
     ''
-      windowrulev2 =  size 1200 800,class:discord
+      windowrulev2 =  size 800 600,class:discord
     '';
   youtubeWindowRule = if osConfig.networking.hostName == "aegis" then 
     ''
@@ -15,7 +15,7 @@ let
     ''
   else
     ''
-      windowrulev2 = size 1200 800,class:com.github.th_ch.youtube_music
+      windowrulev2 = size 800 600,class:com.github.th_ch.youtube_music
     '';
   keepassWindowRule = if osConfig.networking.hostName == "aegis" then 
     ''
@@ -23,7 +23,7 @@ let
     ''
   else
     ''
-      windowrulev2 = size 1200 800,class:org.keepassxc.KeePassXC
+      windowrulev2 = size 800 600,class:org.keepassxc.KeePassXC
     '';
   purerefWindowRule = if osConfig.networking.hostName == "aegis" then 
     ''
@@ -31,7 +31,7 @@ let
     ''
   else
     ''
-      windowrulev2 = size 1200 800,class:PureRef
+      windowrulev2 = size 800 600,class:PureRef
     '';
 
   qbittorrentWindowRule = if osConfig.networking.hostName == "aegis" then 
@@ -40,11 +40,11 @@ let
     ''
   else
     ''
-      windowrulev2 = size 1200 800,class:org.qbittorrent.qBittorrent
+      windowrulev2 = size 800 600,class:org.qbittorrent.qBittorrent
     '';
   kittyWindowRule = if osConfig.networking.hostName == "sybils" then 
     ''
-      windowrulev2 = size 1200 1000,class:kitty
+      windowrulev2 = size 800 600,class:kitty
     ''
   else
     ""
@@ -77,9 +77,9 @@ in
         if (osConfig.networking.hostName == "aegis") then [
           "HDMI-A-2, 2560x1440@60, 2560x0, 1"
         ] else if (osConfig.networking.hostName == "sybils") then [
-            "eDP-1,preferred,auto,1"
+            "eDP-1,preferred,auto,auto"
             ",preferred, auto, 1, mirror, eDP-1"
-          ] else [",preferred,auto,1"]
+          ] else [",preferred,auto,auto"]
       );
 
       exec-once = [
