@@ -246,6 +246,7 @@ in
         git
         zola
         sass
+        docker
         scons
         tmux
         stremio
