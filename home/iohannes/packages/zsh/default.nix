@@ -7,7 +7,8 @@
     syntaxHighlighting.enable = true;
 
     shellAliases = {
-      ll = "ls -l";
+      ls = "lsd";
+      ll = "lsd -l";
       edit = "sudo -e";
       update = "sudo nixos-rebuild switch --flake /home/iohannes/.config/nixos/ --fast";
       clean-old = "sudo nix-collect-garbage --delete-old";

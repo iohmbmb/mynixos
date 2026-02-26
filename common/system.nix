@@ -323,6 +323,9 @@ in
       cameractrls-gtk3
       sddm-theme
       pkg-config
+      lsd
+      fzf
+      atuin
     ];
   };      
 
