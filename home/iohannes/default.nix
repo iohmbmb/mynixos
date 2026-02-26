@@ -7,7 +7,6 @@
   ];
 
   programs.home-manager.enable = true;
-  programs.fzf.enableZshIntegration = true;
 
   home = {
     stateVersion = "24.05";
