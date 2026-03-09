@@ -150,12 +150,10 @@ in
           };
           "Nexus" = {
             path = "/home/iohannes/Documents/Obsidian/Nexus";
-            folderId = "nzray-x8efa";
             devices = ["device-s"];
           };
           "Keepass" = {
             path = "/home/iohannes/Documents/Keepass\ Database";
-            folderId = "ztwuv-d0ctc";
             devices = ["device-s"];
           };
         };
