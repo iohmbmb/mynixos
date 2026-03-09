@@ -139,6 +139,7 @@ in
       guiAddress = "127.0.0.1:8384";
       settings = {
         devices = {
+          aegis = {id = "HWUPMNN-MO5W2GV-YTPPTWJ-CC3FMT6-A4SBD7H-BNP4WOG-BAPWTNF-2Y6DJQC";};
           device-p = {id = "2IQODMB-2CS4NUI-GJ7OROX-N2BYYM6-UUJEE52-NCISK7I-MA3BK63-2BWOAAE";};
           device-s = {id = "5HVHHOT-WHEREUT-2HSTDRE-GBNGPO4-YK5LPF2-XAUOUGZ-Z4UT7YO-ZANFXQE";};
         };
@@ -146,15 +147,15 @@ in
           "Polyad" = {
             path = "/home/iohannes/Documents/Obsidian/Polyad";
             folderId = "ksryo-z5qhg";
-            devices = ["device-p" "device-s"];
+            devices = ["device-p" "device-s" "aegis"];
           };
           "Nexus" = {
             path = "/home/iohannes/Documents/Obsidian/Nexus";
-            devices = ["device-s"];
+            devices = ["device-s" "aegis"];
           };
           "Keepass" = {
             path = "/home/iohannes/Documents/Keepass\ Database";
-            devices = ["device-s"];
+            devices = ["device-s" "aegis"];
           };
         };
       };
