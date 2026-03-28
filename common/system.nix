@@ -272,6 +272,7 @@ in
         vscode-langservers-extracted
         linuxKernel.packages.linux_zen.xpadneo
         bambu-studio
+        kiwix
       ];
     };
 
