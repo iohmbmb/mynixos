@@ -310,7 +310,6 @@ in
       pulsemixer 
       sxiv
       zathura
-      curl  
       seahorse
       kitty
       ranger
