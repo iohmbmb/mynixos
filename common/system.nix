@@ -236,6 +236,7 @@ in
         android-studio
         librewolf
         chromium
+        firefox
         discord 
         unityhub 
         godot-custom
