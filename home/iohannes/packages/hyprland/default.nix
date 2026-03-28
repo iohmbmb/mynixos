@@ -49,6 +49,14 @@ let
   else
     ""
     ;
+  kiwixWindowRule = if osConfig.networking.hostName == "aegis" then 
+    ''
+      windowrulev2 = size 1200 800,class:kiwix
+    ''
+  else
+    ''
+      windowrulev2 = size 800 600,class:kiwix
+    '';
 in
   {
   wayland.windowManager.hyprland = {
@@ -62,6 +70,7 @@ in
       ${purerefWindowRule}
       ${qbittorrentWindowRule}
       ${kittyWindowRule}
+      ${kiwixWindowRule}
     '';
 
     xwayland = {
@@ -167,6 +176,8 @@ in
         "workspace 2,class:discord"
         "float,class:discord"
         "center,class:discord"
+        "float,class:kiwix"
+        "center,class:kiwix"
         "workspace 3,class:com.github.th_ch.youtube_music"
         "float,class:com.github.th_ch.youtube_music"
         "float, title:Fashion Warz"
