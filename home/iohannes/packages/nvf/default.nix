@@ -10,6 +10,26 @@
           style = "frappe";
         };
 
+        ui = {
+          borders = {
+            plugins = {
+              nvim-cmp = {
+                enable = true;
+                style = "rounded";
+              };
+            };
+          };
+        };
+
+        luaConfigPost = 
+        ''
+          -- search for project godot and start listening to the server
+          local projectfile = vim.fn.getcwd() .. '/project.godot'
+          if projectfile then
+            vim.fn.serverstart './godothost'
+          end
+        '';
+
         maps = {
           normal = {
             # Map Ctrl-n in normal mode
@@ -23,6 +43,22 @@
               action = "<cmd>ToggleTerm size=10<CR>";
               silent = true;
               desc = "Toggle terminal";
+            };
+            # Mapping for fzf-lua
+            "<C-f>" = {
+              action = "<cmd>FzfLua files<CR>";
+              silent = true;
+              desc = "Let search the files";
+            };
+            "<C-r>" = {
+              action = "<cmd>FzfLua live_grep<CR>";
+              silent = true;
+              desc = "Search for strings live";
+            };
+            "<C-b>" = {
+              action = "<cmd>FzfLua buffers<CR>";
+              silent = true;
+              desc = "Open the list of buffers";
             };
           };
           terminal = {
@@ -45,6 +81,8 @@
           highlight.enable = true;
         };
 
+        fzf-lua.enable = true;
+
         visuals.indent-blankline = {
           enable = true;
           setupOpts.scope.enabled = true;
@@ -52,21 +90,34 @@
 
         statusline.lualine.enable = true;
         telescope.enable = true;
-        autocomplete.nvim-cmp.enable = true;
+        autocomplete.nvim-cmp = {
+          enable = true;
+        };
         lsp = {
           enable = true;
-          servers.html = {
-            capabilities = { 
-              textDocument = { 
-                completion = { 
-                  completionItem = { 
-                    snippetSupport = true; 
+          servers = {
+            html = {
+              capabilities = { 
+                textDocument = { 
+                  completion = { 
+                    completionItem = { 
+                      snippetSupport = true; 
+                    }; 
                   }; 
                 }; 
-              }; 
+              };
+              cmd = ["vscode-html-language-server" "--stdio"];
+              filetypes = ["html"];
             };
-            cmd = ["vscode-html-language-server" "--stdio"];
-            filetypes = ["html"];
+            gdscript = {
+              capabilities = {
+                textDocument = {
+                  completion = { dynamicRegistration = true; };
+                  hover = { dynamicRegistration = true; };
+                };
+                filetypes = ["gd" "gdshader"];
+              };
+            };
           };
         };
 
@@ -109,9 +160,16 @@
             package = pkgs.vimPlugins.toggleterm-nvim;
             setup = "require('toggleterm').setup{}";
           };
+          vim-godot = {
+            package = pkgs.vimPlugins.vim-godot;
+          };
+          tiny-inline-diagnostic = {
+            package = pkgs.vimPlugins.tiny-inline-diagnostic-nvim;
+            setup = "require('tiny-inline-diagnostic').setup() vim.diagnostic.config({ virtual_text = false })";
+          };
         };
 
-        startPlugins = ["plenary-nvim" pkgs.vimPlugins.flutter-tools-nvim pkgs.vimPlugins.nvim-dap pkgs.vimPlugins.nvim-tree-lua pkgs.vimPlugins.nvim-treesitter-parsers.qmljs pkgs.vimPlugins.toggleterm-nvim];
+        startPlugins = ["plenary-nvim" pkgs.vimPlugins.flutter-tools-nvim pkgs.vimPlugins.nvim-dap pkgs.vimPlugins.nvim-tree-lua pkgs.vimPlugins.nvim-treesitter-parsers.qmljs pkgs.vimPlugins.toggleterm-nvim pkgs.vimPlugins.vim-godot pkgs.vimPlugins.tiny-inline-diagnostic-nvim];
       };
     };
   };
