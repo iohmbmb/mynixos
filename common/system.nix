@@ -7,7 +7,6 @@ let
     theme = "default"; # select the config of your choice
   };
   hostname = config.networking.hostName;
-
   mainHost = "aegis";
   secondaryHost = "sybils";
 in
@@ -220,9 +219,7 @@ in
     users.iohannes = {
       isNormalUser = true;
       extraGroups = [ "wheel" "adbusers" ]; # Enable ‘sudo’ for the user.
-      packages = with pkgs; lib.mkIf (hostname == mainHost) [
-      opencode
-    ] ++ [
+      packages = with pkgs; [
         keepassxc
         android-studio
         librewolf
@@ -262,7 +259,7 @@ in
         vscode-langservers-extracted
         linuxKernel.packages.linux_zen.xpadneo
         kiwix
-      ];
+      ] ++ lib.optional (hostname == mainHost) pkgs.opencode;
     };
 
     groups.libvirtd.members = ["iohannes"];
