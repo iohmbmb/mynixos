@@ -44,6 +44,14 @@
         "x-scheme-handler/https" = "librewolf.desktop";
         "x-scheme-handler/about" = "librewolf.desktop";
         "x-scheme-handler/unknown" = "librewolf.desktop";
+        "application/pdf" = "org.pwmt.zathura.desktop";
+        "application/x-pdf" = "org.pwmt.zathura.desktop";
+        "application/postscript" = "org.pwmt.zathura.desktop";
+        "application/acrobat" = "org.pwmt.zathura.desktop";
+        "application/vnd.pdf" = "org.pwmt.zathura.desktop";
+        "text/pdf" = "org.pwmt.zathura.desktop";
+        "text/x-pdf" = "org.pwmt.zathura.desktop";
+        "application/octet-stream" = "org.pwmt.zathura.desktop";
       };
     };
     userDirs = {
