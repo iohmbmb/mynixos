@@ -1,4 +1,4 @@
-{ config, pkgs, nixpkgs-unstable, quickshell, silentSDDM, ... }:
+{ config, pkgs, lib, nixpkgs-unstable, quickshell, silentSDDM, ... }:
 
 let 
   externals = import ../external/packages/default.nix {inherit pkgs;};
@@ -64,6 +64,7 @@ in
       };
     };
   };
+
   services = {
     fwupd.enable = config.networking.hostName == "sybils";
     ntp.enable = true;
@@ -164,11 +165,15 @@ in
     blueman.enable = true;
     gnome.gnome-keyring.enable = true;
     picom.enable = true;
+    mullvad-vpn.enable = true;
     openssh = {
       enable = true;
       ports = [22];
     };
-    mullvad-vpn.enable = true;
+    ollama = lib.mkIf (config.networking.hostName == "aegis") {
+      enable = true;
+      package = pkgs.ollama-rocm;
+    };
   };
 
   security.rtkit.enable = true;
@@ -184,7 +189,7 @@ in
     adb.enable = true;
     direnv.enable = true;
     gamemode.enable = true;
-    steam = {
+    steam = lib.mkIf(config.networking.hostName == "aegis"){
       enable = true;
       gamescopeSession.enable = true;
     }; 
@@ -206,7 +211,7 @@ in
   };
 
   qt.enable = true;
-
+  
   users = {
     users.iohannes = {
       isNormalUser = true;
