@@ -6,6 +6,10 @@ let
   sddm-theme = silentSDDM.packages.${pkgs.system}.default.override {
     theme = "default"; # select the config of your choice
   };
+  hostname = config.networking.hostName;
+
+  mainHost = "aegis";
+  secondaryHost = "sybils";
 in
   {
 
@@ -66,7 +70,7 @@ in
   };
 
   services = {
-    fwupd.enable = config.networking.hostName == "sybils";
+    fwupd.enable = hostname == secondaryHost;
     ntp.enable = true;
     libinput.enable = true;
 
@@ -170,7 +174,7 @@ in
       enable = true;
       ports = [22];
     };
-    ollama = lib.mkIf (config.networking.hostName == "aegis") {
+    ollama = lib.mkIf (hostname == mainHost) {
       enable = true;
       package = pkgs.ollama-rocm;
     };
@@ -189,7 +193,7 @@ in
     adb.enable = true;
     direnv.enable = true;
     gamemode.enable = true;
-    steam = lib.mkIf(config.networking.hostName == "aegis"){
+    steam = lib.mkIf(hostname == mainHost){
       enable = true;
       gamescopeSession.enable = true;
     }; 
@@ -216,7 +220,9 @@ in
     users.iohannes = {
       isNormalUser = true;
       extraGroups = [ "wheel" "adbusers" ]; # Enable ‘sudo’ for the user.
-      packages = with pkgs; [
+      packages = with pkgs; lib.mkIf (hostname == mainHost) [
+      opencode
+    ] ++ [
         keepassxc
         android-studio
         librewolf
