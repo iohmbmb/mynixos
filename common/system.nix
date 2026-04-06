@@ -252,7 +252,6 @@ in
         linuxKernel.packages.linux_zen.xpadneo
         kiwix
         unstable.opencode
-        unstable.ollama-rocm
       ];
     };
 
