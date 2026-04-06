@@ -195,25 +195,6 @@ in
     };
 
     iio-hyprland.enable = true;
-
-    nix-ld = {
-      enable = true;
-      libraries = with pkgs; [
-        clang
-        cmake
-        ninja
-        jdk
-        pkg-config
-        virtualglLib
-        wayland
-        vulkan-loader
-        libxkbcommon
-        fontconfig
-        lua
-        alsa-utils
-        alsa-lib
-      ];
-    };
   };
 
   xdg.portal = {
@@ -232,16 +213,14 @@ in
       extraGroups = [ "wheel" "adbusers" ]; # Enable ‘sudo’ for the user.
       packages = with pkgs; [
         keepassxc
-        jetbrains.rider
         android-studio
         librewolf
-        chromium
         firefox
         discord 
         unityhub 
         godot-custom
         aseprite
-        unstable.youtube-music
+        unstable.pear-desktop
         unstable.blender
         obsidian
         bruno
@@ -259,7 +238,7 @@ in
         docker
         scons
         tmux
-        stremio
+        #stremio
         pureref
         krita
         mullvad-vpn
@@ -299,7 +278,6 @@ in
       xorg.xmodmap
       xorg.xev
       rofi
-      rofi-wayland
       gnumake
       cmake
       bluetuith
@@ -336,7 +314,6 @@ in
       pkg-config
       lsd
       fzf
-      atuin
     ];
   };      
 
@@ -358,7 +335,7 @@ in
   fonts.packages = with pkgs; [
     noto-fonts
     noto-fonts-cjk-sans
-    noto-fonts-emoji
+    noto-fonts-color-emoji
     liberation_ttf
     fira-code
     fira-code-symbols

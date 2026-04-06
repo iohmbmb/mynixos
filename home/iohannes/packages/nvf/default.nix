@@ -95,6 +95,7 @@
         };
         lsp = {
           enable = true;
+          lspconfig = {enable = true;};
           servers = {
             html = {
               capabilities = { 
@@ -154,7 +155,7 @@
           };
           nvim-treesitter-parsers-qmljs = {
             package = pkgs.vimPlugins.nvim-treesitter-parsers.qmljs;
-            setup = "require('lspconfig').qmlls.setup {cmd = {'qmlls', '-E'}}";
+            setup = "vim.lsp.config['qmlls'] = {cmd = {'qmlls', '-E'}}";
           };
           nvim-toggle-term = {
             package = pkgs.vimPlugins.toggleterm-nvim;
