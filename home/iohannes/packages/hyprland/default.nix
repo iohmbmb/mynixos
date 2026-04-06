@@ -153,11 +153,6 @@ in
         };
       };
 
-      gestures = {
-        workspace_swipe = true;
-        workspace_swipe_cancel_ratio = 0.15;
-      };
-
       device = {
         name = "epic-mouse-v1";
         sensitivity = -0.5;
