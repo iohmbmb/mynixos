@@ -6,6 +6,5 @@
     ./tmux
     ./hyprland
     ./kitty
-    ./opencode
   ];
 }
