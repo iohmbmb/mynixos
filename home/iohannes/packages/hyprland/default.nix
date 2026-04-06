@@ -100,7 +100,6 @@ in
         "mullvad-vpn"
         "marvin"
         "[silent] org.keepassxc.KeePassXC"
-        "[silent] com.github.th_ch.youtube_music"
       ];
 
       env = ([
@@ -126,8 +125,10 @@ in
       };
 
       workspace = [
-        "name:1, monitor:HDMI-A-1, default:true"
-        "name:2, monitor:HDMI-A-2, default:true"
+        "1, monitor:HDMI-A-1, default:true"
+        "2, monitor:HDMI-A-2, default:true"
+        "3, monitor:HDMI-A-1, default:true, persistent:true"
+        "4, monitor:HDMI-A-2, default:true, persistent:true"
       ];
 
       dwindle = {
