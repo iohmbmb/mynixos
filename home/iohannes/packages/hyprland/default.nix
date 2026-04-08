@@ -264,6 +264,8 @@ in
         "$mod, B, exec, [workspace 3] blender"
         "$mod_SHIFT, B, exec, $term bluetuith"
         "$mod_SHIFT, S, exec, hyprshot -m region"
+        "$mod, R, exec, ~/.config/screen-record/start-record.sh"
+        "$mod_SHIFT, R, exec, ~/.config/screen-record/stop-record.sh"
         "$mod, left, movefocus, l"
         "$mod, right, movefocus, r"
         "$mod, up, movefocus, u"

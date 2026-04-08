@@ -309,6 +309,7 @@ in
       jq
       imagemagick
       ffmpeg
+      wf-recorder
       ncdu
       usbutils
       libinput

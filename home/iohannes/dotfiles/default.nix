@@ -31,4 +31,10 @@
     target = "/home/iohannes/.config/svkbd-script";
     recursive = true;
   };
+
+  home.file.screen-record = {
+    source = ./.settings/screen-record;
+    target = "/home/iohannes/.config/screen-record";
+    recursive = true;
+  };
 }
