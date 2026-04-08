@@ -23,5 +23,5 @@ echo "Recording active monitor: $ACTIVE_MONITOR"
 
 # Start the recording and save the PID to a file
 wf-recorder --output "$ACTIVE_MONITOR" -f "$OUTPUT_FILE" &
-echo $! > /tmp/wf-recorder-pid.txt
+echo $! > "$HOME/.local/share/wf-recorder-pid.txt"
 notify-send "Recording started... Use the stop recording keybinding."
