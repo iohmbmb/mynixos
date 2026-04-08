@@ -7,5 +7,5 @@ if [[ -f /tmp/wf-recorder-pid.txt ]]; then
   kill "$PID"
   notify-send "Recording stopped"
 else
-  echo "No active recording found."
+  notify-send "No active recording found."
 fi
