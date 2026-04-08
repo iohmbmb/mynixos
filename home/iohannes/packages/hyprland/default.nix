@@ -265,7 +265,7 @@ in
         "$mod_SHIFT, B, exec, $term bluetuith"
         "$mod_SHIFT, S, exec, hyprshot -m region"
         "$mod, R, exec, ~/.config/screen-record/start-record.sh"
-        "$mod, X, exec, ~/.config/screen-record/stop-record.sh"
+        "$mod, C, exec, ~/.config/screen-record/stop-record.sh"
         "$mod, left, movefocus, l"
         "$mod, right, movefocus, r"
         "$mod, up, movefocus, u"
