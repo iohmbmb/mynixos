@@ -1,13 +1,12 @@
 #!/usr/bin/env bash
 
-PID_FILE="$HOME/.local/share/wf-recorder-pid.txt"
+# Find the PID of the running wf-recorder process
+PID=$(pgrep -o -f "wf-recorder")
 
-# Check if the PID file exists
-if [[ -f /tmp/wf-recorder-pid.txt ]]; then
-  # Read the PID from the file and kill the process
-  PID=$(cat "$PID_FILE")
-  kill "$PID"
-  notify-send "Recording stopped"
+# Check if we found a PID
+if [[ -n "$PID" ]]; then
+  # Kill the wf-recorder process
+  kill "$PID" && notify-send "Recording stopped."
 else
-  notify-send "No active recording found."
+  echo "No active recording found. Could not find wf-recorder PID."
 fi
