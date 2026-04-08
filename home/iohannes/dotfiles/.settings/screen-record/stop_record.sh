@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
 # Find the PID of the running wf-recorder process
-PID=$(pgrep -o -f "wf-recorder")
+PID=$(pgrep -x "wf-recorder")
 
 # Check if we found a PID
-if [[ -n "$PID" ]]; then
+if [[ -z "$PID" ]]; then
   # Kill the wf-recorder process
   kill "$PID" && notify-send "Recording stopped."
 else
