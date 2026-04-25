@@ -223,7 +223,6 @@ in
         keepassxc
         android-studio
         librewolf
-        firefox
         discord 
         unityhub 
         godot-custom
