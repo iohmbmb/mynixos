@@ -183,6 +183,13 @@ in
   virtualisation = {
     libvirtd.enable = true;
     spiceUSBRedirection.enable = true;
+    docker = {
+      enable = true;
+      rootless = {
+        enable = true;
+        setSocketVariable = true;
+      };
+    };
   };
 
   programs = {
@@ -231,9 +238,11 @@ in
         unstable.blender
         obsidian
         bruno
-        dotnet-sdk
+        dotnet-sdk_9
         flutter
         go
+        nodejs
+        csharp-ls
         nil
         typescript-language-server
         clang-tools
@@ -262,7 +271,7 @@ in
     };
 
     groups.libvirtd.members = ["iohannes"];
-    extraUsers.iohannes.extraGroups = ["audio" "adbusers" "kvm"];
+    extraUsers.iohannes.extraGroups = ["audio" "adbusers" "kvm" "docker"];
     defaultUserShell = pkgs.zsh;
   };
 
@@ -300,6 +309,7 @@ in
       ranger
       mpv
       neovim
+      jetbrains.rider
       waybar
       dunst
       libnotify

@@ -139,6 +139,10 @@
           css.enable = true;
           ts.enable = true;
           markdown.enable = true;
+          csharp = {
+            enable = true;
+            lsp.enable = true;
+          };
         };
 
         extraPlugins = {
