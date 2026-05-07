@@ -230,6 +230,7 @@ in
         keepassxc
         android-studio
         librewolf
+        chromium
         discord 
         unityhub 
         godot-custom
@@ -245,6 +246,7 @@ in
         csharp-ls
         nil
         typescript-language-server
+        tailwindcss-language-server
         clang-tools
         basedpyright
         gcc
@@ -330,6 +332,7 @@ in
       pkg-config
       lsd
       fzf
+      readest
     ];
   };      
 
