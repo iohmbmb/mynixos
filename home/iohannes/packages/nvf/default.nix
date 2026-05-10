@@ -108,7 +108,7 @@
                 }; 
               };
               cmd = ["vscode-html-language-server" "--stdio"];
-              filetypes = ["html"];
+              filetypes = ["html" "htmlangular"];
             };
             tailwindcss-language-server = {
               capabilities = { 
@@ -123,6 +123,13 @@
               root_markers = ["tailwind.config.js" "postcss.config.js" "package.json" ".git"];
               cmd = ["tailwindcss-language-server" "--stdio"];
               filetypes = ["aspnetcorerazor" "astro" "astro-markdown" "blade" "clojure" "django-html" "htmldjango" "edge" "eelixir" "elixir" "ejs" "erb" "eruby" "gohtml" "gohtmltmpl" "haml" "handlebars" "hbs" "html" "htmlangular" "html-eex" "heex" "jade" "leaf" "liquid" "markdown" "mdx" "mustache" "njk" "nunjucks" "php" "razor" "slim" "twig" "css" "less" "postcss" "sass" "scss" "stylus" "sugarss" "javascript" "javascriptreact" "reason" "rescript" "typescript" "typescriptreact" "vue" "svelte" "templ"];
+              settings = {
+                tailwindCSS = {
+                  includeLanguages = {
+                    htmlangular = "html";
+                  };
+                };
+              };
             };
             gdscript = {
               capabilities = {

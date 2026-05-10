@@ -256,7 +256,6 @@ in
         docker
         scons
         tmux
-        #stremio
         pureref
         krita
         mullvad-vpn
@@ -268,7 +267,8 @@ in
         quickshell.packages."${system}".default
         vscode-langservers-extracted
         linuxKernel.packages.linux_zen.xpadneo
-        kiwix
+        readest
+        jetbrains.rider
       ] ++ lib.optional (hostname == mainHost) pkgs.opencode;
     };
 
@@ -311,7 +311,6 @@ in
       ranger
       mpv
       neovim
-      jetbrains.rider
       waybar
       dunst
       libnotify
@@ -332,7 +331,6 @@ in
       pkg-config
       lsd
       fzf
-      readest
     ];
   };      
 
