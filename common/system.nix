@@ -173,9 +173,13 @@ in
       enable = true;
       ports = [22];
     };
-    ollama = lib.mkIf (hostname == mainHost) {
-      enable = true;
+    ollama = if (hostname == mainHost)
+    then { 
+      enable = true; 
       package = pkgs.ollama-rocm;
+    }
+    else{
+      enable = false;
     };
   };
 
@@ -269,7 +273,7 @@ in
         linuxKernel.packages.linux_zen.xpadneo
         readest
         jetbrains.rider
-      ] ++ lib.optional (hostname == mainHost) pkgs.opencode;
+      ];# ++ lib.optional (hostname == mainHost);
     };
 
     groups.libvirtd.members = ["iohannes"];
@@ -331,6 +335,8 @@ in
       pkg-config
       lsd
       fzf
+      lsof
+      unstable.opencode
     ];
   };      
 

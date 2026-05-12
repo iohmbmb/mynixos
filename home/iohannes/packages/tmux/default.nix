@@ -2,7 +2,8 @@
 {
   programs.tmux = {
     enable = true;
-    shortcut = "a";
+    shortcut = "b";
+    prefix = "C-b";
     newSession = true;
     clock24 = true;
     extraConfig = ''

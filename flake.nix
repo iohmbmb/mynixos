@@ -10,7 +10,7 @@
 
     nvf = {
       url = "github:notashelf/nvf";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     home-manager = {
@@ -41,7 +41,7 @@
         specialArgs = inputs;
 
         modules = [
-          ./hosts/aegis          
+          ./hosts/aegis
         ];
       };	
       orion = nixpkgs.lib.nixosSystem {
