@@ -3,8 +3,8 @@
   programs.tmux = {
     enable = true;
     shortcut = "b";
-    prefix = "C-b";
     newSession = true;
+    keyMode = "vi";
     clock24 = true;
     extraConfig = ''
         bind h split-window -h # Split panes horizontal

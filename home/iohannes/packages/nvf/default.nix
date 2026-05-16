@@ -36,7 +36,7 @@
             lua = true;
             action = ''
             function() 
-              require("opencode").ask() 
+              require("opencode").ask("@this: ", { submit = true }) 
             end
             '';
           }
