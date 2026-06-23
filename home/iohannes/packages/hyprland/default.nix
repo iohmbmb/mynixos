@@ -3,59 +3,51 @@
 let
   discordWindowRule = if osConfig.networking.hostName == "aegis" then 
     ''
-      windowrulev2 =  size 1200 800,class:discord
+      window_rule =  size 1200 800, match:class discord
     ''
   else
     ''
-      windowrulev2 =  size 800 600,class:discord
+      window_rule =  size 800 600, match:class discord
     '';
   youtubeWindowRule = if osConfig.networking.hostName == "aegis" then 
     ''
-      windowrulev2 = size 1200 800,class:com.github.th_ch.youtube_music
+      window_rule = size 1200 800, match:class com.github.th_ch.youtube_music
     ''
   else
     ''
-      windowrulev2 = size 800 600,class:com.github.th_ch.youtube_music
+      window_rule = size 800 600, match:class com.github.th_ch.youtube_music
     '';
   keepassWindowRule = if osConfig.networking.hostName == "aegis" then 
     ''
-      windowrulev2 = size 1200 800,class:org.keepassxc.KeePassXC
+      window_rule = size 1200 800, match:class org.keepassxc.KeePassXC
     ''
   else
     ''
-      windowrulev2 = size 800 600,class:org.keepassxc.KeePassXC
-    '';
-  purerefWindowRule = if osConfig.networking.hostName == "aegis" then 
-    ''
-      windowrulev2 = size 1200 800,class:PureRef
-    ''
-  else
-    ''
-      windowrulev2 = size 800 600,class:PureRef
+      window_rule = size 800 600, match:class org.keepassxc.KeePassXC
     '';
 
   qbittorrentWindowRule = if osConfig.networking.hostName == "aegis" then 
     ''
-      windowrulev2 = size 1200 800,class:org.qbittorrent.qBittorrent
+      window_rule = size 1200 800, match:class org.qbittorrent.qBittorrent
     ''
   else
     ''
-      windowrulev2 = size 800 600,class:org.qbittorrent.qBittorrent
+      window_rule = size 800 600, match:class org.qbittorrent.qBittorrent
     '';
   kittyWindowRule = if osConfig.networking.hostName == "sybils" then 
     ''
-      windowrulev2 = size 800 600,class:kitty
+      window_rule = size 800 600, match:class kitty
     ''
   else
     ""
     ;
   kiwixWindowRule = if osConfig.networking.hostName == "aegis" then 
     ''
-      windowrulev2 = size 1200 800,class:kiwix
+      window_rule = size 1200 800, match:class kiwix
     ''
   else
     ''
-      windowrulev2 = size 800 600,class:kiwix
+      window_rule = size 800 600, match:class kiwix
     '';
 in
   {
@@ -67,7 +59,6 @@ in
       ${discordWindowRule}
       ${youtubeWindowRule}
       ${keepassWindowRule}
-      ${purerefWindowRule}
       ${qbittorrentWindowRule}
       ${kittyWindowRule}
       ${kiwixWindowRule}
@@ -131,10 +122,6 @@ in
         "4, monitor:HDMI-A-2, default:true, persistent:true"
       ];
 
-      dwindle = {
-        pseudotile = true;
-      };
-
       master = {
         new_status = "master";
       };
@@ -159,37 +146,31 @@ in
         sensitivity = -0.5;
       };
 
-      layerrule = [
-        "blur, waybar"
-        "ignorealpha 0, waybar"
-        "noanim, waybar"
-      ];
+      #layerrule = [
+      #  "blur, waybar"
+      #  "ignorealpha 0, waybar"
+      #  "noanim, waybar"
+      #];
 
       windowrule = [
-        "float,class:^(kitty)$,title:^(kitty)$"
-        "workspace 1,class:Marvin"
-        "workspace 2,class:librewolf"
-        "workspace 2,class:discord"
-        "float,class:discord"
-        "center,class:discord"
-        "float,class:kiwix"
-        "center,class:kiwix"
-        "workspace 3,class:com.github.th_ch.youtube_music"
-        "float,class:com.github.th_ch.youtube_music"
-        "float, title:Fashion Warz"
-        "center,class:com.github.th_ch.youtube_music"
-        "workspace 2,class:org.keepassxc.KeePassXC"
-        "float,class:org.keepassxc.KeePassXC"
-        "center,class:org.keepassxc.KeePassXC"
-        "tile,class:Aseprite"
-        "tile,class:Godot"
-        "float,class:PureRef"
-        "center,class:PureRef"
-        "float,class:org.qbittorrent.qBittorrent"
-        "center,class:org.qbittorrent.qBittorrent"
-        "float,class:Emulator"
-        "suppressevent maximize, class:.*"
-        "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
+        "float on, match:class ^(kitty)$, match:title ^(kitty)$"
+        "workspace 1, match:class Marvin"
+        "workspace 2, match:class librewolf"
+        "workspace 2, match:class discord"
+        "float on, match:class discord"
+        "center on, match:class discord"
+        "float on, match:class kiwix"
+        "center on, match:class kiwix"
+        "workspace 3, match:class com.github.th_ch.youtube_music"
+        "float on, match:class com.github.th_ch.youtube_music"
+        "center on, match:class com.github.th_ch.youtube_music"
+        "workspace 2, match:class org.keepassxc.KeePassXC"
+        "float on, match:class org.keepassxc.KeePassXC"
+        "center on, match:class org.keepassxc.KeePassXC"
+        "tile on, match:class Aseprite"
+        "tile on, match:class Godot"
+        "float on, match:class org.qbittorrent.qBittorrent"
+        "center on, match:class org.qbittorrent.qBittorrent"
       ];
 
       decoration = {
@@ -326,30 +307,6 @@ in
         ", XF86AudioPlay, exec, playerctl play-pause"
         ", XF86AudioPrev, exec, playerctl previous"
       ];
-
-      plugins = {
-        touch_gestures = {
-          hyprgrass-bind = [
-            ", edge:d:u, exec, .config/svkbd-script/svkbd-toggle"
-            ", edge:u:d, killactive"
-            ", swipe:2:r, exec, librewolf"
-            ", swipe:2:l, exec, stremio"
-            ", swipe:2:d, exec, kitty"
-          ];
-
-          sensitivity = 4.0;
-          workspace_swipe_fingers = 2;
-          workspace_swipe_edge = "d";
-          long_press_delay = 400;
-          resize_on_border_long_press = true;
-          emulate_touchpad_swipe = false;
-        };
-      };
     };
   };
-
-  wayland.windowManager.hyprland.plugins = 
-    [
-      pkgs.hyprlandPlugins.hyprgrass
-    ];
 }

@@ -3,7 +3,7 @@
 let 
   externals = import ../external/packages/default.nix {inherit pkgs;};
   unstable = nixpkgs-unstable.legacyPackages.x86_64-linux;
-  sddm-theme = silentSDDM.packages.${pkgs.system}.default.override {
+  sddm-theme = silentSDDM.packages.${pkgs.stdenv.hostPlatform.system}.default.override {
     theme = "default"; # select the config of your choice
   };
   hostname = config.networking.hostName;
@@ -111,9 +111,7 @@ in
     };
 
     # This is to auto-detect printers on the network
-    avahi = {
-      enable = true;
-      nssmdns4 = true;
+    avahi = { enable = true; nssmdns4 = true;
       openFirewall = true;
     };
 
@@ -128,10 +126,15 @@ in
 
     resolved = {
       enable = true;
-      dnssec = "true";
-      domains = [ "~." ];
-      fallbackDns = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ];
-      dnsovertls = "true";
+      settings = 
+        {
+          Resolve = {
+            DNSOverTLS = true;
+            DNSSEC = true;
+            Domains = [ "~." ];
+            FallbackDNS = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ];
+          };
+        };
     };
 
     syncthing = {
@@ -144,10 +147,11 @@ in
       settings = {
         devices = {
           aegis = {id = "HWUPMNN-MO5W2GV-YTPPTWJ-CC3FMT6-A4SBD7H-BNP4WOG-BAPWTNF-2Y6DJQC";};
+          phone = {id = "CDPWM3O-RDJRHZ3-7XU4PLD-ZHOY7CO-2DQLJA6-2TAHKR7-RUJ6JNT-Z3YHJQC";};
           device-p = {id = "2IQODMB-2CS4NUI-GJ7OROX-N2BYYM6-UUJEE52-NCISK7I-MA3BK63-2BWOAAE";};
           device-s = {id = "5HVHHOT-WHEREUT-2HSTDRE-GBNGPO4-YK5LPF2-XAUOUGZ-Z4UT7YO-ZANFXQE";};
         };
-        folders = {
+        folders = { 
           "Polyad" = {
             path = "/home/iohannes/Documents/Obsidian/Polyad";
             folderId = "ksryo-z5qhg";
@@ -155,7 +159,7 @@ in
           };
           "Nexus" = {
             path = "/home/iohannes/Documents/Obsidian/Nexus";
-            devices = ["device-s" "aegis"];
+            devices = ["device-s" "aegis" "phone"];
           };
           "Keepass" = {
             path = "/home/iohannes/Documents/Keepass\ Database";
@@ -200,7 +204,6 @@ in
     virt-manager.enable = true;
     gnome-disks.enable = true;
     zsh.enable = true;
-    adb.enable = true;
     direnv.enable = true;
     gamemode.enable = true;
     steam = lib.mkIf(hostname == mainHost){
@@ -260,7 +263,6 @@ in
         docker
         scons
         tmux
-        pureref
         krita
         mullvad-vpn
         externals.marvin
@@ -268,11 +270,12 @@ in
         qbittorrent
         libreoffice
         kdePackages.qtdeclarative
-        quickshell.packages."${system}".default
+        quickshell.packages."${stdenv.hostPlatform.system}".default
         vscode-langservers-extracted
         linuxKernel.packages.linux_zen.xpadneo
         readest
         jetbrains.rider
+        stremio-linux-shell
       ];# ++ lib.optional (hostname == mainHost);
     };
 
@@ -289,14 +292,14 @@ in
     systemPackages = with pkgs; [
       wget
       curl
-      xorg.xorgserver
-      xorg.xinit
+      xorg-server
+      xinit
+      xmodmap
+      xev
       polybar
       picom
       xwallpaper
       killall
-      xorg.xmodmap
-      xorg.xev
       rofi
       gnumake
       cmake
@@ -306,7 +309,7 @@ in
       zip
       p7zip
       unrar
-      neofetch
+      fastfetch
       pulsemixer 
       sxiv
       zathura
@@ -337,6 +340,8 @@ in
       fzf
       lsof
       unstable.opencode
+      android-tools
+      doctest
     ];
   };      
 
@@ -350,6 +355,8 @@ in
       permittedInsecurePackages = [
         "electron-25.9.0" 
         "qbittorrent-4.6.4"
+        "librewolf-152.0-1"
+        "librewolf-unwrapped-152.0-1"
         "electron-33.4.11"
       ];
     };

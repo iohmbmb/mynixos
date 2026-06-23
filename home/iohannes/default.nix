@@ -7,7 +7,9 @@
   ];
 
   programs.home-manager.enable = true;
-
+  
+  wayland.windowManager.hyprland.configType = "hyprlang";
+  
   home = {
     stateVersion = "24.05";
 
@@ -61,6 +63,7 @@
       music = null;
       publicShare = null;
       templates = null;
+      setSessionVariables = false;
     };
   };
 }
