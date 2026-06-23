@@ -9,6 +9,7 @@
   programs.home-manager.enable = true;
   
   wayland.windowManager.hyprland.configType = "hyprlang";
+  wayland.windowManager.hyprland.systemd.enable = false;
   
   home = {
     stateVersion = "24.05";

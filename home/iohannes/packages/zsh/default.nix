@@ -17,7 +17,7 @@
     };
 
     initContent = ''
-      fastfetch --logo ~/Pictures/Wallpapers/Portrait/
+      neowofetch --kitty ~/Pictures/Wallpapers/Portrait/
       export CHROME_EXECUTABLE=/etc/profiles/per-user/iohannes/bin/chromium
       export ENV_SECRETS=/home/iohannes/Env
       eval "$(fzf --zsh)"

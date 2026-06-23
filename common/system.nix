@@ -173,6 +173,7 @@ in
     gnome.gnome-keyring.enable = true;
     picom.enable = true;
     mullvad-vpn.enable = true;
+    mullvad-vpn.package = pkgs.mullvad-vpn;
     openssh = {
       enable = true;
       ports = [22];
@@ -214,6 +215,7 @@ in
     hyprland = {
       enable = true;
       xwayland.enable = true;
+      withUWSM = true;
     };
 
     iio-hyprland.enable = true;
@@ -309,7 +311,7 @@ in
       zip
       p7zip
       unrar
-      fastfetch
+      hyfetch
       pulsemixer 
       sxiv
       zathura
