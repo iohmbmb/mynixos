@@ -226,7 +226,7 @@ in
 
       "$mod" = "SUPER";
       "$term" = "kitty";
-      "$menu" = "rofi -show drun -show-icons";
+      "$menu" = "rofi -show combi -combi-modes 'window,drun,ssh' -modes combi -show-icons -font 'Hack Nerd 25'";
       bind = [
         "$mod, RETURN, exec, $term"
         "$mod, Q, killactive"
