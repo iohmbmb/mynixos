@@ -1,68 +1,9 @@
 { pkgs, osConfig, ...}:
 
-let
-  discordWindowRule = if osConfig.networking.hostName == "aegis" then 
-    ''
-      window_rule =  size 1200 800, match:class discord
-    ''
-  else
-    ''
-      window_rule =  size 800 600, match:class discord
-    '';
-  youtubeWindowRule = if osConfig.networking.hostName == "aegis" then 
-    ''
-      window_rule = size 1200 800, match:class com.github.th_ch.youtube_music
-    ''
-  else
-    ''
-      window_rule = size 800 600, match:class com.github.th_ch.youtube_music
-    '';
-  keepassWindowRule = if osConfig.networking.hostName == "aegis" then 
-    ''
-      window_rule = size 1200 800, match:class org.keepassxc.KeePassXC
-    ''
-  else
-    ''
-      window_rule = size 800 600, match:class org.keepassxc.KeePassXC
-    '';
-
-  qbittorrentWindowRule = if osConfig.networking.hostName == "aegis" then 
-    ''
-      window_rule = size 1200 800, match:class org.qbittorrent.qBittorrent
-    ''
-  else
-    ''
-      window_rule = size 800 600, match:class org.qbittorrent.qBittorrent
-    '';
-  kittyWindowRule = if osConfig.networking.hostName == "sybils" then 
-    ''
-      window_rule = size 800 600, match:class kitty
-    ''
-  else
-    ""
-    ;
-  kiwixWindowRule = if osConfig.networking.hostName == "aegis" then 
-    ''
-      window_rule = size 1200 800, match:class kiwix
-    ''
-  else
-    ''
-      window_rule = size 800 600, match:class kiwix
-    '';
-in
   {
   wayland.windowManager.hyprland = {
     enable = true;
     package = pkgs.hyprland;
-
-    extraConfig = ''
-      ${discordWindowRule}
-      ${youtubeWindowRule}
-      ${keepassWindowRule}
-      ${qbittorrentWindowRule}
-      ${kittyWindowRule}
-      ${kiwixWindowRule}
-    '';
 
     xwayland = {
       enable = true;
@@ -226,7 +167,7 @@ in
 
       "$mod" = "SUPER";
       "$term" = "kitty";
-      "$menu" = "rofi -show combi -combi-modes 'window,drun,ssh' -modes combi -show-icons -font 'Hack Nerd 25'";
+      "$menu" = "rofi -show combi -combi-modes 'window,drun,ssh' -modes combi -show-icons -font 'Hack Nerd 18'";
       bind = [
         "$mod, RETURN, exec, $term"
         "$mod, Q, killactive"
