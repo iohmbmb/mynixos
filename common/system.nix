@@ -278,6 +278,7 @@ in
         readest
         jetbrains.rider
         stremio-linux-shell
+        nwg-look
       ];# ++ lib.optional (hostname == mainHost);
     };
 
