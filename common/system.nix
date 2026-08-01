@@ -178,13 +178,10 @@ in
       enable = true;
       ports = [22];
     };
-    ollama = if (hostname == mainHost)
-    then { 
+
+    ollama = {
       enable = true; 
       package = pkgs.ollama-rocm;
-    }
-    else{
-      enable = false;
     };
   };
 
@@ -219,6 +216,9 @@ in
     };
 
     iio-hyprland.enable = true;
+    nix-ld = {
+      enable = true;
+    };
   };
 
   xdg.portal = {
