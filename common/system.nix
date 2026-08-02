@@ -182,6 +182,9 @@ in
     ollama = {
       enable = true; 
       package = pkgs.ollama-rocm;
+      environmentVariables = {
+        OLLAMA_CONTEXT_LENGTH = "32768";
+      };
     };
   };
 
