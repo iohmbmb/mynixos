@@ -227,7 +227,25 @@
                 long_message_to_split = true, -- long messages will be sent to a split
                 inc_rename = false, -- enables an input dialog for inc-rename.nvim
                 lsp_doc_border = true,
-              }
+              },
+              views = {
+                cmdline_popup = {
+                  position = {
+                    row = '50%',
+                    col = '50%',
+                  },
+                  size = {
+                    width = 60,
+                    height = 'auto',
+                  },
+                  border = {
+                    style = 'rounded',
+                  },
+                  win_options = {
+                    winblend = 0,
+                  },
+                },
+              },
             })";
           };
           neoscroll = {

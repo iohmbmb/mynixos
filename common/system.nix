@@ -347,6 +347,8 @@ in
       lsof
       android-tools
       doctest
+      file
+      ripgrep
     ];
   };      
 
