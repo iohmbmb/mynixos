@@ -29,38 +29,7 @@
             vim.fn.serverstart './godothost'
           end
         '';
-        keymaps = [
-          {
-            key = "<C-a>";
-            mode = ["n" "x"];
-            lua = true;
-            action = ''
-            function() 
-              require("opencode").ask("@this: ", { submit = true }) 
-            end
-            '';
-          }
-          {
-            key = "<C-x>";
-            mode = ["n" "x"];
-            lua = true;
-            action = ''
-            function() 
-              require("opencode").select()
-            end
-            '';
-          }
-          {
-            key = "<C-.>";
-            mode = ["n" "t"];
-            lua = true;
-            action = ''
-            function() 
-              require("opencode").toggle()
-            end
-            '';
-          }
-        ];
+        keymaps = [];
         maps = {
           normal = {
             # Map Ctrl-n in normal mode
@@ -196,16 +165,6 @@
             lsp.enable = true;
           };
         };
-        
-        pluginOverrides = {
-          opencode-nvim = pkgs.fetchFromGitHub {
-            owner = "nickjvandyke";
-            repo = "opencode.nvim";
-            rev = "v0.8.2";
-            hash = "1wy4v2hb9953fwlfbjjaq7w8m43ihdyq1jqaixi222p5rhk65bnc";
-          };
-        };
-
         extraPlugins = {
           flutter-tools = {
             package = pkgs.vimPlugins.flutter-tools-nvim;
@@ -237,12 +196,13 @@
             package = pkgs.vimPlugins.snacks-nvim;
             setup = "require('snacks').setup({terminal = {enabled = true}, input = {enable = true}, picker = {enable = true}})";
           };
-          opencode-nvim = {
-            package = pkgs.vimPlugins.opencode-nvim;
+          codecompanion = {
+            package = pkgs.vimPlugins.codecompanion-nvim;
+            setup = "require('codecompanion').setup({opts = {log_level = 'DEBUG', -- or 'TRACE'}})";
           };
         };
 
-        startPlugins = ["plenary-nvim" pkgs.vimPlugins.flutter-tools-nvim pkgs.vimPlugins.nvim-dap pkgs.vimPlugins.nvim-tree-lua pkgs.vimPlugins.nvim-treesitter-parsers.qmljs pkgs.vimPlugins.toggleterm-nvim pkgs.vimPlugins.vim-godot pkgs.vimPlugins.tiny-inline-diagnostic-nvim pkgs.vimPlugins.snacks-nvim pkgs.vimPlugins.opencode-nvim];
+        startPlugins = ["plenary-nvim" pkgs.vimPlugins.flutter-tools-nvim pkgs.vimPlugins.nvim-dap pkgs.vimPlugins.nvim-tree-lua pkgs.vimPlugins.nvim-treesitter-parsers.qmljs pkgs.vimPlugins.toggleterm-nvim pkgs.vimPlugins.vim-godot pkgs.vimPlugins.tiny-inline-diagnostic-nvim pkgs.vimPlugins.snacks-nvim pkgs.vimPlugins.codecompanion-nvim];
       };
     };
   };

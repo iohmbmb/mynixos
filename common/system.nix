@@ -345,7 +345,6 @@ in
       lsd
       fzf
       lsof
-      unstable.opencode
       android-tools
       doctest
     ];
