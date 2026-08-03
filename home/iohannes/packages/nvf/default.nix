@@ -214,7 +214,15 @@
           };
         };
 
-        startPlugins = ["plenary-nvim" pkgs.vimPlugins.flutter-tools-nvim pkgs.vimPlugins.nvim-dap pkgs.vimPlugins.nvim-tree-lua pkgs.vimPlugins.nvim-treesitter-parsers.qmljs pkgs.vimPlugins.toggleterm-nvim pkgs.vimPlugins.vim-godot pkgs.vimPlugins.tiny-inline-diagnostic-nvim pkgs.vimPlugins.snacks-nvim pkgs.vimPlugins.codecompanion-nvim];
+        noice = {
+          package = pkgs.vimPlugins.noice-nvim;
+        };
+
+        neoscroll = {
+          package = pkgs.vimPlugins.neoscroll-nvim;
+        };
+
+        startPlugins = ["plenary-nvim" pkgs.vimPlugins.flutter-tools-nvim pkgs.vimPlugins.nvim-dap pkgs.vimPlugins.nvim-tree-lua pkgs.vimPlugins.nvim-treesitter-parsers.qmljs pkgs.vimPlugins.toggleterm-nvim pkgs.vimPlugins.vim-godot pkgs.vimPlugins.tiny-inline-diagnostic-nvim pkgs.vimPlugins.snacks-nvim pkgs.vimPlugins.codecompanion-nvim pkgs.vimPlugins.noice-nvim pkgs.vimPlugins.neoscroll-nvim];
       };
     };
   };
