@@ -198,7 +198,7 @@
           };
           codecompanion = {
             package = pkgs.vimPlugins.codecompanion-nvim;
-            setup = "require('codecompanion').setup({opts = {log_level = 'DEBUG', -- or 'TRACE'}})";
+            setup = "require('codecompanion').setup()";
           };
         };
 
