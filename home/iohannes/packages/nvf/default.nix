@@ -181,6 +181,9 @@
             package = pkgs.vimPlugins.nvim-treesitter-parsers.qmljs;
             setup = "vim.lsp.config['qmlls'] = {cmd = {'qmlls', '-E'}}";
           };
+          nvim-treesitter-parsers-yaml = {
+            package = pkgs.vimPlugins.nvim-treesitter-parsers.yaml;
+          };
           nvim-toggle-term = {
             package = pkgs.vimPlugins.toggleterm-nvim;
             setup = "require('toggleterm').setup{}";
@@ -213,6 +216,9 @@
               extensions = {
                 spinner = {},
               },
+              opts = {
+                log_level = 'DEBUG',
+              }
             })";
           };
           codecompanion-spinner = {
@@ -223,7 +229,7 @@
             setup = "require('noice').setup({
               presets = {
                 bottom_search = false, -- use a classic bottom cmdline for search
-                command_palette = true, -- position the cmdline and popupmenu together
+                command_palette = false, -- position the cmdline and popupmenu together
                 long_message_to_split = true, -- long messages will be sent to a split
                 inc_rename = false, -- enables an input dialog for inc-rename.nvim
                 lsp_doc_border = true,
@@ -235,7 +241,7 @@
           };
         };
 
-        startPlugins = ["plenary-nvim" pkgs.vimPlugins.flutter-tools-nvim pkgs.vimPlugins.nvim-dap pkgs.vimPlugins.nvim-tree-lua pkgs.vimPlugins.nvim-treesitter-parsers.qmljs pkgs.vimPlugins.toggleterm-nvim pkgs.vimPlugins.vim-godot pkgs.vimPlugins.tiny-inline-diagnostic-nvim pkgs.vimPlugins.snacks-nvim pkgs.vimPlugins.codecompanion-nvim pkgs.vimPlugins.noice-nvim pkgs.vimPlugins.codecompanion-spinner-nvim pkgs.vimPlugins.noice-nvim pkgs.vimPlugins.neoscroll-nvim];
+        startPlugins = ["plenary-nvim" pkgs.vimPlugins.flutter-tools-nvim pkgs.vimPlugins.nvim-dap pkgs.vimPlugins.nvim-tree-lua pkgs.vimPlugins.nvim-treesitter-parsers.qmljs pkgs.vimPlugins.toggleterm-nvim pkgs.vimPlugins.vim-godot pkgs.vimPlugins.tiny-inline-diagnostic-nvim pkgs.vimPlugins.snacks-nvim pkgs.vimPlugins.codecompanion-nvim pkgs.vimPlugins.noice-nvim pkgs.vimPlugins.codecompanion-spinner-nvim pkgs.vimPlugins.noice-nvim pkgs.vimPlugins.neoscroll-nvim pkgs.vimPlugins.nvim-treesitter-parsers.yaml];
       };
     };
   };
