@@ -210,18 +210,24 @@
                   adapter = 'ollama',
                 },
               },
+              extensions = {
+                spinner = {},
+              },
             })";
           };
           codecompanion-spinner = {
             package = pkgs.vimPlugins.codecompanion-spinner-nvim;
-              setup = "require('codecompanion').setup({
-                extensions = {
-                  spinner = {},
-                },
-              })";
           };
           noice = {
             package = pkgs.vimPlugins.noice-nvim;
+            setup = "require('noice').setup({
+              presets = {
+                bottom_search = false, -- use a classic bottom cmdline for search
+                command_palette = true, -- position the cmdline and popupmenu together
+                long_message_to_split = true, -- long messages will be sent to a split
+                inc_rename = false, -- enables an input dialog for inc-rename.nvim
+              }
+            })";
           };
           neoscroll = {
             package = pkgs.vimPlugins.neoscroll-nvim;
