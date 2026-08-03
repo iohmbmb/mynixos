@@ -198,7 +198,19 @@
           };
           codecompanion = {
             package = pkgs.vimPlugins.codecompanion-nvim;
-            setup = "require('codecompanion').setup()";
+            setup = "require('codecompanion').setup({
+              interactions = {
+                chat = {
+                  adapter = 'ollama',
+                },
+                inline = {
+                  adapter = 'ollama',
+                },
+                background = {
+                  adapter = 'ollama',
+                },
+              },
+            })";
           };
         };
 
