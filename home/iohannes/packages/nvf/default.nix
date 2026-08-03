@@ -224,6 +224,29 @@
           codecompanion-spinner = {
             package = pkgs.vimPlugins.codecompanion-spinner-nvim;
           };
+          #avante = {
+          #  package = pkgs.vimPlugins.avante-nvim;
+          #  setup = "require('avante').setup({
+          #    provider = 'ollama',
+          #    mode = 'legacy',
+          #    providers = {
+          #      ollama = {
+          #        model = 'gemma4:12b',
+          #        is_env_set = require('avante.providers.ollama').check_endpoint_alive,
+          #        disable_tools = true,
+          #        extra_request_body = {
+          #          stream = true,
+          #        },
+          #    	}
+		      #    },
+          #    behaviour = {
+          #      auto_suggestions = false,
+          #    },
+          #  })";
+          #};
+          nvim-web-devicons = {
+            package = pkgs.vimPlugins.nvim-web-devicons;
+          };
           noice = {
             package = pkgs.vimPlugins.noice-nvim;
             setup = "require('noice').setup({
@@ -241,7 +264,7 @@
           };
         };
 
-        startPlugins = ["plenary-nvim" pkgs.vimPlugins.flutter-tools-nvim pkgs.vimPlugins.nvim-dap pkgs.vimPlugins.nvim-tree-lua pkgs.vimPlugins.nvim-treesitter-parsers.qmljs pkgs.vimPlugins.toggleterm-nvim pkgs.vimPlugins.vim-godot pkgs.vimPlugins.tiny-inline-diagnostic-nvim pkgs.vimPlugins.snacks-nvim pkgs.vimPlugins.codecompanion-nvim pkgs.vimPlugins.noice-nvim pkgs.vimPlugins.codecompanion-spinner-nvim pkgs.vimPlugins.noice-nvim pkgs.vimPlugins.neoscroll-nvim pkgs.vimPlugins.nvim-treesitter-parsers.yaml];
+        startPlugins = ["plenary-nvim" pkgs.vimPlugins.flutter-tools-nvim pkgs.vimPlugins.nvim-dap pkgs.vimPlugins.nvim-tree-lua pkgs.vimPlugins.nvim-treesitter-parsers.qmljs pkgs.vimPlugins.toggleterm-nvim pkgs.vimPlugins.vim-godot pkgs.vimPlugins.tiny-inline-diagnostic-nvim pkgs.vimPlugins.snacks-nvim pkgs.vimPlugins.noice-nvim pkgs.vimPlugins.noice-nvim pkgs.vimPlugins.neoscroll-nvim pkgs.vimPlugins.nvim-treesitter-parsers.yaml pkgs.vimPlugins.nvim-web-devicons];
       };
     };
   };
