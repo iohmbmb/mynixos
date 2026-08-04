@@ -30,7 +30,7 @@
         "bash ~/.config/wallpaper/random_wallpaper_multi.sh"
         "iio-hyprland"
         "mullvad-vpn"
-        "marvin"
+        "Marvin"
         "[silent] org.keepassxc.KeePassXC"
       ];
 
@@ -95,10 +95,11 @@
 
       windowrule = [
         "float on, match:class ^(kitty)$, match:title ^(kitty)$"
-        "workspace 1, match:class Marvin"
+        "float on, match:class Marvin"
         "workspace 2, match:class librewolf"
         "workspace 2, match:class discord"
         "float on, match:class discord"
+        "float on, match:class marvin"
         "center on, match:class discord"
         "float on, match:class kiwix"
         "center on, match:class kiwix"
