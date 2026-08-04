@@ -28,6 +28,16 @@
           if projectfile then
             vim.fn.serverstart './godothost'
           end
+          vim.api.nvim_create_autocmd('CursorHold', {
+            callback = function()
+              vim.lsp.buf.hover()
+            end,
+          })
+          -- Suppress "No information available" hover notifications
+          vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+            vim.lsp.handlers.hover, {
+              silent = true, -- This flag suppresses the "no information" popup
+            })
         '';
         keymaps = [];
         maps = {
@@ -257,14 +267,68 @@
                 inc_rename = false, -- enables an input dialog for inc-rename.nvim
                 lsp_doc_border = true,
               },
+              lsp = {
+                hover = { enabled = false },
+                signature = { enabled = false },
+              },
+              routes = {
+                {
+                  filter = {
+                    event = 'notify',
+                    find = 'No information available',
+                  },
+                  opts = { skip = true },
+                },
+              },
             })";
+          };
+          lspsaga = {
+          package = pkgs.vimPlugins.lspsaga-nvim;
+            setup = ''
+              require('lspsaga').setup({
+            -- Customize your UI elements here if needed
+                ui = {
+                  border = "rounded", -- Gives popups nice smooth borders
+                },
+                hover = {
+                  open_link = "gx",   -- Key to open links inside documentation popups
+                },
+            -- ADD BREADCRUMB CUSTOMIZATION HERE:
+                symbol_in_winbar = {
+                  enable = true,
+            -- You can use a stylized arrow if your font supports it (e.g., "  " or "  ")
+                  separator = " › ",    
+                  show_file = true,     
+                  hide_keyword = true,  
+                  folder_level = 0,     
+                  color_mode = true,    -- True matches the icon's color to your theme
+                },
+                lightbulb = { enable = false },
+              })
+
+            -- Keybindings to trigger Lspsaga's clean overlays
+              vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", { desc = "Lspsaga Hover Documentation" })
+              vim.keymap.set("n", "gd", "<cmd>Lspsaga goto_definition<CR>", { desc = "Lspsaga Go To Definition" })
+              vim.keymap.set("n", "gp", "<cmd>Lspsaga peek_definition<CR>", { desc = "Lspsaga Peek Definition" })
+              vim.keymap.set("n", "gf", "<cmd>Lspsaga lsp_finder<CR>", { desc = "Lspsaga LSP Finder" })
+            '';
           };
           neoscroll = {
             package = pkgs.vimPlugins.neoscroll-nvim;
+            setup = ''
+              require('neoscroll').setup({
+            -- Use the plugin's default smooth bindings (<C-u>, <C-d>, <C-b>, <C-f>, etc.)
+              mappings = { '<C-u>', '<C-d>', '<C-b>', '<C-f>', '<C-y>', '<C-e>', 'zt', 'zz', 'zb' },
+              hide_cursor = true,          -- Hide cursor while scrolling for a cleaner look
+              stop_eof = true,             -- Stop scrolling at the end of file
+              respect_scrolloff = false,   -- Stop scrolling when the cursor hits scrolloff margin
+              cursor_scrolls_alone = true, -- The cursor will keep scrolling when the window can't scroll
+            })
+          '';
           };
         };
 
-        startPlugins = ["plenary-nvim" pkgs.vimPlugins.flutter-tools-nvim pkgs.vimPlugins.nvim-dap pkgs.vimPlugins.nvim-tree-lua pkgs.vimPlugins.nvim-treesitter-parsers.qmljs pkgs.vimPlugins.toggleterm-nvim pkgs.vimPlugins.vim-godot pkgs.vimPlugins.tiny-inline-diagnostic-nvim pkgs.vimPlugins.snacks-nvim pkgs.vimPlugins.noice-nvim pkgs.vimPlugins.noice-nvim pkgs.vimPlugins.neoscroll-nvim pkgs.vimPlugins.nvim-treesitter-parsers.yaml pkgs.vimPlugins.nvim-web-devicons];
+        startPlugins = ["plenary-nvim" pkgs.vimPlugins.flutter-tools-nvim pkgs.vimPlugins.nvim-dap pkgs.vimPlugins.nvim-tree-lua pkgs.vimPlugins.nvim-treesitter-parsers.qmljs pkgs.vimPlugins.toggleterm-nvim pkgs.vimPlugins.vim-godot pkgs.vimPlugins.tiny-inline-diagnostic-nvim pkgs.vimPlugins.snacks-nvim pkgs.vimPlugins.noice-nvim pkgs.vimPlugins.noice-nvim pkgs.vimPlugins.neoscroll-nvim pkgs.vimPlugins.nvim-treesitter-parsers.yaml];
       };
     };
   };
