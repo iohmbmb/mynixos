@@ -282,6 +282,14 @@
               },
             })";
           };
+          trouble = {
+            package = pkgs.vimPlugins.trouble-nvim;
+            setup = ''
+              require("trouble").setup({})
+              vim.keymap.set("n", "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", { desc = "Project Diagnostics (Trouble)" })
+              vim.keymap.set("n", "<leader>xd", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", { desc = "Buffer Diagnostics (Trouble)" })
+            '';
+          };
           lspsaga = {
           package = pkgs.vimPlugins.lspsaga-nvim;
             setup = ''
@@ -311,6 +319,48 @@
               vim.keymap.set("n", "gd", "<cmd>Lspsaga goto_definition<CR>", { desc = "Lspsaga Go To Definition" })
               vim.keymap.set("n", "gp", "<cmd>Lspsaga peek_definition<CR>", { desc = "Lspsaga Peek Definition" })
               vim.keymap.set("n", "gf", "<cmd>Lspsaga lsp_finder<CR>", { desc = "Lspsaga LSP Finder" })
+            '';
+          };
+          bufferline = {
+            package = pkgs.vimPlugins.bufferline-nvim;
+            setup = ''
+              require("bufferline").setup({
+                options = {
+                  mode = "buffers",
+                  diagnostics = "nvim_lsp", -- Show error counts on tabs
+                  show_buffer_close_icons = true,
+                  show_close_icon = false,
+                }
+              })
+            -- Easy tab cycling
+              vim.keymap.set("n", "<S-l>", "<cmd>BufferLineCycleNext<cr>")
+              vim.keymap.set("n", "<S-h>", "<cmd>BufferLineCyclePrev<cr>")
+            '';
+          };
+          gitsigns = {
+            package = pkgs.vimPlugins.gitsigns-nvim;
+            setup = ''
+              require('gitsigns').setup({
+                current_line_blame = false, -- We turned this off earlier so it stays clean!
+                signcolumn = true,          -- Keep gutter indicators active
+              })
+            '';
+          };
+          autopairs = {
+            package = pkgs.vimPlugins.nvim-autopairs;
+            setup = ''
+              require("nvim-autopairs").setup({
+                check_ts = true, -- Integrates with Treesitter to handle language edge cases
+              })
+            '';
+          };
+          indent-blankline = {
+            package = pkgs.vimPlugins.indent-blankline-nvim;
+            setup = ''
+            -- ibl is the modern namespace for indent-blankline v3
+                require("ibl").setup({
+                scope = { enabled = true }, -- Dynamically highlights your active code block
+              })
             '';
           };
           neoscroll = {
