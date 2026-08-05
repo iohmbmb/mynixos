@@ -245,7 +245,7 @@
               end
             end
               -- Automatically falls back to the laptop configuration for anything else
-            return "qwen2.5-coder:1.5b-base"
+            return "qwen2.5-coder:3b-base"
           end
           require('minuet').setup({
             virtualtext = {

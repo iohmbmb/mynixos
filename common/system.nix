@@ -181,7 +181,9 @@ in
 
     ollama = {
       enable = true; 
-      package = pkgs.ollama-rocm;
+      package = if (hostname == mainHost)
+                then pkgs.ollama-rocm
+                else pkgs.ollama-cpu;
       environmentVariables = {
         OLLAMA_CONTEXT_LENGTH = "32768";
       };
