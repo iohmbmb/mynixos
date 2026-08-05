@@ -28,11 +28,6 @@
           if projectfile then
             vim.fn.serverstart './godothost'
           end
-          vim.api.nvim_create_autocmd('CursorHold', {
-            callback = function()
-              vim.lsp.buf.hover()
-            end,
-          })
           -- Suppress "No information available" hover notifications
           vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
             vim.lsp.handlers.hover, {
@@ -256,7 +251,7 @@
             virtualtext = {
               auto_trigger_ft = { "*" },
               keymap = {
-                accept = "<Tab>",
+                accept = "<M-j>",
                 accept_line = "<M-l>",
                 accept_word = "<M-w>",
                 prev = "<M-[>",
@@ -283,26 +278,6 @@
               })
           '';
           };
-          #avante = {
-          #  package = pkgs.vimPlugins.avante-nvim;
-          #  setup = "require('avante').setup({
-          #    provider = 'ollama',
-          #    mode = 'legacy',
-          #    providers = {
-          #      ollama = {
-          #        model = 'gemma4:12b',
-          #        is_env_set = require('avante.providers.ollama').check_endpoint_alive,
-          #        disable_tools = true,
-          #        extra_request_body = {
-          #          stream = true,
-          #        },
-          #    	}
-		      #    },
-          #    behaviour = {
-          #      auto_suggestions = false,
-          #    },
-          #  })";
-          #};
           nvim-web-devicons = {
             package = pkgs.vimPlugins.nvim-web-devicons;
           };
@@ -368,6 +343,27 @@
               vim.keymap.set("n", "gd", "<cmd>Lspsaga goto_definition<CR>", { desc = "Lspsaga Go To Definition" })
               vim.keymap.set("n", "gp", "<cmd>Lspsaga peek_definition<CR>", { desc = "Lspsaga Peek Definition" })
               vim.keymap.set("n", "gf", "<cmd>Lspsaga lsp_finder<CR>", { desc = "Lspsaga LSP Finder" })
+              
+              vim.api.nvim_create_autocmd("CursorHold", {
+                callback = function()
+                  -- Stop completely if the cursor is already in a floating popup window
+                  if vim.api.nvim_win_get_config(0).relative ~= "" then
+                    return 
+                  end
+                  -- Use Lspsaga's beautiful engine instead of the plain native vim.lsp.buf.hover()
+                  vim.cmd("Lspsaga hover_doc")
+                  end,
+                })
+                -- Safe Winbar Guard 
+                -- Stops Lspsaga breadcrumbs from rendering inside tiny floating notifications
+                vim.api.nvim_create_autocmd({ "BufWinEnter", "WinEnter" }, {
+                  pattern = "*",
+                  callback = function()
+                    if vim.api.nvim_win_get_config(0).relative ~= "" then
+                      vim.opt_local.winbar = nil
+                    end
+                  end,
+                })
             '';
           };
           bufferline = {
@@ -390,7 +386,7 @@
             package = pkgs.vimPlugins.gitsigns-nvim;
             setup = ''
               require('gitsigns').setup({
-                current_line_blame = false, -- We turned this off earlier so it stays clean!
+                current_line_blame = true, 
                 signcolumn = true,          -- Keep gutter indicators active
               })
             '';
