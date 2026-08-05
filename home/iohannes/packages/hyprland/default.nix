@@ -1,5 +1,4 @@
 { pkgs, osConfig, ...}:
-
   {
   wayland.windowManager.hyprland = {
     enable = true;
