@@ -260,7 +260,6 @@
               },
             },
             provider = "openai_fim_compatible",
-            n_completions = 1,
             provider_options = {
               openai_fim_compatible = {
                 name = "Ollama",
