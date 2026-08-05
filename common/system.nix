@@ -4,7 +4,7 @@ let
   externals = import ../external/packages/default.nix {inherit pkgs;};
   unstable = nixpkgs-unstable.legacyPackages.x86_64-linux;
   sddm-theme = silentSDDM.packages.${pkgs.stdenv.hostPlatform.system}.default.override {
-    theme = "default"; # select the config of your choice
+    theme = "default";
   };
   hostname = config.networking.hostName;
   mainHost = "aegis";
@@ -289,7 +289,6 @@ in
     extraUsers.iohannes.extraGroups = ["audio" "adbusers" "kvm" "docker"];
     defaultUserShell = pkgs.zsh;
   };
-
 
   environment = {
     sessionVariables = {

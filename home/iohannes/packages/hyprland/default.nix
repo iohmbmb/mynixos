@@ -87,12 +87,6 @@
         sensitivity = -0.5;
       };
 
-      #layerrule = [
-      #  "blur, waybar"
-      #  "ignorealpha 0, waybar"
-      #  "noanim, waybar"
-      #];
-
       windowrule = [
         "float on, match:class ^(kitty)$, match:title ^(kitty)$"
         "float on, match:class Marvin"
@@ -173,7 +167,7 @@
         "$mod, RETURN, exec, $term"
         "$mod, Q, killactive"
         "$mod, F, fullscreen"
-        #"$mod, E, exit"
+        "$mod, P, exec, poweroff"
         "$mod, W, exec, librewolf"
         "$mod_SHIFT, W, exec, ~/.config/wallpaper/random_wallpaper_multi.sh"
         "$mod, SPACE, exec, $menu"
