@@ -209,7 +209,7 @@ in
     zsh.enable = true;
     direnv.enable = true;
     gamemode.enable = true;
-    steam = lib.mkIf(hostname == mainHost){
+    steam = {
       enable = true;
       gamescopeSession.enable = true;
     }; 
