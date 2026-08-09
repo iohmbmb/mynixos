@@ -1,14 +1,28 @@
-{ config, pkgs, lib, nixpkgs-unstable, quickshell, silentSDDM, ... }:
+{ config, pkgs, nixpkgs-unstable, quickshell, ... }:
 
 let 
   externals = import ../external/packages/default.nix {inherit pkgs;};
   unstable = nixpkgs-unstable.legacyPackages.x86_64-linux;
-  sddm-theme = silentSDDM.packages.${pkgs.stdenv.hostPlatform.system}.default.override {
-    theme = "default";
-  };
   hostname = config.networking.hostName;
   mainHost = "aegis";
   secondaryHost = "sybils";
+  sddm-astronaut = (pkgs.sddm-astronaut.override {
+    embeddedTheme = "jake_the_dog";
+    });
+    #themeConfig = {
+      # Customize colors and settings
+    #  HeaderTextColor = "#d5c4a1";
+    #  Background = "Backgrounds/your-custom-background.png";
+      # ... other theme configuration options
+    #};
+  #}).overrideAttrs (oldAttrs: {
+      # Optional: Inject custom background image
+    #  installPhase = oldAttrs.installPhase + ''
+    #  chmod u+w $out/share/sddm/themes/sddm-astronaut-theme/Backgrounds/
+    #cp ${./relative/path/to/your-custom-background.png} \
+    #    $out/share/sddm/themes/sddm-astronaut-theme/Backgrounds/your-custom-background.png
+    #  '';
+  #});
 in
   {
 
@@ -77,15 +91,10 @@ in
       sddm = {
         package = pkgs.kdePackages.sddm; # use qt6 version of sddm
         enable = true;
-        theme = sddm-theme.pname;
-        extraPackages = sddm-theme.propagatedBuildInputs;
-        settings = {
-          General = {
-            GreeterEnvironment = "QML2_IMPORT_PATH=${sddm-theme}/share/sddm/themes/${sddm-theme.pname}/components/,QT_IM_MODULE=qtvirtualkeyboard";
-
-            InputMethod = "qtvirtualkeyboard";
-          };
-        };
+        extraPackages = with pkgs; [
+            kdePackages.qtmultimedia 
+        ];
+        theme = "sddm-astronaut-theme";
       };
     };
 
@@ -182,8 +191,8 @@ in
     ollama = {
       enable = true; 
       package = if (hostname == mainHost)
-                then pkgs.ollama-rocm
-                else pkgs.ollama-cpu;
+        then pkgs.ollama-rocm
+      else pkgs.ollama-cpu;
       environmentVariables = {
         OLLAMA_CONTEXT_LENGTH = "32768";
       };
@@ -235,7 +244,7 @@ in
   };
 
   qt.enable = true;
-  
+
   users = {
     users.iohannes = {
       isNormalUser = true;
@@ -341,7 +350,7 @@ in
       svkbd
       exiftool
       cameractrls-gtk3
-      sddm-theme
+      sddm-astronaut
       pkg-config
       lsd
       fzf

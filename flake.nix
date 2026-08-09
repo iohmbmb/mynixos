@@ -27,14 +27,9 @@
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    silentSDDM = {
-      url = "github:uiriansan/SilentSDDM";
-      inputs.nixpkgs.follows = "nixpkgs";
-   };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, nvf, quickshell, silentSDDM, ... }@inputs: { 
+  outputs = { self, nixpkgs, nixpkgs-unstable, nvf, quickshell, ... }@inputs: { 
     nixosConfigurations = {
       aegis = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
