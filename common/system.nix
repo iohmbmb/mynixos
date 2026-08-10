@@ -61,7 +61,6 @@ in
 
   time = {
     timeZone = "Europe/Paris";
-    hardwareClockInLocalTime = true;
   };
 
   i18n.defaultLocale = "en_US.UTF-8";
@@ -248,7 +247,7 @@ in
   users = {
     users.iohannes = {
       isNormalUser = true;
-      extraGroups = [ "wheel" "adbusers" ]; # Enable ‘sudo’ for the user.
+      extraGroups = [ "wheel" "adbusers"]; # Enable ‘sudo’ for the user.
       packages = with pkgs; [
         keepassxc
         android-studio
@@ -297,7 +296,7 @@ in
     };
 
     groups.libvirtd.members = ["iohannes"];
-    extraUsers.iohannes.extraGroups = ["audio" "adbusers" "kvm" "docker"];
+    extraUsers.iohannes.extraGroups = ["audio" "kvm" "docker"];
     defaultUserShell = pkgs.zsh;
   };
 
