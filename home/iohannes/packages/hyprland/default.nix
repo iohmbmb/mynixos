@@ -29,8 +29,7 @@
         "bash ~/.config/wallpaper/random_wallpaper_multi.sh"
         "iio-hyprland"
         "mullvad-vpn"
-        "Marvin"
-        "[silent] org.keepassxc.KeePassXC"
+        "marvin"
       ];
 
       env = ([
