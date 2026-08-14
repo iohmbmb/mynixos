@@ -6,5 +6,6 @@
     ./tmux
     ./hyprland
     ./kitty
+    ./waybar
   ];
 }
