@@ -8,10 +8,11 @@ let
   secondaryHost = "sybils";
   sddm-astronaut = (pkgs.sddm-astronaut.override {
     embeddedTheme = "jake_the_dog";
-    #themeConfig = {
-    #  HourFormat = "hh:mm AP";
-    #  DateFormat = "dddd, MMMM d";
-    #};
+    themeConfig = {
+      FontSize = "9";
+      HourFormat = "hh:mm AP";
+      DateFormat = "dddd, MMMM d";
+    };
   });
 in
   {
