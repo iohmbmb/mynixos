@@ -9,19 +9,30 @@
 
         # Decide where your modules go
         modules-left = [ "hyprland/workspaces" ];
-        modules-center = [ "hyprland/window" ];
-        modules-right = [ "clock" "tray" ];
+        modules-center = [ "clock" ];
+        # Added "network" to the right modules list
+        modules-right = [ "network" "tray" ];
 
         # Configure the modules
         "clock" = {
           format = "{:%I:%M %p}"; # Explicitly sets your 12h AM/PM layout!
+          format-alt = "{:%A, %B %d, %Y}";
           tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+          "on-click" = "mode";
         };
 
         # 2. Added the system tray configuration block
         "tray" = {
           icon-size = 16;     # Sets the size of your tray icons
           spacing = 10;       # Adds space (in pixels) between icons
+        };
+
+        # 3. Added the network configuration block
+        "network" = {
+          format-wifi = "  {essid} ({signalStrength}%)";
+          format-ethernet = "🖧  {ifname}";
+          format-disconnected = "⚠️ Disconnected";
+          tooltip-format = "IP: {ipaddr}\n Gateway: {gwaddr}\n Interface: {ifname}";
         };
       };
     };
