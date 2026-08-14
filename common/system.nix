@@ -8,21 +8,11 @@ let
   secondaryHost = "sybils";
   sddm-astronaut = (pkgs.sddm-astronaut.override {
     embeddedTheme = "jake_the_dog";
-    });
-    #themeConfig = {
-      # Customize colors and settings
-    #  HeaderTextColor = "#d5c4a1";
-    #  Background = "Backgrounds/your-custom-background.png";
-      # ... other theme configuration options
-    #};
-  #}).overrideAttrs (oldAttrs: {
-      # Optional: Inject custom background image
-    #  installPhase = oldAttrs.installPhase + ''
-    #  chmod u+w $out/share/sddm/themes/sddm-astronaut-theme/Backgrounds/
-    #cp ${./relative/path/to/your-custom-background.png} \
-    #    $out/share/sddm/themes/sddm-astronaut-theme/Backgrounds/your-custom-background.png
-    #  '';
-  #});
+    themeConfig = {
+      HourFormat = "hh:mm AP";
+      DateFormat = "dddd, MMMM d";
+    };
+  });
 in
   {
 
@@ -63,7 +53,12 @@ in
     timeZone = "Europe/Paris";
   };
 
-  i18n.defaultLocale = "en_US.UTF-8";
+  i18n = {
+    defaultLocale = "en_US.UTF-8";
+    extraLocaleSettings = {
+      LC_TIME = "en_US.UTF-8";
+    };
+  };
 
   console = {
     useXkbConfig = true; # use xkb.options in tty.
