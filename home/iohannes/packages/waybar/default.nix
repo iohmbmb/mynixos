@@ -1,23 +1,18 @@
 {
   programs.waybar = {
-    enable = true;
-    settings = {
-      mainBar = {
-        layer = "top";
-        position = "top";
-        height = 30;
-
-        # Decide where your modules go
-        modules-left = [ "hyprland/workspaces" ];
-        modules-center = [ "hyprland/window" ];
-        modules-right = [ "clock" ];
-
-        # Configure the modules
-        "clock" = {
-          format = "{:%I:%M %p}"; # Explicitly sets your 12h AM/PM layout!
-          tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
-        };
+  enable = true;
+  # This tells Waybar to pull its layout entirely from the default system files
+  systemd.enable = true; 
+  
+  settings = {
+    mainBar = {
+      # Instantly overrides only the clock module from the system layout
+      "clock" = {
+        format = "{:%I:%M %p}"; # Forces the 12h AM/PM layout!
+        tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
       };
     };
   };
+};
+
 }
