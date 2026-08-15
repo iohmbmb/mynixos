@@ -9,7 +9,7 @@ let
   sddm-astronaut = (pkgs.sddm-astronaut.override {
     embeddedTheme = "jake_the_dog";
     themeConfig = {
-      FontSize = "9";
+      FontSize = "12";
       HourFormat = "hh:mm AP";
       DateFormat = "dddd, MMMM d";
     };
