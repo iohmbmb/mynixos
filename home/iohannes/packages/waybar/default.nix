@@ -7,11 +7,11 @@
         position = "top";
         height = 30;
 
-        # Decide where your modules go
+        # Decide where the modules go
         modules-left = [ "hyprland/workspaces" ];
         modules-center = [ "clock" ];
         # Added "network" to the right modules list
-        modules-right = [ "network" "tray" ];
+        modules-right = [ "pulseaudio" "network" "tray" ];
 
         # Configure the modules
         "clock" = {
@@ -21,13 +21,33 @@
           "on-click" = "mode";
         };
 
-        # 2. Added the system tray configuration block
+        # Added the pulseaudio module
+        "pulseaudio" = {
+          format = "{icon} {volume}% {format_source}";
+          format-bluetooth = "{icon} {volume}% {format_source}";
+          format-bluetooth-muted = "   {icon} {format_source}";
+          format-muted = "   {format_source}";
+          format-source = " {volume}%";
+          format-source-muted = "";
+          format-icons = {
+            headphone = "";
+            hands-free = "  ";
+            headset = "  ";
+            phone = "";
+            portable = "";
+            car = "";
+            default = [ "" "" "" ];
+          };
+          on-click = "pavucontrol"; # Opens your volume mixer when clicked
+        };
+
+        # Added the system tray configuration block
         "tray" = {
           icon-size = 16;     # Sets the size of your tray icons
           spacing = 10;       # Adds space (in pixels) between icons
         };
 
-        # 3. Added the network configuration block
+        # Added the network configuration block
         "network" = {
           format-wifi = "  {essid} ({signalStrength}%)";
           format-ethernet = "🖧  {ifname}";
