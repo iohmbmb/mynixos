@@ -9,7 +9,6 @@
           name = "catppuccin";
           style = "frappe";
         };
-
         ui = {
           borders = {
             plugins = {
@@ -20,7 +19,9 @@
             };
           };
         };
-
+        luaConfigRC.bg-plugin = ''
+          ${builtins.readFile plugins/bg.lua}
+        '';
         luaConfigPost = 
         ''
           -- search for project godot and start listening to the server
