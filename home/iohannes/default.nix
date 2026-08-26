@@ -7,10 +7,10 @@
   ];
 
   programs.home-manager.enable = true;
-  
+
   wayland.windowManager.hyprland.configType = "hyprlang";
   wayland.windowManager.hyprland.systemd.enable = false;
-  
+
   home = {
     stateVersion = "24.05";
 
@@ -55,6 +55,26 @@
         "text/pdf" = "org.pwmt.zathura.desktop";
         "text/x-pdf" = "org.pwmt.zathura.desktop";
         "application/octet-stream" = "org.pwmt.zathura.desktop";
+        "image/bmp" = [ "sxiv.desktop" ];
+        "image/gif" = [ "sxiv.desktop" ];
+        "image/jpeg" = [ "sxiv.desktop" ];
+        "image/jpg" = [ "sxiv.desktop" ];
+        "image/pjpeg" = [ "sxiv.desktop" ];
+        "image/png" = [ "sxiv.desktop" ];
+        "image/tiff" = [ "sxiv.desktop" ];
+        "image/webp" = [ "sxiv.desktop" ];
+        "image/x-bmp" = [ "sxiv.desktop" ];
+        "image/x-gray" = [ "sxiv.desktop" ];
+        "image/x-icns" = [ "sxiv.desktop" ];
+        "image/x-ico" = [ "sxiv.desktop" ];
+        "image/x-pcx" = [ "sxiv.desktop" ];
+        "image/x-png" = [ "sxiv.desktop" ];
+        "image/x-portable-anymap" = [ "sxiv.desktop" ];
+        "image/x-portable-bitmap" = [ "sxiv.desktop" ];
+        "image/x-portable-graymap" = [ "sxiv.desktop" ];
+        "image/x-portable-pixmap" = [ "sxiv.desktop" ];
+        "image/x-xbitmap" = [ "sxiv.desktop" ];
+        "image/x-xpixmap" = [ "sxiv.desktop" ];
       };
     };
     userDirs = {
