@@ -47,12 +47,13 @@
       general = {
         gaps_in = 5;
         gaps_out = 20;
-        border_size = 2;
-        "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
+        border_size = 0;
+        #"col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
         "col.inactive_border" = "rgba(595959aa)";
 
-        layout = "dwindle";
+        layout = "master";
       };
+
 
       #workspace = [
       #  "1, monitor:HDMI-A-1, default:true"
@@ -108,23 +109,29 @@
       ];
 
       decoration = {
-        rounding = 10;
+        rounding = 24;
         rounding_power = 2;
         active_opacity = 1.0;
         inactive_opacity = 0.8;
-
+        dim_inactive = true;
+        dim_strength = 0.5;
         shadow = {
           enabled = true;
-          range = 4;
+          range = 8;
           render_power = 3;
           color = "rgba(1a1a1aee)";
         };
 
         blur = {
           enabled = true;
-          size = 3;
-          passes = 1;
-          vibrancy = 0.1696;
+          size = 7;
+          passes = 2;
+          ignore_opacity = true;
+          #noise = 0.08;
+          contrast = 1.5;
+          brightness = 0.5;
+          xray = false;
+          new_optimizations = true;
         };
       };
 
@@ -156,7 +163,8 @@
           "workspaces, 1, 1.94, almostLinear, fade"
           "workspacesIn, 1, 1.21, almostLinear, fade"
           "workspacesOut, 1, 1.94, almostLinear, fade"
-        ];};
+        ];
+      };
 
       "$mod" = "SUPER";
       "$term" = "kitty";
