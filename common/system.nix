@@ -326,7 +326,7 @@ in
       zathura
       seahorse
       kitty
-      ranger
+      yazi
       mpv
       neovim
       waybar
@@ -387,7 +387,7 @@ in
     material-icons
     material-design-icons
     nerd-fonts.jetbrains-mono
-    nerd-fonts.hack
+    nerd-fonts.geist-mono
   ];
 
   system.stateVersion = "23.11";
