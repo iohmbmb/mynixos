@@ -1,0 +1,61 @@
+[global]
+    ### Display Alignment and Placement ###
+    monitor = 0
+    follow = mouse
+    width = 300
+    height = 110
+    origin = top-right
+    offset = 15x15
+    scale = 0
+    notification_limit = 3
+
+    ### Progress Bar Options ###
+    progress_bar = true
+    progress_bar_height = 4
+    progress_bar_frame_width = 0
+    progress_bar_min_width = 150
+    progress_bar_max_width = 300
+
+    ### Styling / Shapes ###
+    transparency = 0
+    padding = 12
+    horizontal_padding = 12
+    text_icon_padding = 10
+    frame_width = 2
+    frame_color = "#504945"        ; Muted grey border
+    separator_color = "frame"
+    corner_radius = 12             ; Clean rounded corners matching Rofi
+    
+    ### Typography ###
+    font = JetBrainsMono Nerd Font 10
+    line_height = 4
+    markup = full
+    format = "<b>%s</b>\n%b"       ; Bold Summary title, normal body text
+    alignment = left
+    show_age_threshold = 60
+    ellipsize = middle
+    ignore_newline = no
+    stack_duplicates = true
+    hide_duplicate_count = false
+
+    ### Icons ###
+    icon_position = left
+    min_icon_size = 32
+    max_icon_size = 48
+
+[urgency_low]
+    background = "#282828"         ; Matches your Waybar pill background
+    foreground = "#a89984"
+    timeout = 5
+
+[urgency_normal]
+    background = "#282828"
+    foreground = "#a89984"
+    timeout = 10
+
+[urgency_critical]
+    background = "#282828"
+    foreground = "#fb4934"         ; Red text accent for system warnings
+    frame_color = "#fb4934"
+    timeout = 0                    ; Must be clicked to close
+
