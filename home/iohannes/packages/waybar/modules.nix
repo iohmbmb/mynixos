@@ -1,9 +1,18 @@
-{pkgs, ...}: {
+{...}: {
+
+  "hyprland/workspaces" = {
+    format = "{icon}";
+    format-icons = {
+      default= "";
+      active= "";
+      persistent= "";
+    };
+  };
 
   "backlight" = {
     # Format uses Nerd Font symbols for visual anchors
     format = "{icon} {percent}%";
-    format-icons = [ "  " "  " "  " ];
+    format-icons = ["󰃞" "󰃟" "󰃠"];
 
     # Enables scrolling over the bar to change brightness
     on-scroll-up = "brightnessctl set 1%+";
@@ -46,9 +55,33 @@
 
   # Added the network configuration block
   "network" = {
-    format-wifi = "  {essid} ({signalStrength}%)";
-    format-ethernet = "🖧  {ifname}";
+    format-wifi = " ";
+    format-ethernet = "🖧 ";
     format-disconnected = "⚠️ Disconnected";
-    tooltip-format = "IP: {ipaddr}\n Gateway: {gwaddr}\n Interface: {ifname}";
+    tooltip-format = "IP: {ipaddr}\ Gateway: {gwaddr}\ Interface: {ifname}";
+    tooltip-format-wifi = "SSID: {essid}\ IP: {ipaddr}\ Gateway: {gwaddr}\ Interface: {ifname}";
+    tooltip-format-ethernet = "Ethernet\ IP: {ipaddr}\ Gateway: {gwaddr}\ Interface: {ifname}";
+  };
+
+  "battery" = {
+    states = {
+      warning = 30;
+      critical = 15;
+    };
+    format = "{icon} {capacity}%";
+    format-charging = " {capacity}%";
+    format-plugged = " {capacity}%";
+    format-alt = "{icon} {time}";
+    format-icons = [ "" "" "" "" "" ];
+  };
+
+  "custom/weather" = {
+    format = "{}";
+    tooltip = true;
+    interval = 900;
+    returnType = "json";
+    signal = 5;
+    exec = "/home/iohannes/.config/waybar/weather.sh";
+    on-click = "pkill -RTMIN+5 .waybar-wrapped";
   };
 }

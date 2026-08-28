@@ -1,14 +1,14 @@
-{pkgs, ...}: {
-
+{ pkgs, ... }: {
   mainBar = {
     layer = "top";
     position = "top";
-    height = 30;
+    height = 36;
 
-    # Decide where the modules go
-    modules-left = [ "hyprland/workspaces" ];
+    # Keep all modules on the exact same row layout
+    modules-left = [ "hyprland/workspaces" "custom/weather" ];
     modules-center = [ "clock" ];
-    # Added "network" to the right modules list
-    modules-right = [ "pulseaudio" "backlight" "network" "tray" ];
-  } // (import ./modules.nix {inherit pkgs;});
+    modules-right = [ "pulseaudio" "backlight" "network" "battery" "tray"];
+
+    # Automatically imports and merges all module logic
+    } // (import ./modules.nix { inherit pkgs; });
 }
