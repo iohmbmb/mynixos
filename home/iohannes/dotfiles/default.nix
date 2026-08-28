@@ -12,6 +12,12 @@
   font_size ${if osConfig.networking.hostName == "sybils" then "20.0" else "22.0"}
   '';
 
+  home.file.rofi = {
+    source = ./.config/rofi;
+    target = "/home/iohannes/.config/rofi";
+    recursive = true;
+  };
+
   home.file.smart-move = {
     source = ./.settings/smart-move;
     target = "/home/iohannes/.config/smart-move";
