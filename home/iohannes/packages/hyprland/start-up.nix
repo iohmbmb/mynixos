@@ -6,7 +6,6 @@
       "bash ~/.config/wallpaper/random_wallpaper_multi.sh"
       "iio-hyprland"
       "mullvad-vpn"
-      "marvin"
     ];
   };
 }

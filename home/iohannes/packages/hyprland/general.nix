@@ -10,8 +10,8 @@
     };
 
     #workspace = [
-    #  "1, monitor:HDMI-A-1, default:true"
-    #  "2, monitor:HDMI-A-2, default:true"
+    #  "1, monitor:HDMI-A-1, default:true, persistent:true"
+    #  "2, monitor:HDMI-A-2, default:true, persistent:true"
     #  "3, monitor:HDMI-A-1, default:true, persistent:true"
     #  "4, monitor:HDMI-A-2, default:true, persistent:true"
     #];

@@ -2,11 +2,12 @@
   wayland.windowManager.hyprland.settings = {
     "$mod" = "SUPER";
     "$term" = "kitty";
-    "$menu" = "rofi -show combi -combi-modes 'window,drun,ssh' -modes combi -show-icons -font 'Hack Nerd 18'";
+    "$menu" = "rofi -show drun";
     bind = [
       "$mod, RETURN, exec, $term"
       "$mod, Q, killactive"
       "$mod, F, fullscreen"
+      "$mod, V, togglefloating"
       "$mod, P, exec, poweroff"
       "$mod, W, exec, librewolf"
       "$mod_SHIFT, W, exec, ~/.config/wallpaper/random_wallpaper_multi.sh"
