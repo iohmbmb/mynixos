@@ -9,8 +9,8 @@
   };
 
   home.file."/home/iohannes/.config/kitty/host-specific.conf".text = ''
-  font_size ${if osConfig.networking.hostName == "sybils" then "14.0" else "22.0"}
-'';
+  font_size ${if osConfig.networking.hostName == "sybils" then "20.0" else "22.0"}
+  '';
 
   home.file.smart-move = {
     source = ./.settings/smart-move;
@@ -39,6 +39,12 @@
   home.file.screen-record = {
     source = ./.settings/screen-record;
     target = "/home/iohannes/.config/screen-record";
+    recursive = true;
+  };
+
+  home.file.waybar = {
+    source = ./.settings/widgets;
+    target = "/home/iohannes/.config/waybar";
     recursive = true;
   };
 }
