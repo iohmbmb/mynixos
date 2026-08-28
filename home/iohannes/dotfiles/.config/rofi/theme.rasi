@@ -1,5 +1,5 @@
 * {
-    bg-col:  #282828;      /* Matches your dark Waybar pill background */
+    bg-col:  #1e1e2e;      /* Matches your dark Waybar pill background */
     border-col: #504945;  /* Subtle grey border outline border */
     selected-col: #3c3836;/* Highlights the active row item softly */
     text-col: #a89984;    /* Standard muted layout text font */
@@ -90,3 +90,4 @@ button selected {
   background-color: @bg-col;
   text-color: @accent-col;
 }
+
