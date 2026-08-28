@@ -22,7 +22,7 @@
     horizontal_padding = 12
     text_icon_padding = 10
     frame_width = 2
-    frame_color = "#504945"        ; Muted grey border
+    frame_color = "#1e1e2e"
     separator_color = "frame"
     corner_radius = 12             ; Clean rounded corners matching Rofi
     
