@@ -1,0 +1,92 @@
+* {
+    bg-col:  #282828;      /* Matches your dark Waybar pill background */
+    border-col: #504945;  /* Subtle grey border outline border */
+    selected-col: #3c3836;/* Highlights the active row item softly */
+    text-col: #a89984;    /* Standard muted layout text font */
+    accent-col: #fabd2f;  /* Yellow focus accent color indicator */
+    
+    width: 600;
+    font: "JetBrainsMono Nerd Font 11";
+}
+
+element-text, element-icon , mode-switcher {
+    background-color: inherit;
+    text-color:       inherit;
+}
+
+window {
+    height: 450px;
+    border: 2px;
+    border-color: @border-col;
+    background-color: @bg-col;
+    border-radius: 12px;  /* Clean rounded card profile layout */
+}
+
+mainbox {
+    background-color: @bg-col;
+}
+
+inputbar {
+    children: [prompt,entry];
+    background-color: @bg-col;
+    border-radius: 5px;
+    padding: 2px;
+}
+
+prompt {
+    background-color: @accent-col;
+    padding: 6px;
+    text-color: @bg-col;
+    border-radius: 6px;
+    margin: 10px 0px 0px 10px;
+}
+
+entry {
+    padding: 6px;
+    margin: 10px 10px 0px 10px;
+    text-color: @text-col;
+    background-color: @bg-col;
+}
+
+listview {
+    border: 0px 0px 0px;
+    padding: 6px 0px 0px;
+    margin: 10px 10px 0px 10px;
+    columns: 1;
+    lines: 8;
+    background-color: @bg-col;
+}
+
+element {
+    padding: 8px;
+    background-color: @bg-col;
+    text-color: @text-col;
+    border-radius: 8px;
+}
+
+element-icon {
+    size: 24px;
+}
+
+element selected {
+    background-color:  @selected-col;
+    text-color: @accent-col; /* Selected text turns golden bright */
+}
+
+mode-switcher {
+    spacing: 0;
+  margin: 0px 10px 10px 10px;
+}
+
+button {
+    padding: 8px;
+    background-color: @bg-col;
+    text-color: @text-col;
+    vertical-align: 0.5; 
+    horizontal-align: 0.5;
+}
+
+button selected {
+  background-color: @bg-col;
+  text-color: @accent-col;
+}
