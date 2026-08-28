@@ -18,6 +18,12 @@
     recursive = true;
   };
 
+  home.file.dunst = {
+    source = ./.config/dunst;
+    target = "/home/iohannes/.config/dunst";
+    recursive = true;
+  };
+
   home.file.smart-move = {
     source = ./.settings/smart-move;
     target = "/home/iohannes/.config/smart-move";

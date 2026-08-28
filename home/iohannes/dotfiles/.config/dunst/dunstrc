@@ -27,7 +27,7 @@
     corner_radius = 12             ; Clean rounded corners matching Rofi
     
     ### Typography ###
-    font = JetBrainsMono Nerd Font 10
+    font = GeistMono Nerd Font 12
     line_height = 4
     markup = full
     format = "<b>%s</b>\n%b"       ; Bold Summary title, normal body text
@@ -44,17 +44,17 @@
     max_icon_size = 48
 
 [urgency_low]
-    background = "#282828"         ; Matches your Waybar pill background
+    background = "#1e1e2e"         ; Matches your Waybar pill background
     foreground = "#a89984"
     timeout = 5
 
 [urgency_normal]
-    background = "#282828"
+    background = "#1e1e2e"
     foreground = "#a89984"
     timeout = 10
 
 [urgency_critical]
-    background = "#282828"
+    background = "#1e1e2e"
     foreground = "#fb4934"         ; Red text accent for system warnings
     frame_color = "#fb4934"
     timeout = 0                    ; Must be clicked to close

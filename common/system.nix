@@ -78,6 +78,7 @@ in
   };
 
   services = {
+    dunst.enable = true;
     fwupd.enable = hostname == secondaryHost;
     ntp.enable = true;
     libinput.enable = true;
@@ -329,7 +330,6 @@ in
       yazi
       mpv
       neovim
-      dunst
       libnotify
       swaybg
       hyprshot
