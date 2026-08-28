@@ -17,5 +17,5 @@ for i in {1..5}; do
 done
 
 # Fail-safe state if internet or wttr.in is entirely unavailable
-echo "--°C"
+echo "{\"text\":\"   --°C\", \"tooltip\":\"Offline or Rate-Limited\"}"
 
