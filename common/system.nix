@@ -329,7 +329,6 @@ in
       yazi
       mpv
       neovim
-      waybar
       dunst
       libnotify
       swaybg
@@ -354,6 +353,7 @@ in
       doctest
       file
       ripgrep
+      brightnessctl
     ];
   };      
 
