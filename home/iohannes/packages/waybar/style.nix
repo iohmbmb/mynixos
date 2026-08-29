@@ -79,7 +79,7 @@
     margin-right: 12px;
   }
 
-  #battery {
+  #network {
     border-radius: 0px 12px 12px 0px
   }
 

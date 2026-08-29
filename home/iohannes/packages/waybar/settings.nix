@@ -7,7 +7,7 @@
     # Keep all modules on the exact same row layout
     modules-left = [ "hyprland/workspaces" "custom/weather" ];
     modules-center = [ "clock" ];
-    modules-right = [ "pulseaudio" "backlight" "network" "battery" "tray"];
+    modules-right = [ "pulseaudio" "backlight" "battery" "network" "tray"];
 
     # Automatically imports and merges all module logic
     } // (import ./modules.nix { inherit pkgs; });
