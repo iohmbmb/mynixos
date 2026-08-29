@@ -41,7 +41,11 @@ in
   networking = {
     # Pick only one of the below networking options.
     # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-    networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+    networkmanager = {
+      enable = true;
+      wifi.backend = "iwd";
+    };
+    wireless.iwd.enable = true;
     nameservers = ["1.1.1.1" "1.0.0.1" "2606:4700:4700::1111" "2606:4700:4700::1001"];
     firewall = {
       enable = true;
@@ -322,7 +326,8 @@ in
       p7zip
       unrar
       hyfetch
-      pulsemixer 
+      wiremix
+      impala
       sxiv
       zathura
       seahorse
