@@ -2,12 +2,13 @@
   wayland.windowManager.hyprland.settings = {
     windowrule = [
       "float on, match:class ^(kitty)$, match:title ^(kitty)$"
+      "center on, match:class ^(kitty)$, match:title ^(kitty)$"
       "workspace 2, match:class librewolf"
       "workspace 2, match:class discord"
       "float on, match:class discord"
+      "center on, match:class discord"
       "float on, match:class marvin"
       "workspace 1, match:class marvin"
-      "center on, match:class discord"
       "float on, match:class kiwix"
       "center on, match:class kiwix"
       "workspace 3, match:class com.github.th_ch.youtube_music"
