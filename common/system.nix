@@ -96,7 +96,6 @@ in
 
     xserver = {
       enable = true;
-
       xkb = {
         layout = "us";
         variant = "intl";
@@ -355,6 +354,7 @@ in
       file
       ripgrep
       brightnessctl
+      wlsunset
     ];
   };      
 
