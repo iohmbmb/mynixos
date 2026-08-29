@@ -18,7 +18,7 @@
       "$mod, G, exec, godot"
       "$mod, O, exec, [float] obsidian"
       "$mod, M, exec, [workspace 1] marvin"
-      "$mod, S, exec, kitty pulsemixer"
+      "$mod, S, exec, kitty wiremix"
       "$mod, B, exec, [workspace 3] blender"
       "$mod_SHIFT, B, exec, $term bluetuith"
       "$mod_SHIFT, S, exec, hyprshot -m region"
