@@ -313,6 +313,7 @@ in
       xwallpaper
       killall
       rofi
+      tree
       gnumake
       cmake
       bluetuith
