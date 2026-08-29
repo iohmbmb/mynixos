@@ -44,7 +44,7 @@
       car = "";
       default = [ "" "" "" ];
     };
-    on-click = "pavucontrol"; # Opens your volume mixer when clicked
+    on-click = "kitty wiremix"; # Opens your volume mixer when clicked
   };
 
   # Added the system tray configuration block
@@ -61,6 +61,7 @@
     tooltip-format = "IP: {ipaddr}\ Gateway: {gwaddr}\ Interface: {ifname}";
     tooltip-format-wifi = "SSID: {essid}\ IP: {ipaddr}\ Gateway: {gwaddr}\ Interface: {ifname}";
     tooltip-format-ethernet = "Ethernet\ IP: {ipaddr}\ Gateway: {gwaddr}\ Interface: {ifname}";
+    on-click = "kitty impala";
   };
 
   "battery" = {
