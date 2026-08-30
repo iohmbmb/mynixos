@@ -21,7 +21,6 @@
 
     sunrise = "06:00";
     sunset = "18:00";
-    duration = 900;
   };
 
   home = {
