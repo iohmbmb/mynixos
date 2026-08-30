@@ -43,19 +43,8 @@ in
     # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
     networkmanager = {
       enable = true;
-      wifi.backend = "iwd";
     };
 
-    wireless.enable = false;
-
-    wireless.iwd = {
-      enable = true;
-      settings = {
-        Settings = {
-          AutoConnect = true;
-        };
-      };
-    };
     nameservers = ["1.1.1.1" "1.0.0.1" "2606:4700:4700::1111" "2606:4700:4700::1001"];
     firewall = {
       enable = true;
@@ -337,7 +326,6 @@ in
       unrar
       hyfetch
       wiremix
-      impala
       sxiv
       zathura
       seahorse

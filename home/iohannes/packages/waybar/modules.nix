@@ -61,7 +61,6 @@
     tooltip-format = "IP: {ipaddr}\ Gateway: {gwaddr}\ Interface: {ifname}";
     tooltip-format-wifi = "SSID: {essid}\ IP: {ipaddr}\ Gateway: {gwaddr}\ Interface: {ifname}";
     tooltip-format-ethernet = "Ethernet\ IP: {ipaddr}\ Gateway: {gwaddr}\ Interface: {ifname}";
-    on-click = "kitty impala";
   };
 
   "battery" = {
