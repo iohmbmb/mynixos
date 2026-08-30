@@ -18,6 +18,12 @@
     recursive = true;
   };
 
+  home.file.wallust = {
+    source = ./.config/wallust;
+    target = "/home/iohannes/.config/wallust";
+    recursive = true;
+  };
+
   home.file.dunst = {
     source = ./.config/dunst;
     target = "/home/iohannes/.config/dunst";
