@@ -35,7 +35,7 @@
   }
 
   #workspaces button.active {
-    color: @color2;
+    color: @foreground;
     background: transparent;
   }
 
