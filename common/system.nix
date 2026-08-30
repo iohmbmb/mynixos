@@ -370,6 +370,8 @@ in
       ripgrep
       brightnessctl
       wlsunset
+      wallust
+      pywalfox-native
     ];
   };      
 
