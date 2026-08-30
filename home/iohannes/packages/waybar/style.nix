@@ -1,10 +1,12 @@
 { ... }: ''
+  @import "colors.css";
+
   /* 1. Make the main overall bar completely transparent */
   window#waybar {
     background-color: transparent;
     font-family: "GeistMono Nerd Font";
     font-size: 18px;
-    color: #cdd6f4;
+    color: @foreground;
   }
 
   /* 2. Style the Left Piece (Workspaces) */
@@ -16,7 +18,7 @@
   }
 
   #workspaces {
-    background-color: #1e1e2e;
+    background-color: @background;
     border-radius: 12px;
     padding: 0 10px;
     margin-top: 8px;
@@ -24,7 +26,7 @@
   }
 
   #workspaces button {
-    color: #ebdbb2;
+    color: @color1;
     background: transparent;   
     padding: 4px 10px;
     margin: 0 2px;
@@ -33,12 +35,12 @@
   }
 
   #workspaces button.active {
-    color: #cdd6f4;
+    color: @color2;
     background: transparent;
   }
 
   #workspaces button:hover {
-    color: #cdd6f4;
+    color: @color3;
     background: transparent;   
     box-shadow: none;
     border: none;
@@ -47,7 +49,7 @@
 
   /* 3. Style the Center Piece (Clock) */
   .modules-center {
-    background-color: #1e1e2e;
+    background-color: @background;
     border-radius: 12px;
     padding: 0 15px;
     margin-top: 8px;
@@ -63,7 +65,7 @@
 
   /* Spacing fix for the items inside your right pill */
   #pulseaudio, #backlight, #battery, #network, #tray {
-    background-color: #1e1e2e;
+    background-color: @background;
     padding: 0 10px;
     margin-top: 8px;
   }
@@ -97,8 +99,8 @@
   }
 
   #custom-weather {
-    background-color: #1e1e2e;
-    color: #a89984;
+    background-color: @background;
+    color: @foreground;
     border-radius: 12px;    
     padding: 4px 12px;
     margin-top: 8px;
