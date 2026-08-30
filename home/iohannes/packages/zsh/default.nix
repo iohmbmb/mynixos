@@ -16,6 +16,7 @@
     };
 
     initContent = ''
+      cat ~/.cache/wallust/sequences 2>/dev/null
       neowofetch --kitty ~/Pictures/Wallpapers/Portrait/
       export CHROME_EXECUTABLE=/etc/profiles/per-user/iohannes/bin/chromium
       export ENV_SECRETS=/home/iohannes/Env
