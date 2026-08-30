@@ -59,3 +59,8 @@ waybar = { template = "waybar.css", target = "~/.config/waybar/colors.css", new_
 [[entry]]
 template = "kitty"
 target = "~/.config/kitty/wallust-colors.conf"
+
+backend = "kmeans"
+color_space = "labmixed"
+palette = "harddark"
+check_contrast = true
