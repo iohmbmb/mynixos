@@ -5,7 +5,6 @@
     ./nvf
     ./tmux
     ./hyprland
-    ./kitty
     ./waybar
   ];
 }
