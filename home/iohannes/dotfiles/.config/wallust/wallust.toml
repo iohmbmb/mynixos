@@ -46,6 +46,7 @@ palette = "saliencedark"
 [templates]
 pywalfox = { template = "pywalfox.json", target = "~/.cache/wal/colors.json", new_engine = true }
 waybar = { template = "waybar.css", target = "~/.config/waybar/colors.css", new_engine = true }
+#kitty = {template = "wallust-colors.conf", target = "~/.config/kitty/wallust-colors.conf", new_engine = true}
 # NOTE: prefer '' over "" for paths, avoids escaping.
 # template: A RELATIVE path that points to `~/.config/wallust/template` (depends on platform)
 # target: ABSOLUTE path in which to place a file with generated templated values.
@@ -55,12 +56,3 @@ waybar = { template = "waybar.css", target = "~/.config/waybar/colors.css", new_
 [hooks]
 # Run commands when wallust is invoked. Useful to avoid scripting.
 #wallpaper = """swww img "$(find ~/Media/Pictures/Wallpapers -iregex '.*.\\(jpg\\|jpeg\\|png\\|gif\\)' -type f | shuf -n 1)" """
-
-[[entry]]
-template = "kitty"
-target = "~/.config/kitty/wallust-colors.conf"
-
-backend = "kmeans"
-color_space = "labmixed"
-palette = "harddark"
-check_contrast = true
