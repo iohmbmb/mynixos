@@ -164,7 +164,7 @@
             };
           };
           css.enable = true;
-          ts.enable = true;
+          tsx.enable = true;
           markdown.enable = true;
           csharp = {
             enable = true;

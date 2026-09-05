@@ -13,18 +13,19 @@
 
   services.wlsunset = {
     enable = true;
+    sunrise = "06:00";
+    sunset = "18:00";
+    duration = 1800;
 
     temperature = {
       day = 6500;
       night = 3500;
     };
-
-    sunrise = "06:00";
-    sunset = "18:00";
   };
 
   home = {
     stateVersion = "24.05";
+    enableNixpkgsReleaseCheck = false;
 
     username = "iohannes";
     homeDirectory = "/home/iohannes";
@@ -41,7 +42,7 @@
     };
 
     pointerCursor = {
-      gtk.enable = true;
+      enable = true;
       package = pkgs.bibata-cursors;
       name = "Bibata-Modern-Ice";
       size = 24;
