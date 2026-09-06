@@ -149,7 +149,6 @@
             };
           };
         };
-
         languages = {
           enableTreesitter = true;
           nix.enable = true;

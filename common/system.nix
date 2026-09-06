@@ -290,7 +290,7 @@ in
         readest
         jetbrains.rider
         stremio-linux-shell
-        nwg-look
+        thunderbird
       ];# ++ lib.optional (hostname == mainHost);
     };
 
