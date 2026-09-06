@@ -8,6 +8,7 @@
           enable = true;
           name = "catppuccin";
           style = "frappe";
+          transparent = true;
         };
         ui = {
           borders = {
@@ -19,9 +20,6 @@
             };
           };
         };
-        luaConfigRC.bg-plugin = ''
-          ${builtins.readFile plugins/bg.lua}
-        '';
         luaConfigPost = 
         ''
           -- search for project godot and start listening to the server
@@ -29,13 +27,15 @@
           if projectfile then
             vim.fn.serverstart './godothost'
           end
-          -- Suppress "No information available" hover notifications
-          vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-            vim.lsp.handlers.hover, {
-              silent = true, -- This flag suppresses the "no information" popup
-            })
         '';
-        keymaps = [];
+        keymaps = [
+          {
+            key = "<C-k>";
+            mode = "n";
+            silent = true;
+            action = "<cmd>lua vim.lsp.buf.hover({ focusable = false })<cr>";
+          }
+        ];
         maps = {
           normal = {
             # Map Ctrl-n in normal mode
@@ -80,6 +80,7 @@
         options = {
           tabstop = 2;
           shiftwidth = 2;
+          termguicolors = true;
         };
 
         treesitter = {
@@ -205,31 +206,6 @@
             package = pkgs.vimPlugins.snacks-nvim;
             setup = "require('snacks').setup({terminal = {enabled = true}, input = {enable = true}, picker = {enable = true}})";
           };
-          codecompanion = {
-            package = pkgs.vimPlugins.codecompanion-nvim;
-            setup = "require('codecompanion').setup({
-              interactions = {
-                chat = {
-                  adapter = 'ollama',
-                },
-                inline = {
-                  adapter = 'ollama',
-                },
-                background = {
-                  adapter = 'ollama',
-                },
-              },
-              extensions = {
-                spinner = {},
-              },
-              opts = {
-                log_level = 'DEBUG',
-              }
-            })";
-          };
-          codecompanion-spinner = {
-            package = pkgs.vimPlugins.codecompanion-spinner-nvim;
-          };
           minuet-ai = {
             package = pkgs.vimPlugins.minuet-ai-nvim;
             setup = ''
@@ -292,8 +268,22 @@
                 lsp_doc_border = true,
               },
               lsp = {
-                hover = { enabled = false },
-                signature = { enabled = false },
+                override = {
+                  ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
+                  ['vim.lsp.util.stylize_markdown'] = true,
+                  ['cmp.entry.get_documentation'] = true, -- Integrates docs cleanly with completion popups
+                },
+                hover = { 
+                  enabled = true,
+                  silent = false,
+                  opts = {
+                    focusable = true,
+                    win_options = {
+                      winblend = 0,
+                    },
+                  },
+                },
+                signature = { enabled = true },
               },
               routes = {
                 {
@@ -312,58 +302,6 @@
               require("trouble").setup({})
               vim.keymap.set("n", "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", { desc = "Project Diagnostics (Trouble)" })
               vim.keymap.set("n", "<leader>xd", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", { desc = "Buffer Diagnostics (Trouble)" })
-            '';
-          };
-          lspsaga = {
-          package = pkgs.vimPlugins.lspsaga-nvim;
-            setup = ''
-              require('lspsaga').setup({
-            -- Customize your UI elements here if needed
-                ui = {
-                  border = "rounded", -- Gives popups nice smooth borders
-                },
-                hover = {
-                  open_link = "gx",   -- Key to open links inside documentation popups
-                },
-            -- ADD BREADCRUMB CUSTOMIZATION HERE:
-                symbol_in_winbar = {
-                  enable = true,
-            -- You can use a stylized arrow if your font supports it (e.g., "  " or "  ")
-                  separator = " › ",    
-                  show_file = true,     
-                  hide_keyword = true,  
-                  folder_level = 0,     
-                  color_mode = true,    -- True matches the icon's color to your theme
-                },
-                lightbulb = { enable = false },
-              })
-
-            -- Keybindings to trigger Lspsaga's clean overlays
-              vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", { desc = "Lspsaga Hover Documentation" })
-              vim.keymap.set("n", "gd", "<cmd>Lspsaga goto_definition<CR>", { desc = "Lspsaga Go To Definition" })
-              vim.keymap.set("n", "gp", "<cmd>Lspsaga peek_definition<CR>", { desc = "Lspsaga Peek Definition" })
-              vim.keymap.set("n", "gf", "<cmd>Lspsaga lsp_finder<CR>", { desc = "Lspsaga LSP Finder" })
-              
-              vim.api.nvim_create_autocmd("CursorHold", {
-                callback = function()
-                  -- Stop completely if the cursor is already in a floating popup window
-                  if vim.api.nvim_win_get_config(0).relative ~= "" then
-                    return 
-                  end
-                  -- Use Lspsaga's beautiful engine instead of the plain native vim.lsp.buf.hover()
-                  vim.cmd("Lspsaga hover_doc")
-                  end,
-                })
-                -- Safe Winbar Guard 
-                -- Stops Lspsaga breadcrumbs from rendering inside tiny floating notifications
-                vim.api.nvim_create_autocmd({ "BufWinEnter", "WinEnter" }, {
-                  pattern = "*",
-                  callback = function()
-                    if vim.api.nvim_win_get_config(0).relative ~= "" then
-                      vim.opt_local.winbar = nil
-                    end
-                  end,
-                })
             '';
           };
           bufferline = {
@@ -423,7 +361,7 @@
           };
         };
 
-        startPlugins = ["plenary-nvim" pkgs.vimPlugins.flutter-tools-nvim pkgs.vimPlugins.nvim-dap pkgs.vimPlugins.nvim-tree-lua pkgs.vimPlugins.nvim-treesitter-parsers.qmljs pkgs.vimPlugins.toggleterm-nvim pkgs.vimPlugins.vim-godot pkgs.vimPlugins.tiny-inline-diagnostic-nvim pkgs.vimPlugins.snacks-nvim pkgs.vimPlugins.noice-nvim pkgs.vimPlugins.noice-nvim pkgs.vimPlugins.neoscroll-nvim pkgs.vimPlugins.nvim-treesitter-parsers.yaml];
+        startPlugins = ["plenary-nvim" pkgs.vimPlugins.flutter-tools-nvim pkgs.vimPlugins.nvim-dap pkgs.vimPlugins.nvim-tree-lua pkgs.vimPlugins.nvim-treesitter-parsers.qmljs pkgs.vimPlugins.toggleterm-nvim pkgs.vimPlugins.vim-godot pkgs.vimPlugins.tiny-inline-diagnostic-nvim pkgs.vimPlugins.snacks-nvim pkgs.vimPlugins.noice-nvim pkgs.vimPlugins.neoscroll-nvim pkgs.vimPlugins.nvim-treesitter-parsers.yaml];
       };
     };
   };
