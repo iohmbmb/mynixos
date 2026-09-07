@@ -290,7 +290,7 @@ in
         readest
         jetbrains.rider
         stremio-linux-shell
-        protonmail-desktop
+        unstable.protonmail-desktop
       ];# ++ lib.optional (hostname == mainHost);
     };
 
