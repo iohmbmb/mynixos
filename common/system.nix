@@ -291,6 +291,7 @@ in
         jetbrains.rider
         stremio-linux-shell
         thunderbird
+        protonmail-bridge
       ];# ++ lib.optional (hostname == mainHost);
     };
 
