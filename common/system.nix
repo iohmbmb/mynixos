@@ -290,8 +290,7 @@ in
         readest
         jetbrains.rider
         stremio-linux-shell
-        thunderbird
-        protonmail-bridge
+        protonmail-desktop
       ];# ++ lib.optional (hostname == mainHost);
     };
 
