@@ -1,7 +1,6 @@
 { config, pkgs, nixpkgs-unstable, quickshell, ... }:
 
 let 
-  externals = import ../external/packages/default.nix {inherit pkgs;};
   unstable = nixpkgs-unstable.legacyPackages.x86_64-linux;
   hostname = config.networking.hostName;
   mainHost = "aegis";
@@ -279,7 +278,7 @@ in
         tmux
         krita
         mullvad-vpn
-        externals.marvin
+        ticktick
         woeusb
         qbittorrent
         libreoffice
