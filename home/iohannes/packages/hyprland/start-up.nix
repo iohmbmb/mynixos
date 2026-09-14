@@ -7,6 +7,7 @@
       "iio-hyprland"
       "mullvad-vpn"
       "proton-mail"
+      "ticktick"
     ];
   };
 }
