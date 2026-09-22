@@ -255,7 +255,7 @@ in
         unityhub 
         godot-custom
         aseprite
-        unstable.pear-desktop
+        ytmdesktop
         unstable.blender
         obsidian
         bruno
