@@ -279,7 +279,6 @@ in
         krita
         mullvad-vpn
         ticktick
-        woeusb
         qbittorrent
         libreoffice
         kdePackages.qtdeclarative
@@ -359,6 +358,9 @@ in
       wlsunset
       wallust
       pywalfox-native
+      woeusb
+      bat
+      tldr
     ];
   };      
 
