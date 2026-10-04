@@ -1,7 +1,10 @@
-{ config, pkgs, nixpkgs-unstable, quickshell, ... }:
+{ config, pkgs, nixpkgs-unstable, quickshell, zen-browser, ... }:
 
 let 
-  unstable = nixpkgs-unstable.legacyPackages.x86_64-linux;
+  unstable = import nixpkgs-unstable {
+    system = "x86_64-linux";
+    config.allowUnfree = true;
+  };
   hostname = config.networking.hostName;
   mainHost = "aegis";
   secondaryHost = "sybils";
@@ -278,7 +281,7 @@ in
         tmux
         krita
         mullvad-vpn
-        ticktick
+        unstable.ticktick
         qbittorrent
         libreoffice
         kdePackages.qtdeclarative
@@ -361,6 +364,7 @@ in
       woeusb
       bat
       tldr
+      zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
   };      
 

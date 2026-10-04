@@ -27,9 +27,14 @@
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    zen-browser = {
+      url = "github:youwen5/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, nvf, quickshell, ... }@inputs: { 
+  outputs = { self, nixpkgs, nixpkgs-unstable, nvf, quickshell, zen-browser, ... }@inputs: { 
     nixosConfigurations = {
       aegis = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
