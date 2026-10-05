@@ -3,7 +3,7 @@
     windowrule = [
       "float on, match:class ^(kitty)$, match:title ^(kitty)$"
       "center on, match:class ^(kitty)$, match:title ^(kitty)$"
-      "workspace 2, match:class librewolf"
+      "workspace 2, match:class zen"
       "workspace 2, match:class discord"
       "float on, match:class discord"
       "center on, match:class discord"
