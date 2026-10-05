@@ -9,7 +9,7 @@
       "$mod, F, fullscreen"
       "$mod, V, togglefloating"
       "$mod, P, exec, poweroff"
-      "$mod, W, exec, librewolf"
+      "$mod, W, exec, zen"
       "$mod_SHIFT, W, exec, ~/.config/wallpaper/random_wallpaper_multi.sh"
       "$mod, SPACE, exec, $menu"
       "$mod, D, exec, [workspace 2; float] discord"

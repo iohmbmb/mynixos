@@ -252,8 +252,6 @@ in
       packages = with pkgs; [
         keepassxc
         android-studio
-        librewolf
-        chromium
         discord 
         unityhub 
         godot-custom
