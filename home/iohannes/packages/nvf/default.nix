@@ -4,11 +4,6 @@
     enable = true;
     settings = {
       vim = {
-        theme = {
-          enable = false;
-          name = "catppuccin";
-          style = "frappe";
-        };
         ui = {
           borders = {
             plugins = {
@@ -19,14 +14,6 @@
             };
           };
         };
-        luaConfigPost = 
-        ''
-          -- search for project godot and start listening to the server
-          local projectfile = vim.fn.getcwd() .. '/project.godot'
-          if projectfile then
-            vim.fn.serverstart './godothost'
-          end
-        '';
         keymaps = [
           {
             key = "<C-k>";
@@ -97,7 +84,6 @@
         
         statusline.lualine = {
           enable = true;
-
           setupOpts = {
             options = {
               theme = {
@@ -238,7 +224,6 @@
           nix.enable = true;
           clang.enable = true;
           python.enable = true;
-          dart.enable = true;
           go.enable = true;
           html = {
             enable = true;
@@ -262,13 +247,16 @@
               local c = require("vscode.colors").get_colors()
               require('vscode').setup({
                 style = 'dark',
-                transparent = true,
-                disable_nvimtree_bg = true,
-                terminal_colors = true,
                 color_overrides = {
                   vscLineNumber = '#FFFFFF',
                 },
                 group_overrides = {
+
+                  Normal = { bg = '#1e1f22' },
+                  NormalNC = { bg = '#1e1f22' },
+                  SignColumn = { bg = '#1e1f22' },
+                  EndOfBuffer = { bg = '#1e1f22' },
+
                   -- Variables
                   ["@variable"] = { fg = "#bdbdbd" },
                   ["@variable.member"] = { fg = "#65c3cc" },
@@ -338,16 +326,69 @@
               })
             '';
           };
-          flutter-tools = {
-            package = pkgs.vimPlugins.flutter-tools-nvim;
-            setup = "require('flutter-tools').setup {}";
-          };
           nvim-dap = {
             package = pkgs.vimPlugins.nvim-dap;
           };
           nvim-tree = {
             package = pkgs.vimPlugins.nvim-tree-lua;
-            setup = "require('nvim-tree').setup()";
+            setup = ''
+            require('nvim-tree').setup({
+              view = {
+                  width = 32,
+                  side = "left",
+                  signcolumn = "yes",
+                },
+
+                renderer = {
+                  root_folder_label = false,
+                  group_empty = true,
+                  indent_width = 2,
+
+                  indent_markers = {
+                    enable = true,
+                    inline_arrows = true,
+                    icons = {
+                      corner = "└",
+                      edge = "│",
+                      item = "│",
+                      bottom = "─",
+                      none = " ",
+                    },
+                  },
+
+                  icons = {
+                    padding = {
+                      icon = " ",
+                      folder_arrow = " ",
+                    },
+                    show = {
+                      file = true,
+                      folder = true,
+                      folder_arrow = true,
+                      git = true,
+                    },
+                    glyphs = {
+                      folder = {
+                        arrow_closed = "›",
+                        arrow_open = "⌄",
+                        default = "",
+                        open = "",
+                        empty = "",
+                        empty_open = "",
+                      },
+                    },
+                  },
+                },
+
+                filters = {
+                  dotfiles = false,
+                },
+
+                git = {
+                  enable = true,
+                  show_on_dirs = true,
+                },
+            })'';
           };
           nvim-treesitter-parsers-qmljs = {
             package = pkgs.vimPlugins.nvim-treesitter-parsers.qmljs;
@@ -487,7 +528,7 @@
                   },
                   left_trunc_marker = "",
                   modified_icon = "●",
-                  offsets = { { filetype = "NvimTree", text = "EXPLORER", text_align = "center" } },
+                  offsets = { { filetype = "NvimTree", text = "╭─ EXPLORER ─╮", text_align = "center" } },
                   right_mouse_command = "bdelete! %d",
                   right_trunc_marker = "",
                   show_close_icon = false,
@@ -580,55 +621,150 @@
           
         };
 
-        luaConfigRC.vscode-theme = ''
-          vim.cmd.colorscheme "vscode"
-        '';
-        
-        luaConfigRC.nvimtree-theme = ''
-          vim.api.nvim_set_hl(0, "NvimTreeRootFolder", {
-            fg = "#c191ff",
-            bold = true,
-          })
+        luaConfigRC = {
+          vscode-theme = ''
+            vim.cmd.colorscheme "vscode"
+          '';
 
-          vim.api.nvim_set_hl(0, "NvimTreeFolderName", {
-            fg = "#65c3cc",
-          })
+          kitty-font-size = ''
+              local group = vim.api.nvim_create_augroup(
+                "KittyNvimFontSize",
+                { clear = true }
+              )
 
-          vim.api.nvim_set_hl(0, "NvimTreeOpenedFolderName", {
-            fg = "#65c3cc",
-            bold = true,
-          })
+              local function set_font_size(size)
+                vim.fn.jobstart({
+                  "kitten", "@", "set-font-size", tostring(size),
+                }, { detach = true })
+              end
 
-          vim.api.nvim_set_hl(0, "NvimTreeFolderIcon", {
-            fg = "#c191ff",
-          })
+              vim.api.nvim_create_autocmd("VimEnter", {
+                group = group,
+                callback = function()
+                  set_font_size(20)
+                end,
+              })
 
-          vim.api.nvim_set_hl(0, "NvimTreeIndentMarker", {
-            fg = "#45475a",
-          })
+              vim.api.nvim_create_autocmd("VimLeave", {
+                group = group,
+                callback = function()
+                  set_font_size(0)
+                end,
+              })
+            '';
 
-          vim.api.nvim_set_hl(0, "NvimTreeGitNewIcon", {
-            fg = "#84c26b",
-          })
+          nvimtree-theme = ''
+            local group = vim.api.nvim_create_augroup(
+              "NvimTreeRiderTheme",
+              { clear = true }
+            )
 
-          vim.api.nvim_set_hl(0, "NvimTreeGitDirtyIcon", {
-            fg = "#e5c07b",
-          })
+            local function set_tree_colors()
+              local bg = "#1e1f22"
 
-          vim.api.nvim_set_hl(0, "NvimTreeGitDeletedIcon", {
-            fg = "#ed8796",
-          })
+              vim.api.nvim_set_hl(0, "NvimTreeNormal", {
+                fg = "#bcbec4",
+                bg = bg,
+              })
 
-          vim.api.nvim_set_hl(0, "NvimTreeNormal", {
-            bg = "NONE",
-          })
+              vim.api.nvim_set_hl(0, "NvimTreeNormalNC", {
+                fg = "#bcbec4",
+                bg = bg,
+              })
 
-          vim.api.nvim_set_hl(0, "NvimTreeNormalNC", {
-            bg = "NONE",
-          })
-        '';
+              vim.api.nvim_set_hl(0, "NvimTreeEndOfBuffer", {
+                fg = bg,
+                bg = bg,
+              })
 
-        startPlugins = ["plenary-nvim" pkgs.vimPlugins.flutter-tools-nvim pkgs.vimPlugins.nvim-dap pkgs.vimPlugins.nvim-tree-lua pkgs.vimPlugins.nvim-treesitter-parsers.qmljs pkgs.vimPlugins.toggleterm-nvim pkgs.vimPlugins.vim-godot pkgs.vimPlugins.tiny-inline-diagnostic-nvim pkgs.vimPlugins.snacks-nvim pkgs.vimPlugins.noice-nvim pkgs.vimPlugins.neoscroll-nvim pkgs.vimPlugins.nvim-treesitter-parsers.yaml];
+              vim.api.nvim_set_hl(0, "NvimTreeWinSeparator", {
+                fg = "#3c3f41",
+                bg = bg,
+              })
+
+              vim.api.nvim_set_hl(0, "NvimTreeFolderName", {
+                fg = "#bcbec4",
+                bg = bg,
+              })
+
+              vim.api.nvim_set_hl(0, "NvimTreeOpenedFolderName", {
+                fg = "#589df6",
+                bg = bg,
+                bold = true,
+              })
+
+              vim.api.nvim_set_hl(0, "NvimTreeRootFolder", {
+                fg = "#589df6",
+                bg = bg,
+                bold = true,
+              })
+
+              vim.api.nvim_set_hl(0, "NvimTreeIndentMarker", {
+                fg = "#45494a",
+                bg = bg,
+              })
+
+              vim.api.nvim_set_hl(0, "NvimTreeCursorLine", {
+                bg = "#2b2d30",
+              })
+            end
+
+            vim.api.nvim_create_autocmd("ColorScheme", {
+              group = group,
+              callback = set_tree_colors,
+            })
+
+            vim.api.nvim_create_autocmd("FileType", {
+              group = group,
+              pattern = "NvimTree",
+              callback = set_tree_colors,
+            })
+
+            set_tree_colors()
+          '';
+
+          kitty-background = ''
+            local group = vim.api.nvim_create_augroup(
+              "KittyNvimBackground",
+              { clear = true }
+            )
+
+            local function sync_terminal_background()
+              local normal = vim.api.nvim_get_hl(0, {
+                name = "Normal",
+                link = false,
+              })
+
+              if normal.bg == nil then
+                return
+              end
+
+              io.stdout:write(
+                ("\027]11;#%06x\027\\"):format(normal.bg)
+              )
+              io.stdout:flush()
+            end
+
+            vim.api.nvim_create_autocmd(
+              { "UIEnter", "ColorScheme" },
+              {
+                group = group,
+                callback = sync_terminal_background,
+              }
+            )
+
+            vim.api.nvim_create_autocmd({"VimLeave", "VimSuspend"}, 
+            {
+              group = group,
+              callback = function()
+                io.stdout:write("\027]110\007\027]111\007")
+                io.stdout:flush()
+              end,
+            })
+          '';
+        };        
+
+        startPlugins = ["plenary-nvim" pkgs.vimPlugins.nvim-dap pkgs.vimPlugins.nvim-tree-lua pkgs.vimPlugins.nvim-treesitter-parsers.qmljs pkgs.vimPlugins.toggleterm-nvim pkgs.vimPlugins.vim-godot pkgs.vimPlugins.tiny-inline-diagnostic-nvim pkgs.vimPlugins.snacks-nvim pkgs.vimPlugins.noice-nvim pkgs.vimPlugins.neoscroll-nvim pkgs.vimPlugins.nvim-treesitter-parsers.yaml];
       };
     };
   };
