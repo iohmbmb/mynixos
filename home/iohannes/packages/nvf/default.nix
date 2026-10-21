@@ -5,10 +5,9 @@
     settings = {
       vim = {
         theme = {
-          enable = true;
+          enable = false;
           name = "catppuccin";
           style = "frappe";
-          transparent = true;
         };
         ui = {
           borders = {
@@ -95,7 +94,92 @@
           setupOpts.scope.enabled = true;
         };
 
-        statusline.lualine.enable = true;
+        
+        statusline.lualine = {
+          enable = true;
+
+          setupOpts = {
+            options = {
+              theme = {
+                normal = {
+                  a = {
+                    fg = "#1e1e2e";
+                    bg = "#c191ff";
+                    gui = "bold";
+                  };
+                  b = {
+                    fg = "#bdbdbd";
+                    bg = "NONE";
+                  };
+                  c = {
+                    fg = "#84c26b";
+                    bg = "NONE";
+                  };
+                };
+
+                insert = {
+                  a = {
+                    fg = "#1e1e2e";
+                    bg = "#84c26b";
+                    gui = "bold";
+                  };
+                };
+
+                visual = {
+                  a = {
+                    fg = "#1e1e2e";
+                    bg = "#65c3cc";
+                    gui = "bold";
+                  };
+                };
+
+                replace = {
+                  a = {
+                    fg = "#1e1e2e";
+                    bg = "#ed8796";
+                    gui = "bold";
+                  };
+                };
+
+                command = {
+                  a = {
+                    fg = "#1e1e2e";
+                    bg = "#e5c07b";
+                    gui = "bold";
+                  };
+                };
+
+                inactive = {
+                  a = {
+                    fg = "#45475a";
+                    bg = "NONE";
+                  };
+                  b = {
+                    fg = "#45475a";
+                    bg = "NONE";
+                  };
+                  c = {
+                    fg = "#45475a";
+                    bg = "NONE";
+                  };
+                };
+              };
+
+              component_separators = {
+                left = "|";
+                right = "|";
+              };
+
+              section_separators = {
+                left = "";
+                right = "";
+              };
+
+              globalstatus = true;
+            };
+          };
+        };
+
         telescope.enable = true;
         autocomplete.nvim-cmp = {
           enable = true;
@@ -172,6 +256,88 @@
           };
         };
         extraPlugins = {
+          vscode-nvim = {
+            package = pkgs.vimPlugins.vscode-nvim;
+            setup = ''
+              local c = require("vscode.colors").get_colors()
+              require('vscode').setup({
+                style = 'dark',
+                transparent = true,
+                disable_nvimtree_bg = true,
+                terminal_colors = true,
+                color_overrides = {
+                  vscLineNumber = '#FFFFFF',
+                },
+                group_overrides = {
+                  -- Variables
+                  ["@variable"] = { fg = "#bdbdbd" },
+                  ["@variable.member"] = { fg = "#65c3cc" },
+                  ["@variable.parameter"] = { fg = "#ed8796" },
+                  ["@parameter"] = { fg = "#ed8796" },
+
+                  -- Functions and methods
+                  ["@function"] = { fg = "#38c596", bold = true },
+                  ["@function.call"] = { fg = "#38c596", bold = true },
+                  ["@function.method"] = { fg = "#38c596", bold = true },
+                  ["@function.method.call"] = {
+                    link = "@function.method"
+                  },
+
+                  -- Keywords and control flow
+                  ["@keyword"] = { fg = "#6c95eb" },
+                  ["@keyword.conditional"] = {
+                    fg = "#6c95eb",
+                    bold = true
+                  },
+                  ["@keyword.repeat"] = {
+                    fg = "#6c95eb",
+                    bold = true
+                  },
+                  ["@keyword.return"] = { fg = "#6c95eb" },
+                  ["@keyword.exception"] = { fg = "#6c95eb" },
+
+                  -- Constants and booleans
+                  ["@boolean"] = {
+                    fg = "#6c95eb",
+                    italic = true
+                  },
+                  ["@number"] = { fg = "#e791bc", bold = true },
+                  ["@float"] = { fg = "#e791bc", bold = true },
+                  ["@constant"] = { fg = "#e791bc" },
+
+                  -- Types and classes
+                  ["@type"] = { fg = "#c191ff" },
+                  ["@type.builtin"] = { fg = "#c191ff" },
+                  ["@constructor"] = { fg = "#c191ff", bold = true },
+                  ["@lsp.type.class"] = {
+                    fg = "#c191ff",
+                    bold = true
+                  },
+                  ["@lsp.type.interface"] = { fg = "#c191ff" },
+                  ["@lsp.type.enum"] = { fg = "#c191ff" },
+
+                  -- Comments
+                  ["@comment"] = {
+                    fg = "#84c26b",
+                    italic = true
+                  },
+                  ["Comment"] = {
+                    fg = "#84c26b",
+                    italic = true
+                  },
+
+                  -- Traditional Vim syntax fallbacks
+                  Keyword = { fg = "#6c95eb" },
+                  Conditional = { fg = "#6c95eb", bold = true },
+                  Repeat = { fg = "#6c95eb", bold = true },
+                  Function = { fg = "#38c596", bold = true },
+                  Type = { fg = "#c191ff" },
+                  Number = { fg = "#e791bc", bold = true },
+                  Boolean = { fg = "#6c95eb", italic = true },
+                },
+              })
+            '';
+          };
           flutter-tools = {
             package = pkgs.vimPlugins.flutter-tools-nvim;
             setup = "require('flutter-tools').setup {}";
@@ -312,11 +478,64 @@
                   diagnostics = "nvim_lsp", -- Show error counts on tabs
                   show_buffer_close_icons = true,
                   show_close_icon = false,
-                }
+                  buffer_close_icon = "x",
+                  close_command = "bdelete %d",
+                  close_icon = "x",
+                  indicator = {
+                    style = "icon",
+                    icon = " ",
+                  },
+                  left_trunc_marker = "",
+                  modified_icon = "●",
+                  offsets = { { filetype = "NvimTree", text = "EXPLORER", text_align = "center" } },
+                  right_mouse_command = "bdelete! %d",
+                  right_trunc_marker = "",
+                  show_close_icon = false,
+                  show_tab_indicators = true,
+                },
+                highlights = {
+                  fill = {
+                      fg = { attribute = "fg", highlight = "Normal" },
+                      bg = { attribute = "bg", highlight = "StatusLineNC" },
+                  },
+                  background = {
+                      fg = { attribute = "fg", highlight = "Normal" },
+                      bg = { attribute = "bg", highlight = "StatusLine" },
+                  },
+                  buffer_visible = {
+                      fg = { attribute = "fg", highlight = "Normal" },
+                      bg = { attribute = "bg", highlight = "Normal" },
+                  },
+                  buffer_selected = {
+                      fg = { attribute = "fg", highlight = "Normal" },
+                      bg = { attribute = "bg", highlight = "Normal" },
+                  },
+                  separator = {
+                      fg = { attribute = "bg", highlight = "Normal" },
+                      bg = { attribute = "bg", highlight = "StatusLine" },
+                  },
+                  separator_selected = {
+                      fg = { attribute = "fg", highlight = "Special" },
+                      bg = { attribute = "bg", highlight = "Normal" },
+                  },
+                  separator_visible = {
+                      fg = { attribute = "fg", highlight = "Normal" },
+                      bg = { attribute = "bg", highlight = "StatusLineNC" },
+                  },
+                  close_button = {
+                      fg = { attribute = "fg", highlight = "Normal" },
+                      bg = { attribute = "bg", highlight = "StatusLine" },
+                  },
+                  close_button_selected = {
+                      fg = { attribute = "fg", highlight = "Normal" },
+                      bg = { attribute = "bg", highlight = "Normal" },
+                  },
+                  close_button_visible = {
+                      fg = { attribute = "fg", highlight = "Normal" },
+                      bg = { attribute = "bg", highlight = "Normal" },
+                  },
+                },
               })
-            -- Easy tab cycling
-              vim.keymap.set("n", "<S-l>", "<cmd>BufferLineCycleNext<cr>")
-              vim.keymap.set("n", "<S-h>", "<cmd>BufferLineCyclePrev<cr>")
             '';
           };
           gitsigns = {
@@ -358,7 +577,56 @@
             })
           '';
           };
+          
         };
+
+        luaConfigRC.vscode-theme = ''
+          vim.cmd.colorscheme "vscode"
+        '';
+        
+        luaConfigRC.nvimtree-theme = ''
+          vim.api.nvim_set_hl(0, "NvimTreeRootFolder", {
+            fg = "#c191ff",
+            bold = true,
+          })
+
+          vim.api.nvim_set_hl(0, "NvimTreeFolderName", {
+            fg = "#65c3cc",
+          })
+
+          vim.api.nvim_set_hl(0, "NvimTreeOpenedFolderName", {
+            fg = "#65c3cc",
+            bold = true,
+          })
+
+          vim.api.nvim_set_hl(0, "NvimTreeFolderIcon", {
+            fg = "#c191ff",
+          })
+
+          vim.api.nvim_set_hl(0, "NvimTreeIndentMarker", {
+            fg = "#45475a",
+          })
+
+          vim.api.nvim_set_hl(0, "NvimTreeGitNewIcon", {
+            fg = "#84c26b",
+          })
+
+          vim.api.nvim_set_hl(0, "NvimTreeGitDirtyIcon", {
+            fg = "#e5c07b",
+          })
+
+          vim.api.nvim_set_hl(0, "NvimTreeGitDeletedIcon", {
+            fg = "#ed8796",
+          })
+
+          vim.api.nvim_set_hl(0, "NvimTreeNormal", {
+            bg = "NONE",
+          })
+
+          vim.api.nvim_set_hl(0, "NvimTreeNormalNC", {
+            bg = "NONE",
+          })
+        '';
 
         startPlugins = ["plenary-nvim" pkgs.vimPlugins.flutter-tools-nvim pkgs.vimPlugins.nvim-dap pkgs.vimPlugins.nvim-tree-lua pkgs.vimPlugins.nvim-treesitter-parsers.qmljs pkgs.vimPlugins.toggleterm-nvim pkgs.vimPlugins.vim-godot pkgs.vimPlugins.tiny-inline-diagnostic-nvim pkgs.vimPlugins.snacks-nvim pkgs.vimPlugins.noice-nvim pkgs.vimPlugins.neoscroll-nvim pkgs.vimPlugins.nvim-treesitter-parsers.yaml];
       };
