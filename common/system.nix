@@ -261,7 +261,6 @@ in
         obsidian
         bruno
         dotnet-sdk_9
-        flutter
         go
         nodejs
         csharp-ls
