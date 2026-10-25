@@ -260,7 +260,6 @@ in
         unstable.blender
         obsidian
         bruno
-        dotnet-sdk_9
         go
         nodejs
         csharp-ls

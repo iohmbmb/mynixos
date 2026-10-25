@@ -237,7 +237,15 @@
           markdown.enable = true;
           csharp = {
             enable = true;
-            lsp.enable = true;
+            format = {
+              enable = true;
+              type = ["csharpier"];
+            };
+            lsp = {
+              enable = true;
+              servers = ["roslyn-ls"];
+            };
+            treesitter.enable = true;
           };
         };
         extraPlugins = {
