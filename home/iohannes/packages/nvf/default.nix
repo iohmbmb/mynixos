@@ -1,257 +1,261 @@
 {pkgs, ...}:
 {
-  programs.nvf = {
-    enable = true;
-    settings = {
-      vim = {
-        ui = {
-          borders = {
-            plugins = {
-              nvim-cmp = {
-                enable = true;
-                style = "rounded";
-              };
-            };
-          };
-        };
-        keymaps = [
-          {
-            key = "<C-k>";
-            mode = "n";
-            silent = true;
-            action = "<cmd>lua vim.lsp.buf.hover({ focusable = false })<cr>";
-          }
-        ];
-        maps = {
-          normal = {
-            # Map Ctrl-n in normal mode
-            "<C-n>" = {
-              action = "<cmd>NvimTreeToggle<CR>";
-              silent = true;
-              desc = "Toggle file explorer";
-            };
-            # Map space-v in normal mode
-            "<C-t>" = {
-              action = "<cmd>ToggleTerm size=10<CR>";
-              silent = true;
-              desc = "Toggle terminal";
-            };
-            # Mapping for fzf-lua
-            "<C-f>" = {
-              action = "<cmd>FzfLua files<CR>";
-              silent = true;
-              desc = "Let search the files";
-            };
-            "<C-r>" = {
-              action = "<cmd>FzfLua live_grep<CR>";
-              silent = true;
-              desc = "Search for strings live";
-            };
-            "<C-b>" = {
-              action = "<cmd>FzfLua buffers<CR>";
-              silent = true;
-              desc = "Open the list of buffers";
-            };
-          };
-          terminal = {
-            # Map space-v in normal mode
-            "<C-t>" = {
-              action = "<cmd>ToggleTerm size=10<CR>";
-              silent = true;
-              desc = "Toggle terminal";
-            };
-          };
-        };
-
-        options = {
-          tabstop = 2;
-          shiftwidth = 2;
-          termguicolors = true;
-        };
-
-        treesitter = {
-          enable = true;
-          highlight.enable = true;
-        };
-
-        fzf-lua.enable = true;
-
-        visuals.indent-blankline = {
-          enable = true;
-          setupOpts.scope.enabled = true;
-        };
-
-        
-        statusline.lualine = {
-          enable = true;
-          setupOpts = {
-            options = {
-              theme = {
-                normal = {
-                  a = {
-                    fg = "#1e1e2e";
-                    bg = "#c191ff";
-                    gui = "bold";
-                  };
-                  b = {
-                    fg = "#bdbdbd";
-                    bg = "NONE";
-                  };
-                  c = {
-                    fg = "#84c26b";
-                    bg = "NONE";
-                  };
+    programs.nvf = {
+        enable = true;
+        settings = {
+            vim = {
+                ui = {
+                    borders = {
+                        plugins = {
+                            nvim-cmp = {
+                                enable = true;
+                                style = "rounded";
+                            };
+                        };
+                    };
+                };
+                keymaps = [
+                    {
+                        key = "<C-k>";
+                        mode = "n";
+                        silent = true;
+                        action = "<cmd>lua vim.lsp.buf.hover({ focusable = false })<cr>";
+                    }
+                ];
+                maps = {
+                    normal = {
+                        # Map Ctrl-n in normal mode
+                        "<C-n>" = {
+                            action = "<cmd>NvimTreeToggle<CR>";
+                            silent = true;
+                            desc = "Toggle file explorer";
+                        };
+                        # Map space-v in normal mode
+                        "<C-t>" = {
+                            action = "<cmd>ToggleTerm size=10<CR>";
+                            silent = true;
+                            desc = "Toggle terminal";
+                        };
+                        # Mapping for fzf-lua
+                        "<C-f>" = {
+                            action = "<cmd>FzfLua files<CR>";
+                            silent = true;
+                            desc = "Let search the files";
+                        };
+                        "<C-r>" = {
+                            action = "<cmd>FzfLua live_grep<CR>";
+                            silent = true;
+                            desc = "Search for strings live";
+                        };
+                        "<C-b>" = {
+                            action = "<cmd>FzfLua buffers<CR>";
+                            silent = true;
+                            desc = "Open the list of buffers";
+                        };
+                    };
+                    terminal = {
+                        # Map space-v in normal mode
+                        "<C-t>" = {
+                            action = "<cmd>ToggleTerm size=10<CR>";
+                            silent = true;
+                            desc = "Toggle terminal";
+                        };
+                    };
                 };
 
-                insert = {
-                  a = {
-                    fg = "#1e1e2e";
-                    bg = "#84c26b";
-                    gui = "bold";
-                  };
+                options = {
+                    autoindent = true;
+                    smartindent = true;
+                    cindent = true;
+                    expandtab = true;
+                    tabstop = 4;
+                    shiftwidth = 4;
+                    softtabstop = 4;
+                    termguicolors = true;
                 };
 
-                visual = {
-                  a = {
-                    fg = "#1e1e2e";
-                    bg = "#65c3cc";
-                    gui = "bold";
-                  };
+                treesitter = {
+                    enable = true;
+                    highlight.enable = true;
                 };
 
-                replace = {
-                  a = {
-                    fg = "#1e1e2e";
-                    bg = "#ed8796";
-                    gui = "bold";
-                  };
+                fzf-lua.enable = true;
+
+                visuals.indent-blankline = {
+                    enable = true;
+                    setupOpts.scope.enabled = true;
                 };
 
-                command = {
-                  a = {
-                    fg = "#1e1e2e";
-                    bg = "#e5c07b";
-                    gui = "bold";
-                  };
+
+                statusline.lualine = {
+                    enable = true;
+                    setupOpts = {
+                        options = {
+                            theme = {
+                                normal = {
+                                    a = {
+                                        fg = "#1e1e2e";
+                                        bg = "#c191ff";
+                                        gui = "bold";
+                                    };
+                                    b = {
+                                        fg = "#bdbdbd";
+                                        bg = "NONE";
+                                    };
+                                    c = {
+                                        fg = "#84c26b";
+                                        bg = "NONE";
+                                    };
+                                };
+
+                                insert = {
+                                    a = {
+                                        fg = "#1e1e2e";
+                                        bg = "#84c26b";
+                                        gui = "bold";
+                                    };
+                                };
+
+                                visual = {
+                                    a = {
+                                        fg = "#1e1e2e";
+                                        bg = "#65c3cc";
+                                        gui = "bold";
+                                    };
+                                };
+
+                                replace = {
+                                    a = {
+                                        fg = "#1e1e2e";
+                                        bg = "#ed8796";
+                                        gui = "bold";
+                                    };
+                                };
+
+                                command = {
+                                    a = {
+                                        fg = "#1e1e2e";
+                                        bg = "#e5c07b";
+                                        gui = "bold";
+                                    };
+                                };
+
+                                inactive = {
+                                    a = {
+                                        fg = "#45475a";
+                                        bg = "NONE";
+                                    };
+                                    b = {
+                                        fg = "#45475a";
+                                        bg = "NONE";
+                                    };
+                                    c = {
+                                        fg = "#45475a";
+                                        bg = "NONE";
+                                    };
+                                };
+                            };
+
+                            component_separators = {
+                                left = "|";
+                                right = "|";
+                            };
+
+                            section_separators = {
+                                left = "";
+                                right = "";
+                            };
+
+                            globalstatus = true;
+                        };
+                    };
                 };
 
-                inactive = {
-                  a = {
-                    fg = "#45475a";
-                    bg = "NONE";
-                  };
-                  b = {
-                    fg = "#45475a";
-                    bg = "NONE";
-                  };
-                  c = {
-                    fg = "#45475a";
-                    bg = "NONE";
-                  };
+                telescope.enable = true;
+                autocomplete.nvim-cmp = {
+                    enable = true;
                 };
-              };
-
-              component_separators = {
-                left = "|";
-                right = "|";
-              };
-
-              section_separators = {
-                left = "";
-                right = "";
-              };
-
-              globalstatus = true;
-            };
-          };
-        };
-
-        telescope.enable = true;
-        autocomplete.nvim-cmp = {
-          enable = true;
-        };
-        lsp = {
-          enable = true;
-          lspconfig = {enable = true;};
-          servers = {
-            html = {
-              capabilities = { 
-                textDocument = { 
-                  completion = { 
-                    completionItem = { 
-                      snippetSupport = true; 
-                    }; 
-                  }; 
-                }; 
-              };
-              cmd = ["vscode-html-language-server" "--stdio"];
-              filetypes = ["html" "htmlangular"];
-            };
-            tailwindcss-language-server = {
-              capabilities = { 
-                textDocument = { 
-                  completion = { 
-                    completionItem = { 
-                      snippetSupport = true; 
-                    }; 
-                  }; 
-                }; 
-              };
-              root_markers = ["tailwind.config.js" "postcss.config.js" "package.json" ".git"];
-              cmd = ["tailwindcss-language-server" "--stdio"];
-              filetypes = ["aspnetcorerazor" "astro" "astro-markdown" "blade" "clojure" "django-html" "htmldjango" "edge" "eelixir" "elixir" "ejs" "erb" "eruby" "gohtml" "gohtmltmpl" "haml" "handlebars" "hbs" "html" "htmlangular" "html-eex" "heex" "jade" "leaf" "liquid" "markdown" "mdx" "mustache" "njk" "nunjucks" "php" "razor" "slim" "twig" "css" "less" "postcss" "sass" "scss" "stylus" "sugarss" "javascript" "javascriptreact" "reason" "rescript" "vue" "svelte" "templ"];
-              settings = {
-                tailwindCSS = {
-                  includeLanguages = {
-                    htmlangular = "html";
-                  };
+                lsp = {
+                    enable = true;
+                    lspconfig = {enable = true;};
+                    servers = {
+                        html = {
+                            capabilities = { 
+                                textDocument = { 
+                                    completion = { 
+                                        completionItem = { 
+                                            snippetSupport = true; 
+                                        }; 
+                                    }; 
+                                }; 
+                            };
+                            cmd = ["vscode-html-language-server" "--stdio"];
+                            filetypes = ["html" "htmlangular"];
+                        };
+                        tailwindcss-language-server = {
+                            capabilities = { 
+                                textDocument = { 
+                                    completion = { 
+                                        completionItem = { 
+                                            snippetSupport = true; 
+                                        }; 
+                                    }; 
+                                }; 
+                            };
+                            root_markers = ["tailwind.config.js" "postcss.config.js" "package.json" ".git"];
+                            cmd = ["tailwindcss-language-server" "--stdio"];
+                            filetypes = ["aspnetcorerazor" "astro" "astro-markdown" "blade" "clojure" "django-html" "htmldjango" "edge" "eelixir" "elixir" "ejs" "erb" "eruby" "gohtml" "gohtmltmpl" "haml" "handlebars" "hbs" "html" "htmlangular" "html-eex" "heex" "jade" "leaf" "liquid" "markdown" "mdx" "mustache" "njk" "nunjucks" "php" "razor" "slim" "twig" "css" "less" "postcss" "sass" "scss" "stylus" "sugarss" "javascript" "javascriptreact" "reason" "rescript" "vue" "svelte" "templ"];
+                            settings = {
+                                tailwindCSS = {
+                                    includeLanguages = {
+                                        htmlangular = "html";
+                                    };
+                                };
+                            };
+                        };
+                        gdscript = {
+                            capabilities = {
+                                textDocument = {
+                                    completion = { dynamicRegistration = true; };
+                                    hover = { dynamicRegistration = true; };
+                                };
+                                filetypes = ["gd" "gdshader"];
+                            };
+                        };
+                    };
                 };
-              };
-            };
-            gdscript = {
-              capabilities = {
-                textDocument = {
-                  completion = { dynamicRegistration = true; };
-                  hover = { dynamicRegistration = true; };
+                languages = {
+                    enableTreesitter = true;
+                    nix.enable = true;
+                    clang.enable = true;
+                    python.enable = true;
+                    go.enable = true;
+                    html = {
+                        enable = true;
+                        treesitter = {
+                            enable = true;
+                            autotagHtml = true;
+                        };
+                    };
+                    css.enable = true;
+                    typescript.enable = true;
+                    markdown.enable = true;
+                    csharp = {
+                        enable = true;
+                        format = {
+                            enable = true;
+                            type = ["csharpier"];
+                        };
+                        lsp = {
+                            enable = true;
+                            servers = ["roslyn-ls"];
+                        };
+                    };
                 };
-                filetypes = ["gd" "gdshader"];
-              };
-            };
-          };
-        };
-        languages = {
-          enableTreesitter = true;
-          nix.enable = true;
-          clang.enable = true;
-          python.enable = true;
-          go.enable = true;
-          html = {
-            enable = true;
-            treesitter = {
-              enable = true;
-              autotagHtml = true;
-            };
-          };
-          css.enable = true;
-          typescript.enable = true;
-          markdown.enable = true;
-          csharp = {
-            enable = true;
-            format = {
-              enable = true;
-              type = ["csharpier"];
-            };
-            lsp = {
-              enable = true;
-              servers = ["roslyn-ls"];
-            };
-            treesitter.enable = true;
-          };
-        };
-        extraPlugins = {
-          vscode-nvim = {
-            package = pkgs.vimPlugins.vscode-nvim;
-            setup = ''
+                extraPlugins = {
+                    vscode-nvim = {
+                        package = pkgs.vimPlugins.vscode-nvim;
+                        setup = ''
               local c = require("vscode.colors").get_colors()
               require('vscode').setup({
                 style = 'dark',
@@ -332,14 +336,14 @@
                   Boolean = { fg = "#6c95eb", italic = true },
                 },
               })
-            '';
-          };
-          nvim-dap = {
-            package = pkgs.vimPlugins.nvim-dap;
-          };
-          nvim-tree = {
-            package = pkgs.vimPlugins.nvim-tree-lua;
-            setup = ''
+                        '';
+                    };
+                    nvim-dap = {
+                        package = pkgs.vimPlugins.nvim-dap;
+                    };
+                    nvim-tree = {
+                        package = pkgs.vimPlugins.nvim-tree-lua;
+                        setup = ''
             require('nvim-tree').setup({
               view = {
                   width = 32,
@@ -397,32 +401,32 @@
                   show_on_dirs = true,
                 },
             })'';
-          };
-          nvim-treesitter-parsers-qmljs = {
-            package = pkgs.vimPlugins.nvim-treesitter-parsers.qmljs;
-            setup = "vim.lsp.config['qmlls'] = {cmd = {'qmlls', '-E'}}";
-          };
-          nvim-treesitter-parsers-yaml = {
-            package = pkgs.vimPlugins.nvim-treesitter-parsers.yaml;
-          };
-          nvim-toggle-term = {
-            package = pkgs.vimPlugins.toggleterm-nvim;
-            setup = "require('toggleterm').setup{}";
-          };
-          vim-godot = {
-            package = pkgs.vimPlugins.vim-godot;
-          };
-          tiny-inline-diagnostic = {
-            package = pkgs.vimPlugins.tiny-inline-diagnostic-nvim;
-            setup = "require('tiny-inline-diagnostic').setup() vim.diagnostic.config({virtual_text = false})";
-          };
-          snacks = {
-            package = pkgs.vimPlugins.snacks-nvim;
-            setup = "require('snacks').setup({terminal = {enabled = true}, input = {enable = true}, picker = {enable = true}})";
-          };
-          minuet-ai = {
-            package = pkgs.vimPlugins.minuet-ai-nvim;
-            setup = ''
+                    };
+                    nvim-treesitter-parsers-qmljs = {
+                        package = pkgs.vimPlugins.nvim-treesitter-parsers.qmljs;
+                        setup = "vim.lsp.config['qmlls'] = {cmd = {'qmlls', '-E'}}";
+                    };
+                    nvim-treesitter-parsers-yaml = {
+                        package = pkgs.vimPlugins.nvim-treesitter-parsers.yaml;
+                    };
+                    nvim-toggle-term = {
+                        package = pkgs.vimPlugins.toggleterm-nvim;
+                        setup = "require('toggleterm').setup{}";
+                    };
+                    vim-godot = {
+                        package = pkgs.vimPlugins.vim-godot;
+                    };
+                    tiny-inline-diagnostic = {
+                        package = pkgs.vimPlugins.tiny-inline-diagnostic-nvim;
+                        setup = "require('tiny-inline-diagnostic').setup() vim.diagnostic.config({virtual_text = false})";
+                    };
+                    snacks = {
+                        package = pkgs.vimPlugins.snacks-nvim;
+                        setup = "require('snacks').setup({terminal = {enabled = true}, input = {enable = true}, picker = {enable = true}})";
+                    };
+                    minuet-ai = {
+                        package = pkgs.vimPlugins.minuet-ai-nvim;
+                        setup = ''
               -- Instantly reads your machine's network name without hitting the network API
               local function get_active_ollama_model()
               local handle = io.popen("hostname")
@@ -466,14 +470,14 @@
             throttle = 2000, 
             debounce = 400,  
               })
-          '';
-          };
-          nvim-web-devicons = {
-            package = pkgs.vimPlugins.nvim-web-devicons;
-          };
-          noice = {
-            package = pkgs.vimPlugins.noice-nvim;
-            setup = "require('noice').setup({
+                        '';
+                    };
+                    nvim-web-devicons = {
+                        package = pkgs.vimPlugins.nvim-web-devicons;
+                    };
+                    noice = {
+                        package = pkgs.vimPlugins.noice-nvim;
+                        setup = "require('noice').setup({
               presets = {
                 bottom_search = false, -- use a classic bottom cmdline for search
                 command_palette = false, -- position the cmdline and popupmenu together
@@ -509,18 +513,18 @@
                 },
               },
             })";
-          };
-          trouble = {
-            package = pkgs.vimPlugins.trouble-nvim;
-            setup = ''
+                    };
+                    trouble = {
+                        package = pkgs.vimPlugins.trouble-nvim;
+                        setup = ''
               require("trouble").setup({})
               vim.keymap.set("n", "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", { desc = "Project Diagnostics (Trouble)" })
               vim.keymap.set("n", "<leader>xd", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", { desc = "Buffer Diagnostics (Trouble)" })
-            '';
-          };
-          bufferline = {
-            package = pkgs.vimPlugins.bufferline-nvim;
-            setup = ''
+                        '';
+                    };
+                    bufferline = {
+                        package = pkgs.vimPlugins.bufferline-nvim;
+                        setup = ''
               require("bufferline").setup({
                 options = {
                   mode = "buffers",
@@ -585,37 +589,37 @@
                   },
                 },
               })
-            '';
-          };
-          gitsigns = {
-            package = pkgs.vimPlugins.gitsigns-nvim;
-            setup = ''
+                        '';
+                    };
+                    gitsigns = {
+                        package = pkgs.vimPlugins.gitsigns-nvim;
+                        setup = ''
               require('gitsigns').setup({
                 current_line_blame = true, 
                 signcolumn = true,          -- Keep gutter indicators active
               })
-            '';
-          };
-          autopairs = {
-            package = pkgs.vimPlugins.nvim-autopairs;
-            setup = ''
+                        '';
+                    };
+                    autopairs = {
+                        package = pkgs.vimPlugins.nvim-autopairs;
+                        setup = ''
               require("nvim-autopairs").setup({
                 check_ts = true, -- Integrates with Treesitter to handle language edge cases
               })
-            '';
-          };
-          indent-blankline = {
-            package = pkgs.vimPlugins.indent-blankline-nvim;
-            setup = ''
+                        '';
+                    };
+                    indent-blankline = {
+                        package = pkgs.vimPlugins.indent-blankline-nvim;
+                        setup = ''
             -- ibl is the modern namespace for indent-blankline v3
                 require("ibl").setup({
                 scope = { enabled = true }, -- Dynamically highlights your active code block
               })
-            '';
-          };
-          neoscroll = {
-            package = pkgs.vimPlugins.neoscroll-nvim;
-            setup = ''
+                        '';
+                    };
+                    neoscroll = {
+                        package = pkgs.vimPlugins.neoscroll-nvim;
+                        setup = ''
               require('neoscroll').setup({
             -- Use the plugin's default smooth bindings (<C-u>, <C-d>, <C-b>, <C-f>, etc.)
               mappings = { '<C-u>', '<C-d>', '<C-b>', '<C-f>', '<C-y>', '<C-e>', 'zt', 'zz', 'zb' },
@@ -624,17 +628,17 @@
               respect_scrolloff = false,   -- Stop scrolling when the cursor hits scrolloff margin
               cursor_scrolls_alone = true, -- The cursor will keep scrolling when the window can't scroll
             })
-          '';
-          };
-          
-        };
+                        '';
+                    };
 
-        luaConfigRC = {
-          vscode-theme = ''
+                };
+
+                luaConfigRC = {
+                    vscode-theme = ''
             vim.cmd.colorscheme "vscode"
-          '';
+                    '';
 
-          kitty-font-size = ''
+                    kitty-font-size = ''
               local group = vim.api.nvim_create_augroup(
                 "KittyNvimFontSize",
                 { clear = true }
@@ -659,9 +663,9 @@
                   set_font_size(0)
                 end,
               })
-            '';
+                    '';
 
-          nvimtree-theme = ''
+                    nvimtree-theme = ''
             local group = vim.api.nvim_create_augroup(
               "NvimTreeRiderTheme",
               { clear = true }
@@ -729,9 +733,9 @@
             })
 
             set_tree_colors()
-          '';
+                    '';
 
-          kitty-background = ''
+                    kitty-background = ''
             local group = vim.api.nvim_create_augroup(
               "KittyNvimBackground",
               { clear = true }
@@ -769,11 +773,11 @@
                 io.stdout:flush()
               end,
             })
-          '';
-        };        
+                    '';
+                };        
 
-        startPlugins = ["plenary-nvim" pkgs.vimPlugins.nvim-dap pkgs.vimPlugins.nvim-tree-lua pkgs.vimPlugins.nvim-treesitter-parsers.qmljs pkgs.vimPlugins.toggleterm-nvim pkgs.vimPlugins.vim-godot pkgs.vimPlugins.tiny-inline-diagnostic-nvim pkgs.vimPlugins.snacks-nvim pkgs.vimPlugins.noice-nvim pkgs.vimPlugins.neoscroll-nvim pkgs.vimPlugins.nvim-treesitter-parsers.yaml];
-      };
+                startPlugins = ["plenary-nvim" pkgs.vimPlugins.nvim-dap pkgs.vimPlugins.nvim-tree-lua pkgs.vimPlugins.nvim-treesitter-parsers.qmljs pkgs.vimPlugins.toggleterm-nvim pkgs.vimPlugins.vim-godot pkgs.vimPlugins.tiny-inline-diagnostic-nvim pkgs.vimPlugins.snacks-nvim pkgs.vimPlugins.noice-nvim pkgs.vimPlugins.neoscroll-nvim pkgs.vimPlugins.nvim-treesitter-parsers.yaml];
+            };
+        };
     };
-  };
 }
