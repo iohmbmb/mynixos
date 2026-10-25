@@ -73,10 +73,17 @@
                     softtabstop = 4;
                     termguicolors = true;
                 };
+                
+                formatter.conform-nvim = {
+                    presets = {
+                        csharpier.enable = true;
+                    };
+                };
 
                 treesitter = {
                     enable = true;
                     highlight.enable = true;
+                    indent.enable = true;
                 };
 
                 fzf-lua.enable = true;
@@ -250,6 +257,7 @@
                             enable = true;
                             servers = ["roslyn-ls"];
                         };
+                        treesitter.enable = true;
                     };
                 };
                 extraPlugins = {
