@@ -34,9 +34,6 @@ if [ -f "$RAND_WP" ]; then
     
     # Generate system colors from the wallpaper
     wallust run "$RAND_WP"
-    
-    # Force Firefox to catch up via Pywalfox
-    pywalfox update
 
      # --- Reload Waybar to apply the new CSS colors ---
     pkill waybar

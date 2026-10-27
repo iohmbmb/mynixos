@@ -355,7 +355,6 @@ in
             brightnessctl
             wlsunset
             wallust
-            pywalfox-native
             woeusb
             bat
             tldr
