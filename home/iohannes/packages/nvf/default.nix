@@ -558,43 +558,43 @@
                 highlights = {
                   fill = {
                       fg = { attribute = "fg", highlight = "Normal" },
-                      bg = { attribute = "bg", highlight = "StatusLineNC" },
+                      bg = { attribute = "#1e1f22", highlight = "StatusLineNC" },
                   },
                   background = {
                       fg = { attribute = "fg", highlight = "Normal" },
-                      bg = { attribute = "bg", highlight = "StatusLine" },
+                      bg = { attribute = "#1e1f22", highlight = "StatusLine" },
                   },
                   buffer_visible = {
                       fg = { attribute = "fg", highlight = "Normal" },
-                      bg = { attribute = "bg", highlight = "Normal" },
+                      bg = { attribute = "#1e1f22", highlight = "Normal" },
                   },
                   buffer_selected = {
                       fg = { attribute = "fg", highlight = "Normal" },
-                      bg = { attribute = "bg", highlight = "Normal" },
+                      bg = { attribute = "#1e1f22", highlight = "Normal" },
                   },
                   separator = {
-                      fg = { attribute = "bg", highlight = "Normal" },
-                      bg = { attribute = "bg", highlight = "StatusLine" },
+                      fg = { attribute = "#1e1f22", highlight = "Normal" },
+                      bg = { attribute = "#1e1f22", highlight = "StatusLine" },
                   },
                   separator_selected = {
                       fg = { attribute = "fg", highlight = "Special" },
-                      bg = { attribute = "bg", highlight = "Normal" },
+                      bg = { attribute = "#1e1f22", highlight = "Normal" },
                   },
                   separator_visible = {
                       fg = { attribute = "fg", highlight = "Normal" },
-                      bg = { attribute = "bg", highlight = "StatusLineNC" },
+                      bg = { attribute = "#1e1f22", highlight = "StatusLineNC" },
                   },
                   close_button = {
                       fg = { attribute = "fg", highlight = "Normal" },
-                      bg = { attribute = "bg", highlight = "StatusLine" },
+                      bg = { attribute = "#1e1f22", highlight = "StatusLine" },
                   },
                   close_button_selected = {
                       fg = { attribute = "fg", highlight = "Normal" },
-                      bg = { attribute = "bg", highlight = "Normal" },
+                      bg = { attribute = "#1e1f22", highlight = "Normal" },
                   },
                   close_button_visible = {
                       fg = { attribute = "fg", highlight = "Normal" },
-                      bg = { attribute = "bg", highlight = "Normal" },
+                      bg = { attribute = "#1e1f22", highlight = "Normal" },
                   },
                 },
               })
