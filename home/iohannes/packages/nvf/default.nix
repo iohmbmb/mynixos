@@ -102,7 +102,7 @@
                                 normal = {
                                     a = {
                                         fg = "#1e1e2e";
-                                        bg = "#c191ff";
+                                        bg = "#303446";
                                         gui = "bold";
                                     };
                                     b = {
@@ -118,7 +118,7 @@
                                 insert = {
                                     a = {
                                         fg = "#1e1e2e";
-                                        bg = "#84c26b";
+                                        bg = "#303446";
                                         gui = "bold";
                                     };
                                 };
@@ -126,7 +126,7 @@
                                 visual = {
                                     a = {
                                         fg = "#1e1e2e";
-                                        bg = "#65c3cc";
+                                        bg = "#303446";
                                         gui = "bold";
                                     };
                                 };
@@ -134,7 +134,7 @@
                                 replace = {
                                     a = {
                                         fg = "#1e1e2e";
-                                        bg = "#ed8796";
+                                        bg = "#303446";
                                         gui = "bold";
                                     };
                                 };
@@ -142,7 +142,7 @@
                                 command = {
                                     a = {
                                         fg = "#1e1e2e";
-                                        bg = "#e5c07b";
+                                        bg = "#303446";
                                         gui = "bold";
                                     };
                                 };
@@ -272,10 +272,10 @@
                 },
                 group_overrides = {
 
-                  Normal = { bg = '#1e1f22' },
-                  NormalNC = { bg = '#1e1f22' },
-                  SignColumn = { bg = '#1e1f22' },
-                  EndOfBuffer = { bg = '#1e1f22' },
+                  Normal = { bg = '#303446' },
+                  NormalNC = { bg = '#303446' },
+                  SignColumn = { bg = '#303446' },
+                  EndOfBuffer = { bg = '#303446' },
 
                   -- Variables
                   ["@variable"] = { fg = "#bdbdbd" },

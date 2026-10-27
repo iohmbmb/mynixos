@@ -33,7 +33,7 @@ if [ -f "$RAND_WP" ]; then
     notify-send "Generating theme colors..."
     
     # Generate system colors from the wallpaper
-    wallust run "$RAND_WP"
+    wallust run --no-sequences "$RAND_WP"
 
      # --- Reload Waybar to apply the new CSS colors ---
     pkill waybar
