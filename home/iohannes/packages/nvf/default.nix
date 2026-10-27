@@ -102,7 +102,7 @@
                                 normal = {
                                     a = {
                                         fg = "#1e1e2e";
-                                        bg = "#303446";
+                                        bg = "#c191ff";
                                         gui = "bold";
                                     };
                                     b = {
@@ -118,7 +118,7 @@
                                 insert = {
                                     a = {
                                         fg = "#1e1e2e";
-                                        bg = "#303446";
+                                        bg = "#84c26b";
                                         gui = "bold";
                                     };
                                 };
@@ -126,7 +126,7 @@
                                 visual = {
                                     a = {
                                         fg = "#1e1e2e";
-                                        bg = "#303446";
+                                        bg = "#65c3cc";
                                         gui = "bold";
                                     };
                                 };
@@ -134,7 +134,7 @@
                                 replace = {
                                     a = {
                                         fg = "#1e1e2e";
-                                        bg = "#303446";
+                                        bg = "#ed8796";
                                         gui = "bold";
                                     };
                                 };
@@ -142,7 +142,7 @@
                                 command = {
                                     a = {
                                         fg = "#1e1e2e";
-                                        bg = "#303446";
+                                        bg = "#e5c07b";
                                         gui = "bold";
                                     };
                                 };
@@ -269,6 +269,7 @@
                 style = 'dark',
                 color_overrides = {
                   vscLineNumber = '#FFFFFF',
+                  vscBack = '#303446',
                 },
                 group_overrides = {
 
@@ -680,7 +681,7 @@
             )
 
             local function set_tree_colors()
-              local bg = "#1e1f22"
+              local bg = "#303446"
 
               vim.api.nvim_set_hl(0, "NvimTreeNormal", {
                 fg = "#bcbec4",
