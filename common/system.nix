@@ -289,6 +289,7 @@ in
                 stremio-linux-shell
                 unstable.protonmail-desktop
                 unstable.pureref
+                open-webui
             ];# ++ lib.optional (hostname == mainHost);
         };
 
