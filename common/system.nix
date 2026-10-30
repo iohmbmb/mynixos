@@ -197,6 +197,8 @@ in
                 OLLAMA_CONTEXT_LENGTH = "32768";
             };
         };
+
+        open-webui.enable = true;
     };
 
     security.rtkit.enable = true;
@@ -289,7 +291,6 @@ in
                 stremio-linux-shell
                 unstable.protonmail-desktop
                 unstable.pureref
-                open-webui
             ];# ++ lib.optional (hostname == mainHost);
         };
 
