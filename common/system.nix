@@ -288,6 +288,7 @@ in
                 jetbrains.rider
                 stremio-linux-shell
                 unstable.protonmail-desktop
+                unstable.pureref
             ];# ++ lib.optional (hostname == mainHost);
         };
 

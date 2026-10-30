@@ -18,9 +18,10 @@
       "float on, match:class org.keepassxc.KeePassXC"
       "center on, match:class org.keepassxc.KeePassXC"
       "tile on, match:class Aseprite"
-      "tile on, match:class Godot"
+      "float on, match:class Godot"
       "float on, match:class org.qbittorrent.qBittorrent"
       "center on, match:class org.qbittorrent.qBittorrent"
+      "float on, match:class PureRef"
     ];
   };
 }
