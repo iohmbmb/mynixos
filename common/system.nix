@@ -202,6 +202,11 @@ in
         open-webui = {
             package = unstable.open-webui;
             enable = true;
+            port = 1111;
+        };
+
+        actual = {
+            enable = true;
         };
     };
 
