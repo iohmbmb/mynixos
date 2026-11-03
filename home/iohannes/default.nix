@@ -11,17 +11,16 @@
   wayland.windowManager.hyprland.configType = "hyprlang";
   wayland.windowManager.hyprland.systemd.enable = false;
 
-  services.wlsunset = {
-    enable = true;
-    sunrise = "06:00";
-    sunset = "18:00";
-    duration = 1800;
+    services.wlsunset = {
+      enable = true;
+      sunrise = "06:00";
+      sunset = "18:00";
 
-    temperature = {
-      day = 6500;
-      night = 3500;
+      temperature = {
+        day = 6500;
+        night = 3500;
+      };
     };
-  };
 
   home = {
     stateVersion = "24.05";

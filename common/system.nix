@@ -199,7 +199,10 @@ in
             };
         };
 
-        open-webui.enable = true;
+        open-webui = {
+            package = unstable.open-webui;
+            enable = true;
+        };
     };
 
     security.rtkit.enable = true;
