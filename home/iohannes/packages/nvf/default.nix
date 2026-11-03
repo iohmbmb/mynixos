@@ -433,54 +433,6 @@
                         package = pkgs.vimPlugins.snacks-nvim;
                         setup = "require('snacks').setup({terminal = {enabled = true}, input = {enable = true}, picker = {enable = true}})";
                     };
-                    minuet-ai = {
-                        package = pkgs.vimPlugins.minuet-ai-nvim;
-                        setup = ''
-              -- Instantly reads your machine's network name without hitting the network API
-              local function get_active_ollama_model()
-              local handle = io.popen("hostname")
-              if handle then
-               local hostname = handle:read("*a"):gsub("%s+", "") -- Strips trailing spaces/newlines
-               handle:close()
-
-              -- Change "my-desktop-hostname" to match your exact desktop system name
-              if hostname == "aegis" then
-                return "qwen2.5-coder:14b-base"
-              end
-            end
-              -- Automatically falls back to the laptop configuration for anything else
-            return "qwen2.5-coder:3b-base"
-          end
-          require('minuet').setup({
-            virtualtext = {
-              auto_trigger_ft = { "*" },
-              keymap = {
-                accept = "<M-j>",
-                accept_line = "<M-l>",
-                accept_word = "<M-w>",
-                prev = "<M-[>",
-                next = "<M-]>",
-                dismiss = "<C-e>",
-              },
-            },
-            provider = "openai_fim_compatible",
-            provider_options = {
-              openai_fim_compatible = {
-                name = "Ollama",
-                end_point = "http://127.0.0.1:11434/v1/completions",
-                model = get_active_ollama_model(), 
-                api_key = "TERM", 
-                optional = {
-                  max_tokens = 256,
-                  temperature = 0.2, -- Low temperature ensures strict structural coding logic
-                },
-              },
-            },
-            throttle = 2000, 
-            debounce = 400,  
-              })
-                        '';
-                    };
                     nvim-web-devicons = {
                         package = pkgs.vimPlugins.nvim-web-devicons;
                     };
