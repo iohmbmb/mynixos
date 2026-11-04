@@ -195,7 +195,7 @@ in
             else pkgs.ollama-cpu;
             environmentVariables = {
                 OLLAMA_HOST = "127.0.0.1";
-                OLLAMA_CONTEXT_LENGTH = "32768";
+                OLLAMA_CONTEXT_LENGTH = "2048";
             };
         };
 
