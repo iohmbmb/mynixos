@@ -170,6 +170,10 @@ in
                         path = "/home/iohannes/Documents/Obsidian/Nexus";
                         devices = ["device-s" "aegis" "phone"];
                     };
+                    "Opus" = {
+                        path = "/home/iohannes/Documents/Obsidian/Opus";
+                        devices = ["device-s" "aegis" "phone"];
+                    };
                     "Keepass" = {
                         path = "/home/iohannes/Documents/Keepass\ Database";
                         devices = ["device-s" "aegis"];
