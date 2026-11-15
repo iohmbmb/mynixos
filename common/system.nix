@@ -277,20 +277,6 @@ in
                 unstable.blender
                 obsidian
                 bruno
-                go
-                nodejs
-                csharp-ls
-                nil
-                typescript-language-server
-                tailwindcss-language-server
-                clang-tools
-                basedpyright
-                gcc
-                git
-                zola
-                sass
-                docker
-                scons
                 tmux
                 krita
                 mullvad-vpn
@@ -302,7 +288,6 @@ in
                 vscode-langservers-extracted
                 linuxKernel.packages.linux_zen.xpadneo
                 readest
-                jetbrains.rider
                 stremio-linux-shell
                 unstable.protonmail-desktop
                 unstable.pureref
@@ -366,16 +351,21 @@ in
             lsd
             fzf
             lsof
+            gcc
+            clang-tools
             android-tools
             doctest
             file
             ripgrep
             brightnessctl
             wlsunset
-            wallust
             woeusb
             bat
             tldr
+            git
+            zola
+            docker
+            scons
             zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
         ];
     };      
