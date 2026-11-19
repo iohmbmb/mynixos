@@ -10,6 +10,8 @@
 
   home.file."/home/iohannes/.config/kitty/host-specific.conf".text = ''
   font_size ${if osConfig.networking.hostName == "sybils" then "20.0" else "22.0"}
+  initial_window_width ${if osConfig.networking.hostName == "sybils" then "60c" else "78c"}
+  initial_window_height ${if osConfig.networking.hostName == "sybils" then "16c" else "23c"}
   '';
 
   home.file.rofi = {
