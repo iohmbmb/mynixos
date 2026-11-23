@@ -331,6 +331,7 @@ in
             yazi
             mpv
             neovim
+            harlequin
             libnotify
             swaybg
             hyprshot
